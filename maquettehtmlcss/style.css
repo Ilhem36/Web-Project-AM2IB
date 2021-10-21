@@ -339,4 +339,37 @@ form .gender-details .gender-details{
      
  }
  
- 
+ /* Page Genome  */
+
+.chain-container{
+    font-size: xx-large;
+    white-space: nowrap;
+}
+.card-container{
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    max-width: 400px;
+    background-color: white;
+    border: solid 1px #ddd;
+    box-shadow: 4px 8px 14px 3px rgb(0 0 0 / 44%);
+    padding: 20px;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+/* Page Admin  */
+.tableadmin {
+    border-collapse: collapse; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tableadmin td, .tableadmin th{
+    border: 1px solid black; 
+    background-color: white;   
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- set the language and the direction of the text-->
+<!-- set tde language and tde direction of tde text-->
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
@@ -8,10 +8,53 @@
         </title>
         <!--link for css file -->
         <link rel="stylesheet" type="text/css" href="style.css">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta name="viewport" content="widtd-device-widtd, initial-scale=1.0">
     </head>
     <body>
-       <!--afficher table utilisateur à partir de base et option supprimer etc-->
+       <!--afficher table utilisateur-->
+       <div class="tableadmin">
+            <table>
+                <caption>Utilisateurs par ordre de dernière connection</caption>
+                <!--titres de lignes-->
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Rôle</th>
+                    <th>Email</th>
+                    <th>Numtel</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Supprimer</th> 
+                </tr>
+                <!--première ligne fictive-->
+                <tr>
+                    <td>Individu1</td>
+                    <td>Individu1</td>
+                    <td>Annotateur</td>
+                    <td>individu1@indiv.com</td>
+                    <td>00.00.00.00.00</td>
+                    <td>02/02/02</td>
+                    <td>00:00:01</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <!--deuxième ligne fictive-->
+                <tr>
+                    <td>Individu2</td>
+                    <td>Individu2</td>
+                    <td>Annotateur</td>
+                    <td>individu2@indiv.com</td>
+                    <td>11.11.11.11.11</td>
+                    <td>01/01/01</td>
+                    <td>00:00:11</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </table>
+       </div>
+       <div>
+        <!--Bouton de suppression des utilisateurs séléctionnés-->
+        <input type="button"
+        value="Supprimer">
+       </div>
     </body>
 
 </html>
