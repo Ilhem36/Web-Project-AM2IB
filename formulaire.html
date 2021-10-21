@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="">
+        <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+    <form action ="traitement.php" method ="post/get">
+        <p>
+        Remplissez ce formulaire:<br>
+        <div class= "input-box">
+            <span class="details">Choix du type de sortie</span>
+        <select name="requete">
+            <option value= "Genome">Genome</option>
+            <option value= "Géne or Proteine">Géne/Protéine</option>   
+         </select> <br>
+        </div> <br>
+        <div class="Genome">
+        NomGenome:
+            <input type="text" name="NomGenome"><br>
+        </div><br>
+        <div>
+        Serotype:
+            <input type="text" name="Serotype"><br>
+        </div><br>
+        <div>
+        Espéce:
+            <input type="text" name="Espece"><br>
+        </div><br>
+        <div>
+        Séquence nucléotidique:
+            <input type="text" name="Séquence nucléotidique"><br>
+        </div><br>
+        <div>
+        Souche:
+            <input type="text" name="Souche"><br>
+        </div><br>
+        </p>
+        <div>
+        Nombre de chromosome: 
+            <input type="text" name="Nombre de chromosome"><br>
+        </div><br>
+        <div>
+        Taille Séquence: 
+            <input type="text" name="Taille Séquence"><br>
+        </div><br>
+        <div>
+        Reference: 
+            <input type="text" name="Reference"><br>
+        </div><br>
+        </p>
+        <p>
+        Nom du géne:
+           <input type="text" name="Nom du géne"> <br>
+        </p>
+       
+        Séquence NT du géne:
+     
+            <input type="text" name="Séquence"><br>
+        </p>
+        <p>
+        Séquence peptidique:
+      
+             <input type="text" name="Séquence peptidique"><br>
+        </p>
+        <p>
+        La position du chromosome:
+            <input type="text" name="chromosome position"><br>
+       </p>
+       <p>
+        Nombre de chromosome:
+            <input type="text" name="chromosome position"><br>
+       </p>    
+        <p>
+        Nom du transcrit:
+            <input type="text" name="Nom du transcrit"> <br>
+        </p>
+        <label>Description:</label><br>
+            <textarea></textarea> <br>
+      
+    </form>
+        <input type="submit" name="" value="Suivant" > </br>
+	</body>
