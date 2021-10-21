@@ -4,82 +4,54 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="signin.css">
 	</head>
 	<body>
-    <form action ="traitement.php" method ="post/get">
-        <p>
-        Remplissez ce formulaire:<br>
-        <div class= "input-box">
-            <span class="details">Choix du type de sortie</span>
-        <select name="requete">
-            <option value= "Genome">Genome</option>
-            <option value= "Géne or Proteine">Géne/Protéine</option>   
-         </select> <br>
-        </div> <br>
-        <div class="Genome">
-        NomGenome:
-            <input type="text" name="NomGenome"><br>
-        </div><br>
-        <div>
-        Serotype:
-            <input type="text" name="Serotype"><br>
-        </div><br>
-        <div>
-        Espéce:
-            <input type="text" name="Espece"><br>
-        </div><br>
-        <div>
-        Séquence nucléotidique:
-            <input type="text" name="Séquence nucléotidique"><br>
-        </div><br>
-        <div>
-        Souche:
-            <input type="text" name="Souche"><br>
-        </div><br>
-        </p>
-        <div>
-        Nombre de chromosome: 
-            <input type="text" name="Nombre de chromosome"><br>
-        </div><br>
-        <div>
-        Taille Séquence: 
-            <input type="text" name="Taille Séquence"><br>
-        </div><br>
-        <div>
-        Reference: 
-            <input type="text" name="Reference"><br>
-        </div><br>
-        </p>
-        <p>
-        Nom du géne:
-           <input type="text" name="Nom du géne"> <br>
-        </p>
-       
-        Séquence NT du géne:
-     
-            <input type="text" name="Séquence"><br>
-        </p>
-        <p>
-        Séquence peptidique:
-      
-             <input type="text" name="Séquence peptidique"><br>
-        </p>
-        <p>
-        La position du chromosome:
-            <input type="text" name="chromosome position"><br>
-       </p>
-       <p>
-        Nombre de chromosome:
-            <input type="text" name="chromosome position"><br>
-       </p>    
-        <p>
-        Nom du transcrit:
-            <input type="text" name="Nom du transcrit"> <br>
-        </p>
-        <label>Description:</label><br>
-            <textarea></textarea> <br>
-      
-    </form>
-        <input type="submit" name="" value="Suivant" > </br>
+        <div class="container">
+            <div class="title"> Remplissez ce formulaire: </div>
+                <form action="#" >
+                    <div class= "Genome details">
+                        <select name="requete">
+                            <option value= "Genome">Genome</option>
+                            <option value= "Géne or Proteine">Géne/Protéine</option>   
+                         </select> <br>
+                    <div class = "input-box">
+                            <span class="details">GenomeName</span>
+                            <input type="text" placeholder="Enter your GenomeName" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">Serotype</span>
+                        <input type="text" placeholder="Enter your Serotype" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">specie</span>
+                        <input type="text" placeholder="Enter your Specie" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">Nucleotide sequence</span>
+                        <input type="text" placeholder="Enter your Nucleotide sequence" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">Strain</span>
+                        <input type="text" placeholder="Enter your Strain" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">chromosome Number</span>
+                        <input type="text" placeholder="Enter your Chromosome Number" required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">Sequence size</span>
+                        <input type="text" placeholder=" Enter your sequence size " required>
+                    </div>
+                    <div class = "input-box">
+                        <span class="details">Refernce</span>
+                        <input type="text" placeholder=" Enter the Reference " required>
+                    </div>
+                    <div class="button">
+                        <input type="submit" name="" value="Register">
+                    </div>
+        
+                </form>
+    </div>
+        
 	</body>
