@@ -1,0 +1,15 @@
+
+/* style page d'index*/
+body{
+    margin:0;
+    padding:0;
+    background: url(DNA.jpg) ;
+    font-family: sans-serif;
+
+}
+
+/*Page Gène_Prot*/
+.affichage{
+    background-color: white;
+    display:inline-flex;
+}
