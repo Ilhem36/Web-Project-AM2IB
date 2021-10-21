@@ -8,48 +8,60 @@
 	</head>
 	<body>
         <div class="container">
-            <div class="title"> Remplissez ce formulaire: </div>
+            <div class="title"> Fill out this Form: </div>
                 <form action="#" >
+                    <div class="file-type">
+                        <input type="radio" name="Genome" id="dot-1">
+                        <input type="radio" name="Gene/Protein" id="dot-2">
+                        <span class="file-title"> File Title </span>
+                        <div class="category">
+                          <label for="dot-1">
+                          <span class="dot one"></span>
+                          <span class="Genome">Genome</span>
+                        </label>
+                        <label for="dot-2">
+                          <span class="dot two"></span>
+                          <span class="Gene/protein">Gene/protein</span>
+                        </label>
+                    </div>
+                   
                     <div class= "Genome details">
-                        <select name="requete">
-                            <option value= "Genome">Genome</option>
-                            <option value= "Géne or Proteine">Géne/Protéine</option>   
-                         </select> <br>
+                        
                     <div class = "input-box">
                             <span class="details">GenomeName</span>
                             <input type="text" placeholder="Enter your GenomeName" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">Serotype</span>
                         <input type="text" placeholder="Enter your Serotype" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">specie</span>
                         <input type="text" placeholder="Enter your Specie" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">Nucleotide sequence</span>
                         <input type="text" placeholder="Enter your Nucleotide sequence" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">Strain</span>
                         <input type="text" placeholder="Enter your Strain" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">chromosome Number</span>
                         <input type="text" placeholder="Enter your Chromosome Number" required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">Sequence size</span>
                         <input type="text" placeholder=" Enter your sequence size " required>
-                    </div>
+                    </div><br>
                     <div class = "input-box">
                         <span class="details">Refernce</span>
                         <input type="text" placeholder=" Enter the Reference " required>
-                    </div>
+                    </div><br>
                     <div class="button">
-                        <input type="submit" name="" value="Register">
-                    </div>
+                        <input type="submit" name="" value="Submit">
+                    </div><br>
         
                 </form>
     </div>

@@ -68,11 +68,36 @@ form .user-details .input-box{
     border-color: #9b59b6;
 
 }
-form .gender-details .gender-details{
+form .file-type .file-title{
     font-size: 20px;
     font-weight: 500;
 
 }
+form .category{
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+form .category label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  form .category label .dot{
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #d9d9d9;
+    border: 5px solid transparent;
+    transition: all 0.3s ease;
+  }
+  #dot-1:checked ~ .category label .one,
+  #dot-2:checked ~ .category label .two{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
  form input[type="radio"]{
   display: none;
  }
@@ -114,7 +139,7 @@ form .gender-details .gender-details{
      
  }
  /* formulaire*/ 
- .Genome-box{
+ .Genomebox { 
     width: 320px;
     height: 420px;
     background: #fff;
