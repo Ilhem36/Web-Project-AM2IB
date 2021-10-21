@@ -371,3 +371,35 @@ form .gender-details .gender-details{
     border: 1px solid black; 
     background-color: white;   
 }
+
+.soumettre{
+}
+
+/* Page AnnotValid  */
+
+.tableattrib {
+    border-collapse: collapse; 
+}
+
+.tableattrib td, .tableattrib th{
+    border: 1px solid black; 
+    background-color: rgb(198, 53, 211);   
+}
+
+.tablevalid {
+    border-collapse: collapse; 
+}
+
+.tablevalid td, .tablevalid th{
+    border: 1px solid black; 
+    background-color: rgb(198, 53, 211);   
+}
+
+.tableannot {
+    border-collapse: collapse; 
+}
+
+.tableannot td, .tableannot th{
+    border: 1px solid black; 
+    background-color: rgb(145, 236, 217);   
+}

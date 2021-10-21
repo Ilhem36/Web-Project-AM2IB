@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- set the language and the direction of the text-->
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+           AnnotValid
+        </title>
+        <!--link for css file -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <!-- validateur voit liste des genes a annoter et attribue--> 
+        <div class="tableattrib">
+        <table>
+            <caption>Attribution de génome aux annotateurs</caption>
+            <!--titres de lignes-->
+            <tr>
+                <th>NomGenome</th>
+                <th>Espece</th>
+                <th>Souche</th>
+                <th>Choix de l'annotateur</th>
+            </tr>
+            <!--première ligne fictive-->
+            <tr>
+                <td>Genome1</td>
+                <td>Espece1</td>
+                <td>Souche1</td>
+                <td><input type="text"></td>
+            </tr>
+            <!--deuxième ligne fictive-->
+            <tr>
+                <td>Genome2</td>
+                <td>Espece2</td>
+                <td>Souche2</td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+    </div>
+
+        <div class=soumettre>
+            <!--Bouton de suppression des utilisateurs séléctionnés-->
+             <input type="button" value="Soumettre">
+        </div>
+        
+        <div class="tablevalid">
+        <table>
+            <caption>Validation des propositions</caption>
+            <!--titres de lignes-->
+            <tr>
+                <th>NomGenome</th>
+                <th>Espece</th>
+                <th>Souche</th>
+                <th>annotateur</th>
+                <th>Valider</th>
+            </tr>
+            <!--première ligne fictive-->
+            <tr>
+                <td>Genome1</td>
+                <td>Espece1</td>
+                <td>Souche1</td>
+                <td>annotateur1</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <!--deuxième ligne fictive-->
+            <tr>
+                <td>Genome2</td>
+                <td>Espece2</td>
+                <td>Souche2</td>
+                <td>annotateur2</td>
+                <td><input type="checkbox"></td>
+            </tr>
+        </div>
+
+        <div class=soumettre>
+            <!--Bouton de suppression des utilisateurs séléctionnés-->
+            <input type="button" value="Soumettre">
+        </div>
+
+    <!-- annotateur voit ce qui lui a été attribué-->
+        <div class="tableannot">
+            <table>
+                <caption>Proposition d'annotation</caption>
+                <!--titres de lignes-->
+                <tr>
+                    <th>NomGenome</th>
+                    <th>Espece</th>
+                    <th>Souche</th>
+                    <th>Proposition d'annotation</th>
+                </tr>
+                <!--première ligne fictive-->
+                <tr>
+                    <td>Genome1</td>
+                    <td>Espece1</td>
+                    <td>Souche1</td>
+                    <td><input type="text"></td>
+                </tr>
+                <!--deuxième ligne fictive-->
+                <tr>
+                    <td>Genome2</td>
+                    <td>Espece2</td>
+                    <td>Souche2</td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            </div>
+            
+            <div class=soumettre>
+                <!--Bouton de suppression des utilisateurs séléctionnés-->
+                 <input type="button" value="Soumettre">
+            </div>
+    </body>
+
+</html>
