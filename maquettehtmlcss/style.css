@@ -353,7 +353,7 @@ form .gender-details .gender-details{
     align-items: center;
 }
 .card{
-    max-width: 400px;
+    max-width: 1000px;
     background-color: white;
     border: solid 1px #ddd;
     box-shadow: 4px 8px 14px 3px rgb(0 0 0 / 44%);
@@ -365,8 +365,6 @@ form .gender-details .gender-details{
 /* Page Admin  */
 .tableadmin {
     border-collapse: collapse; 
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .tableadmin td, .tableadmin th{
