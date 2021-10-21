@@ -38,7 +38,7 @@ FOREIGN KEY (EmailAnnot) REFERENCES Utilisateur(Email));
 -- #Création de la relation Gènes/Protéines
 CREATE TABLE Gene_Prot (
 NumeroAccession VARCHAR(500),
-SeqGen VARCHAR,
+SeqGene VARCHAR,
 SeqProt VARCHAR,
 ChromosomePosition VARCHAR(500),
 NbChrPosition VARCHAR(500),
