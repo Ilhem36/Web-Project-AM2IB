@@ -364,6 +364,7 @@ form .gender-details .gender-details{
 
 /* Page Admin  */
 .tableadmin {
+    margin: auto;
     border-collapse: collapse; 
 }
 
@@ -379,10 +380,12 @@ form .gender-details .gender-details{
 
 .tableattrib {
     border-collapse: collapse; 
+    padding: 0 10%;
+    margin: 40px auto 0;
 }
 
 .tableattrib td, .tableattrib th{
-    border: 1px solid black; 
+    border: 1px solid white; 
     background-color: rgb(198, 53, 211);   
 }
 
@@ -400,12 +403,7 @@ form .gender-details .gender-details{
 }
 
 .tableannot td, .tableannot th{
-    border: 1px solid black; 
-    background-color: rgb(145, 236, 217);   
+    border: 1px solid white; 
+    background-color: rgb;   
 }
 /* pour la page formulaire*/
-.menu {
-    margin-left: 80%;
-    border: 1px solid #000000;
-    padding: 1em;
-  }
