@@ -89,6 +89,22 @@
                 <span class="details">Annotation Comments : <!--php echo $_GET["Comments"];--> </span>
             </div><br>
 
+            <div class= "input-box">
+                <span class="details">Search more info in other databases : </span>
+            <select name="website">
+                <option value= "ncbi-assembly">ncbi-assembly</option>
+                <option value= "ncbi-geo">ncbi-geo</option>
+                <option value= "ncbi-protein">ncbi-protein</option>
+                <option value= "uniprot">uniprot</option>
+                <option value= "bateria-ensembl">bateria-ensembl</option>
+                <option value= "blast">blast</option>  
+             </select> <br>
+            </div> <br> 
+
+            <div class = "input-box"> 
+                <input type="button" value ="Download Results">
+            </div><br>
+
     </div>
     </body>
 </html>
