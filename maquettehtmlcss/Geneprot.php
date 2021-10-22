@@ -82,7 +82,7 @@
             </div><br>
                 
             <div class = "input-box"> 
-                <span class="details">Annotation status : <!--php echo $_GET["AnnotStatus"];--> annoted </span>
+                <span class="details">Annotation status : <!--php echo $_GET["AnnotStatus"];--> annotated </span>
             </div><br>
             
             <div class = "input-box"> 
