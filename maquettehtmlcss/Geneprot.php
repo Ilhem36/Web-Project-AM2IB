@@ -12,23 +12,37 @@
     </head>
     <body>
     <div class="container">
-        <div class="title"> Information about the selected gene & protein : </div>
+        <div class="title"> Information about the selected gene & protein : </div><br> 
         <!--Afficher, pour chaque option remplie dans le formulaire page Gene/protéine, le resultat-->  
         <!-- <a href="Formulaire_Gene_Prot.html" Lien vers la page formulaire Gene/protéine--->
 
-        <!-- La fonction $_GET permet de récupérer les résultats des entrées dans les cases du formulaire--> 
+        <!-- La fonction $_GET ou $_POST permet de récupérer les résultats des entrées dans les cases du formulaire--> 
 
         <!-- Exemple sur le fichier Escherichia_coli_cft073.cds.fa-->
             <div class = "input-box"> 
                 <span class="details"> Accession number : <!--php echo $_GET["NumAccession"];--> AAN78501 </span>
             </div><br> 
-
+            
             <div class = "input-box"> 
-                <span class="details"> Gene sequence : <!--php echo $_GET["SeqGene"]; --> ATGC..</span>
+                Gene sequence : <!--php echo $_GET["SeqGene"]; -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="chain-container">
+                        ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC
+                        </div>
+                    </div>
+                </div>
             </div><br>
 
             <div class = "input-box"> 
-                <span class="details"> Peptidic sequence : <!--php echo $_GET["SeqProt"]; --> MACM..</span>
+                Peptidic sequence : <!--php echo $_GET["SeqProt"]; -->
+                <div class="card-container">
+                    <div class="card">
+                        <div class="chain-container">
+                        MTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILKMTILK
+                        </div>
+                    </div>
+                </div>
             </div><br>
 
             <div class = "input-box"> 
@@ -36,7 +50,7 @@
             </div><br>
             
             <div class = "input-box"> 
-                <span class="details">Number of chromosome : <!--php echo $_GET["NbChrPosition"]; --> 1 </span>
+                <span class="details">Number of chromosome position : <!--php echo $_GET["NbChrPosition"]; --> 1 </span>
             </div><br>
             
             <div class = "input-box"> 
@@ -64,17 +78,18 @@
             </div><br>
             
             <div class = "input-box"> 
-                <span class="details">Annotator email : <!--php echo $_GET["NomGenome"];--> abcd@yahoo.fr </span>
+                <span class="details">Annotator email : <!--php echo $_GET["AnnotEmail"];--> abcd@yahoo.fr </span>
             </div><br>
                 
             <div class = "input-box"> 
-                <span class="details">Annotation status : <!--php echo $_GET["EtatAnnot"];-->  annoté </span>
+                <span class="details">Annotation status : <!--php echo $_GET["AnnotStatus"];--> annoted </span>
             </div><br>
             
             <div class = "input-box"> 
-                <span class="details">Annotation Comments : <!--php echo $_GET["Commentaires"];--> annoté le 21/10/21 </span>
+                <span class="details">Annotation Comments : <!--php echo $_GET["Comments"];--> </span>
             </div><br>
 
     </div>
     </body>
 </html>
+
