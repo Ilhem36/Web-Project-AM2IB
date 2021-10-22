@@ -1,16 +1,62 @@
 <!DOCTYPE html>
-<!-- set the language and the direction of the text-->
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="UTF-8">
-        <title>
-           GèneProt
-        </title>
-        <!--link for css file -->
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <!--afficher, pour chaque option remplie dans le formulaire, le resultat-->
-    </body>
-</html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Gene Protein details </title>
+		<link rel="stylesheet" type="text/css" href="">
+        <link rel="stylesheet" type="text/css" href="signin.css">
+	</head>
+	<body>
+        <div class="container">
+            <div class="title"> Fill out this Form: </div>
+                <form action="formulaire.php" method="post" >
+                    <div class= "Gene proteine details">
+                        
+                    <div class = "input-box">
+                            <span class="details">Acession_number</span>
+                            <input type="text" placeholder="Enter your GenomeName" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Gene sequence </span>
+                        <input type="text" placeholder="Enter your Serotype" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Protein sequence</span>
+                        <input type="text" placeholder="Enter your Specie" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Chromosome position</span>
+                        <input type="text" placeholder="Enter your Nucleotide sequence" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Chromosome Number</span>
+                        <input type="text" placeholder="Enter your Strain" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Gene ID</span>
+                        <input type="text" placeholder="Enter your Chromosome Number" required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Gene Biotype</span>
+                        <input type="text" placeholder=" Enter your sequence size " required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">TransciptBiotype</span>
+                        <input type="text" placeholder=" Enter the Reference " required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Gene Symbol</span>
+                        <input type="text" placeholder=" Enter the Reference " required>
+                    </div><br>
+                    <div class = "input-box">
+                        <span class="details">Description</span>
+                        <input type="text" placeholder=" Enter the Reference " required>
+                    </div><br>
+                    <div class="button">
+                        <input type="submit" name="" value="Submit">
+                    </div><br>
+        
+                </form>
+    </div>
+        
+	</body>

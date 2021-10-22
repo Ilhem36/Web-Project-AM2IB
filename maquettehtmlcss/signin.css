@@ -72,7 +72,7 @@ form .file-type .file-title{
     font-weight: 500;
 
 }
-form .category{
+form .file-type.category{
     display: flex;
     width: 80%;
     margin: 14px 0;
@@ -90,7 +90,7 @@ form .category label{
     margin-right: 10px;
     background: #d9d9d9;
     border: 5px solid transparent;
-    transition: all 0.3s ease;
+    transition: height 0.3s ease-in;
   }
   #dot-1:checked ~ .category label .one,
   #dot-2:checked ~ .category label .two{
@@ -156,3 +156,4 @@ form .category label{
     
 
 }
+ }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -8,25 +8,10 @@
 	</head>
 	<body>
         <div class="container">
-            <div class="title"> Fill out this Form: </div>
-                <form action="#" >
-                    <div class="file-type">
-                        <input type="radio" name="Genome" id="dot-1">
-                        <input type="radio" name="Gene/Protein" id="dot-2">
-                        <span class="file-title"> File type </span>
-                        <div class="category">
-                          <label for="dot-1">
-                          <span class="dot one"></span>
-                          <span class="Genome">Genome</span>
-                        </label>
-                        <label for="dot-2">
-                          <span class="dot two"></span>
-                          <span class="Gene/protein">Gene/protein</span>
-                        </label>
-                    </div>
-                   
-                    <div class= "Genome details">
-                        
+           
+                <form action="formulaire.php" method="post" >
+            <div class="title"> Fill out this Form: </div><br>            
+                    <div class= "Genome details"> 
                     <div class = "input-box">
                             <span class="details">GenomeName</span>
                             <input type="text" placeholder="Enter your GenomeName" required>
@@ -67,3 +52,4 @@
     </div>
         
 	</body>
+</html>
