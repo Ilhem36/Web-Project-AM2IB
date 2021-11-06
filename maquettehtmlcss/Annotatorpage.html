@@ -71,30 +71,50 @@
                     <thead>
                         <tr>
                             <th> Genome Name </th>
-                            <th> specie </th>
+                            <th> Species</th>
                             <th> Strain </th>
-                            <th> Download file  </th>
-                            <th> Annotation </th>
+                            <th> Download complete genome </th>
+                            <th> Annotation ID </th> <!--pour savoir de quel cds on parle-->
+                            <th> Annotation status</th>
+                            <th> Email Annotator </th>
+                            <th> Redirection </th>
 
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
                                 <td Nom-genome="Nom-genome">Genome 1</td>
-                                <td Nom-genome="Specie">Specie 1</td>
-                                <td Nom-genome="Strain">strain 1</td>
-                                <td><input type="button" value="Download"></td>
-                                <td><input type="text"></td>
+                                <td Species="Specie">Species 1</td>
+                                <td Strain="Strain">Strain 1</td>
+                                <td><input type="button" value="Download Genome 1"></td>
+                                <td Annotation-ID="Annotation-ID">1</td>
+                                <td Annotation-status="Annotation-status">annotated and validated</td>
+                                <td Email-Annotator ="Email-Annotator">abcd@gmail.com</td>
+                                <td><a href="GeneProt.html">Gene Protein Form Results</a></td>
                             </tr>
                             <tr>
                                 <td Nom-genome="Nom-genome">Genome 2</td>
-                                <td Nom-genome="Specie">Specie 2</td>
-                                <td Nom-genome="Strain">strain 2</td>
-                                <td><input type="button" value ="Download"></td>
-                                <td><input type="text"></td>
+                                <td Nom-genome="Specie">Species 2</td>
+                                <td Nom-genome="Strain">Strain 2</td>
+                                <td><input type="button" value ="Download Genome 2"></td>
+                                <td Annotation-ID="Annotation-ID"></td>
+                                <td Annotation-status="Annotation-status">non annotated and non validated</td>
+                                <td Email-Annotator ="Email-Annotator"></td>
+                                <td><a href="GeneProtform.html">Form Gene/Protein</a></td>
+
+                            </tr>
+                            <tr>
+                                <td Nom-genome="Nom-genome">Genome 2</td>
+                                <td Nom-genome="Specie">Species 2</td>
+                                <td Nom-genome="Strain">Strain 2</td>
+                                <td><input type="button" value ="Download Genome 2"></td>
+                                <td Annotation-ID="Annotation-ID">2</td>
+                                <td Annotation-status="Annotation-status">annotated and non validated</td>
+                                <td Email-Annotator ="Email-Annotator">efgh@outlook.fr</td>
+                                <td><a href="GeneProt.html">Gene Protein Form Results</a></td>
                             </tr>
                     </tbody>
                 </table><br> 
-                <input type="button" value="Soumettre">
+                <input type="button" value="Enter">
 
         </div>
