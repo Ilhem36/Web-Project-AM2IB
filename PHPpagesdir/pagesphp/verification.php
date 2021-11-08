@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['username']) && isset($_POST['password']))
+if(isset($_POST['Email']) && isset($_POST['Password']))
 {
     // connexion à la base de données
     $servername ="localhost:3306";
