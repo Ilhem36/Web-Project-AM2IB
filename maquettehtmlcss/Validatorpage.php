@@ -65,37 +65,20 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-        <div class="table-container">
-            <h1 class="heading">Genome for annotation </h1>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th> Genome Name </th>
-                            <th> Species </th>
-                            <th> Strain </th>
-                            <th> Annotator ID </th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                <td Nom-genome="Nom-genome">Genome 1</td>
-                                <td Nom-genome="Species">Species 1</td>
-                                <td Nom-genome="Strain">strain 1</td>
-                                <td><input type="text"></td>
-                            </tr>
-                            <tr>
-                                <td Nom-genome="Nom-genome">Genome 2</td>
-                                <td Nom-genome="Species">Species 2</td>
-                                <td Nom-genome="Strain">strain 2</td>
-                                <td><input type="text"></td>
-                            </tr>
-                    </tbody>
-                </table><br> 
-                <input type="button" value="Soumettre">
+        <form action="/WP/Web-Project-AM2IB-1/maquettehtmlcss/affect_annot.php" method="post">
+            <label for="seqId">Sequence ID</label><br>
+            <input type="text" id="seqId" name="seqId" placeholder="enter seqId"><br>
+            <label for="annotEmail">annotEmail:</label><br>
+            <input type="text" id="annotEmail" name="annotEmail" placeholder="enter annotEmail"><br><br>
+            <label for="species">Species:</label><br>
+            <input type="text" id="species" name="species" placeholder="enter species"><br><br>
+            <input type="submit" value="Soumettre">
+        </form>
 
-        </div>
-        <div class="table-container">
+    "update email_annot = annotEmail from annotation where seqId == annotation.idsequence"
+
+    <div class="table-container">
             <h1 class="heading"> Validation of annotators suggestions   </h1>
                 <table class="table">
                     <thead>

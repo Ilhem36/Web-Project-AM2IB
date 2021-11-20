@@ -1,3 +1,5 @@
+
+
 # -*- coding: utf-8 -*-
 """
 Created on Sun Oct 31 20:01:03 2021
@@ -53,21 +55,25 @@ for obj in cds_pep:
     
 all(pepdict[gene]["sequence"] == cds_pep[gene]["seq_pep"] for gene in cds_pep)
     #Connection to the database 
-mydb = psycopg2.connect(dbname='gene', user='postgres', host='localhost', password='Think13', port='5432')
+mydb = psycopg2.connect(dbname='web_gene', user='postgres', host='localhost', password='Think13', port='5432')
 mycursor = mydb.cursor()
 mydb.commit()
 
 #Insert cds information in sequence table 
 for gene in cds_pep: 
-    sql = "INSERT INTO gene.sequence (IDsequence, AccessionNb, CDS_seq, Pep_seq, CDS_start, CDS_end, Strand) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO web_gene.sequence (IDsequence, AccessionNb,DNA_type,CDS_start, CDS_end, Strand,annot,CDS_seq,cds_size, Pep_seq,pep_size) VALUES (%s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s)"
     val = (
         gene,
        cds_pep[gene]["annot"]["numacc_gc"],
-       cds_pep[gene]["seq_cds"],
-       cds_pep[gene]["seq_pep"],
+       cds_pep[gene]["annot"]["DNA_type"],
        cds_pep[gene]["annot"]["debut_cds"],
        cds_pep[gene]["annot"]["fin_cds"],
-       cds_pep[gene]["annot"]["brin"])
+       cds_pep[gene]["annot"]["brin"],
+       1,
+       cds_pep[gene]["seq_cds"],
+       cds_pep[gene]["taille_cds"],
+       cds_pep[gene]["seq_pep"],
+       cds_pep[gene]["taille_pep"])
     mycursor.execute(sql, val)
     mydb.commit()
 
@@ -75,7 +81,7 @@ print(mycursor.rowcount, "record inserted.")
 
 #Insert cds information in annotation table 
 for cds in cds_pep:
-        sql = "INSERT INTO gene.annotation (Email_Annot, Date_Annot, GeneID, IDsequence, GeneBiotype, TranscriptBiotype, GeneSymbol, Description, Length, Status, Comments) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        sql = "INSERT INTO web_gene.annotation (Email_Annot, Date_Annot, GeneID, IDsequence, GeneBiotype, TranscriptBiotype, GeneSymbol, Description,Status, Comments) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         val = (None,None,
             cds_pep[cds]["annot"].get("gene",None),
             cds,
@@ -83,8 +89,7 @@ for cds in cds_pep:
             cds_pep[cds]["annot"].get("transcript_biotype",None),
             cds_pep[cds]["annot"].get("gene_symbol", None),
             cds_pep[cds]["annot"].get("description",None),
-            cds_pep[cds]["taille_cds"],
-            None,
+            1,
             None)
         mycursor.execute(sql, val)
         mydb.commit()

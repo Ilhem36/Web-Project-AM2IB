@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Fri Nov  5 21:36:00 2021
@@ -31,10 +32,10 @@ Output: A dictionnary in a list which contains the features of genes.
 
 def parse_annot(name):
     name=name.strip(">").split()
-    
     annot = {
         'id_seq': name[0],
         'numacc_gc': name[2].split(":")[1],
+        'DNA_type':name[2].split(":")[0],
         'debut_cds': name[2].split(":")[-3],
         'fin_cds': name[2].split(":")[-2],
         'brin': name[2].split(":")[-1],
@@ -53,6 +54,4 @@ def parse_annot(name):
         annot['description'] = annot['description'] + "_" + "_".join(dsc)
     return annot
     
-
-
 

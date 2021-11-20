@@ -21,13 +21,13 @@ for file in os.listdir(genome):
                 })
 
 #Connection to the database: 
-mydb = psycopg2.connect(dbname='gene', user='postgres', host='localhost', password='Think13', port='5432')
+mydb = psycopg2.connect(dbname='web_gene', user='postgres', host='localhost', password='Think13', port='5432')
 mycursor = mydb.cursor()
 mydb.commit ()
 
 #Insert genome in genome table
 for gc  in l_genome:
-    sql = """ INSERT INTO gene.genome (AccessionNb, Species, Strain, Seq_length, Seq_nt) VALUES (%s, %s, %s, %s, %s) """
+    sql = """ INSERT INTO web_gene.genome (AccessionNb, Species, Strain, Seq_length, Seq_nt) VALUES (%s, %s, %s, %s, %s) """
     val=[gc['annot']['numacc_gc'],None,None,gc['annot']['taille'],gc['seq']]
     mycursor.execute(sql, val)
     mydb.commit()
