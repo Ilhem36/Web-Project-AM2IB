@@ -7,7 +7,7 @@ SET search_path TO genedb;
 SET timezone = 'CET';
 
 -- #Création des types : TypeRole et Etat Annotation
-CREATE TYPE TypeRole AS ENUM ('reader', 'annotator', 'validator');
+CREATE TYPE TypeRole AS ENUM ('reader', 'annotator', 'validator', 'administrator');
 CREATE TYPE TypeAnnot AS ENUM ('non annotated', 'annotated and non validated', 'annotated and validated');
 CREATE TYPE Typebrin AS ENUM ('1', '-1'); 
 
@@ -43,7 +43,7 @@ Strand Typebrin,
 PRIMARY KEY (IDsequence),
 FOREIGN KEY (AccessionNb) REFERENCES Genome(AccessionNb));
 
--- #Création de la relation Gènes/Protéines
+-- #Création de la relation Annotation
 CREATE TABLE Annotation (
 AnnotID SERIAL, --#Auto-incrémentable, n'existe pas dans les fichiers .fa
 Email_Annot VARCHAR(20) UNIQUE, 
