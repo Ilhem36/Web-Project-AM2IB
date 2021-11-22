@@ -42,7 +42,7 @@ Annot  INTEGER NOT NULL, /* 0 not affected ,1 annotation exists, 2 affected */
 CDS_seq TEXT NOT NULL,
 CDS_size INTEGER NOT NULL,
 Pep_seq TEXT NOT NULL,
-Pep_CDS INTEGER NOT NULL,
+pep_size INTEGER NOT NULL,
 PRIMARY KEY (IDsequence),
 FOREIGN KEY (AccessionNb) REFERENCES Genome(AccessionNb));
 
