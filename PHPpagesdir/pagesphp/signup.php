@@ -1,42 +1,22 @@
 
-<?php 
-    //connexion to mysql database
-    $servername ="localhost:3306";
-    $username = "root";
-    $password="root";
-    $dbname="mysql";
-
-    //try, catch vérifie que la connexion à mysql est établie
-    try{
-        $conn = new PDO("mysql: host=$servername; dbname=$dbname", $username, $password);
-    }
-    catch(PDOException $e){
-        echo "la connexion a échoué:" . $e-> getMessage();
-    }
-
+<?php require_once 'db_utils.php';
+connect_db();
+#conditions vides, majuscules debut+correction sql, tej ligne egal
     //Quand on clique sur submit
     //récupère les valeurs dans les champs définis, et les insère dans la base de données sql
     if(isset($_POST['submit']))
     {
-        $Name = $_POST['Name'];
-        $Fname = $_POST['Fname'];
-        $Email = $_POST['Email'];
-        $Pnumber = $_POST['Pnumber'];
-        $Password = $_POST['Password'];
-        $Role = $_POST['Role'];
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+        $role = $_POST['role'];
 
-        $sqlQuery = "INSERT INTO testsql(Name, Fname, Email,Pnumber, Password, Role) VALUES (:Name, :Fname, :Email, :Pnumber, :Password, :Role)";
-        $insertNew = $conn->prepare($sqlQuery);
-        
-        $insertNew->bindParam(':Name', $Name); //name clé primaire 
-        $insertNew->bindParam(':Fname', $Fname);
-        $insertNew->bindParam(':Email', $Email);
-        $insertNew->bindParam(':Pnumber', $Pnumber);
-        $insertNew->bindParam(':Password', $Password);
-        $insertNew->bindParam(':Role', $Role);
-
-        $insertNew->execute();
+        $sqlQuery = "INSERT INTO w_gene.users(name, surname, email,phone, password, role) VALUES ('".$name."','".$surname."', '".$email."', '".$phone."', '".$password."', '".$role."')";
+        pg_query($db_conn, $sqlQuery);
     }
+disconnect_db();
 ?>
 
 <!DOCTYPE html>
@@ -58,32 +38,32 @@
             <div class="user-details">
                 <div class = "input-box">
                     <span class="details">Name</span>
-                    <input type="text" name = "Name" placeholder="Enter your name" required>
+                    <input type="text" name = "name" placeholder="Enter your name" required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Family name</span>
-                    <input type="text" name = "Fname" placeholder="Enter your Family name " required>
+                    <input type="text" name = "surname" placeholder="Enter your Family name " required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Email</span>
-                    <input type="text" name = "Email" placeholder="Enter your Email" required>
+                    <input type="text" name = "email" placeholder="Enter your Email" required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Phone Number </span>
-                    <input type="text" name = "Pnumber" placeholder="Enter your Number" required>
+                    <input type="text" name = "phone" placeholder="Enter your Number" required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Password</span>
-                    <input type="text" name = "Password" placeholder="Enter your password" required>
+                    <input type="text" name = "password" placeholder="Enter your password" required>
                 </div>
         
             </div>
             <div class= "input-box">
                 <span class="details">Choose your role</span>
-            <select name="Role">
-                <option value= "Reader">Reader</option>
-                <option value= "Annotator">Annotator</option>
-                <option value= "Validator">Validator</option>    
+            <select name="role">
+                <option value= "reader">Reader</option>
+                <option value= "annotator">Annotator</option>
+                <option value= "validator">Validator</option>
              </select> <br>
             </div> <br>
                 <div class="button">
