@@ -3,7 +3,7 @@
          $servername ="localhost";
          $username = "postgres";
          $password="Think13";
-         $dbname="gene";
+         $dbname="web_gene";
 
         //try, catch pour vérifier que la connexion à postgresql est établie ou non
         try{
@@ -19,7 +19,7 @@
             $idSeq = $_POST['seqId'];
 
             //Requêtes + affichage des résultats
-            $sql = "UPDATE gene.annotation SET email_annot = '{$email_annot}'  WHERE idsequence = '{$idSeq}' ;";
+            $sql = "UPDATE web_gene.annotation SET email_annot = '{$email_annot}'  WHERE idsequence = '{$idSeq}' ;";
             try{
                 $result = $conn->query($sql);
             }catch(PDOException $e){

@@ -8,22 +8,22 @@
          $servername ="localhost";
          $username = "postgres";
          $password="Think13";
-         $dbname="gene";
+         $dbname="web_gene";
   
         //try, catch pour vérifier que la connexion à postgresql est établie ou non
         try{
             $conn = new PDO("pgsql: host=$servername; dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             //Fixe la base de données de travail 
-            $conn->exec('SET search_path TO gene');
+            $conn->exec('SET search_path TO web_gene');
             echo "la connexion a été bien etablie"; //essaye de se connecter à la base de données. Si elle fonctionne -> affiche ce message
             echo "<br />";
 
             //Requêtes + affichage des résultats
-            $sql = "SELECT * FROM genome WHERE accessionnb = 'ASM1330v1'";
+            $sql = "SELECT geneid,genebiotype FROM w_gene.annotation WHERE idsequence = 'AAN78501'";
             $result = $conn->query($sql);
             while($row=$result->fetch()){
-                echo $row['accessionnb'].'-'.$row['species'].'-'.$row['strain'].'-'.$row['seq_length'].'-'.$row['seq_nt'].'<br/>';
+                echo $row['geneid'].'-'.$row['genebiotype'].'<br/>';
             }
         }
 

@@ -72,14 +72,14 @@
         $servername ="localhost";
         $username = "postgres";
         $password="Think13";
-        $dbname="gene";
+        $dbname="web_gene";
 
         //try, catch pour vérifier que la connexion à postgresql est établie ou non
         try{
             $conn = new PDO("pgsql: host=$servername; dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             //Fixe la base de données de travail
-            $conn->exec('SET search_path TO gene');
+            $conn->exec('SET search_path TO web_gene');
             echo "la connexion a été bien etablie"; //essaye de se connecter à la base de données. Si elle fonctionne -> affiche ce message
             echo "<br />";
 
@@ -87,7 +87,7 @@
             $email = $_REQUEST['email'];
 
             //Requêtes + affichage des résultats
-            $sql = "SELECT annot.geneid,annot.idsequence,annot.genebiotype,annot.transcriptbiotype,annot.genesymbol,annot.description, gn.species, gn.strain, gn.accessionnb FROM gene.annotation AS annot,gene.genome AS gn, gene.sequence WHERE  annot.idsequence=sequence.idsequence and sequence.accessionnb = gn.accessionnb AND annot.email_annot = '{$email}';";
+            $sql = "SELECT annot.geneid,annot.idsequence,annot.genebiotype,annot.transcriptbiotype,annot.genesymbol,annot.description, gn.species, gn.strain, gn.accessionnb FROM web_gene.annotation AS annot,web_gene.genome AS gn, web_gene.sequence WHERE  annot.idsequence=sequence.idsequence and sequence.accessionnb = gn.accessionnb AND annot.email_annot = '{$email}';";
             try{
                 $result = $conn->query($sql);
 

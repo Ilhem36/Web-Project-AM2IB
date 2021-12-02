@@ -8,6 +8,12 @@ body{
 
 }
 
+.sequence{
+    overflow-wrap: break-word;
+    width: inherit ;
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -384,3 +390,4 @@ form .gender-details .gender-details{
     background-color: rgb;   
 }
 /* pour la page formulaire*/
+

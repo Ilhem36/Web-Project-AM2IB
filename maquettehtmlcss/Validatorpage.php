@@ -66,7 +66,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-        <form action="/WP/Web-Project-AM2IB-1/maquettehtmlcss/affect_annot.php" method="post">
+        <form action="/WP/Web-Project-AM2IB-1/maquettehtmlcss/affect_annot.php" method="get">
             <label for="seqId">Sequence ID</label><br>
             <input type="text" id="seqId" name="seqId" placeholder="enter seqId"><br>
             <label for="annotEmail">annotEmail:</label><br>
