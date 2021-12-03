@@ -1,4 +1,5 @@
 <?php
+// Validator page with Just php code
 require_once 'db_utils.php';
 connect_db();
 $validator = "validateur@psud.fr";

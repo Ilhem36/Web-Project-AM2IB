@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
+<!-- page annoter pour l'annotateur -->
 <head>
   <title>Annotation form </title>
   <meta name="keywords" content="Annotation">

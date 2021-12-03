@@ -1,4 +1,5 @@
 <?php
+// php code for assign_annot page
 require_once 'db_utils.php';
 connect_db();
 /*pagination avec https://www.the-art-of-web.com/php/pagination/*/

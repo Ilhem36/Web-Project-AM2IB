@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- set the language and the direction of the text-->
+<!-- html of annot_fun php page  -->
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">

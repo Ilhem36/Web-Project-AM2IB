@@ -1,42 +1,39 @@
+<!DOCTYPE html>
 <?php
-//Connexion aux bases de données postgresql
-$servername ="localhost";
-$username = "postgres";
-$password="Think13";
-$dbname="web_gene";
-
-//try, catch pour vérifier que la connexion à postgresql est établie ou non
-try{
-    $conn = new PDO("pgsql: host=$servername; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //Fixe la base de données de travail
-    $conn->exec('SET search_path TO web_gene');
-    echo "la connexion a été bien etablie"; //essaye de se connecter à la base de données. Si elle fonctionne -> affiche ce message
-    echo "<br />";
-
-    //Retreive Data
-
-    try{
-        $username = $_GET['email'];
-        $password = $_GET['password'];
-
-        //Requêtes + affichage des résultats
-        $sql = "SELECT DISTINCT email, name, role FROM web_gene.users WHERE surname = '{$username}' AND password = '{$password}';";
-        $result = $conn->query($sql);
-        foreach ($result as $res){
-            if ($res['role'] == 'annotator'){
-                header("Location: http://localhost:8090/WP/Web-Project-AM2IB-1/maquettehtmlcss/Annotatorpage.php?email={$res['email']}");
-            }
-        }
-
-    }catch(PDOException $e){
-        echo "update has failed ". $e->getMessage();
+session_start();
+require_once 'db_utils.php';
+?>
+    <html lang="fr">
+<?php
+connect_db();
+if (isset($_POST['submit'])) {
+    $username=$_POST["email"];
+    $password=$_POST["Password"];
+    $sql_Query = "SELECT * FROM w_gene.users WHERE email='.{$username}.' and Password='.{$password}.'";
+    $result_query=pg_query($db_conn,$sql_Query);
+    while ($row=pg_fetch_assoc($result_query)){
+        echo $row['email'];
+        $_SESSION['email']=$row['email'];
+        $_SESSION['role']=$row['role'];
     }
+    $time_conn=time();
+    $date_conn=date("m-d-Y H:i:s",$time_conn);
+    $update_date_conn="UPDATE w_gene.users SET date= '".$date_conn."' WHERE email='".$_POST["email"]."'";
+    $result_udc=pg_query($db_conn,$sql_Query);
+    //Check the role of users:
+    if(pg_num_rows($result_query!=0)) {
+        if ($_SESSION['role'] == 'annotator') {
+            header('Location= annot_menu.php');
+        } else if ($_SESSION['role'] == 'validator') {
+            header('Location= Valid_Menu.php');
+        } else if ($_SESSION['role'] == 'Reader') {
+            header('Location= Reader_Menu.php');
+        }
+    }else{
+        header('Location : Admin_Menu.php');
 
-
+    }
 }
+disconnect_db();
 
-catch(PDOException $e){ //sinon utilise PDOException pour renvoyer un message d'erreur
-    echo "la connexion a échoué:" . $e-> getMessage();
-}
 ?>

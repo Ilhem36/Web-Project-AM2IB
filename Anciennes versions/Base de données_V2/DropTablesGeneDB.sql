@@ -5,7 +5,7 @@ DROP TABLE Genome;
 DROP TABLE Users;
 
 --# Suppression des types nouvellement créés
-DROP TYPE Typebrin;
+DROP TYPE TypeStrand;
 DROP TYPE TypeAnnot;
 DROP TYPE TypeRole;
 
