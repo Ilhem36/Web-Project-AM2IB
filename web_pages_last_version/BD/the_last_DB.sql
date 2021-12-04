@@ -45,7 +45,7 @@ CDS_size INTEGER NOT NULL,
 Pep_seq TEXT NOT NULL,
 Pep_size INTEGER NOT NULL,
 PRIMARY KEY (IDsequence),
-FOREIGN KEY (Email_Annot) REFERENCES Users(Email)),
+FOREIGN KEY (Email_Annot) REFERENCES Users(Email),
 FOREIGN KEY (AccessionNb) REFERENCES Genome(AccessionNb));
 
 -- #Création de la relation Gènes/Protéines
@@ -64,7 +64,7 @@ Comments VARCHAR(500),
 unique(IDsequence,Date_Annot,Email_Annot),
 PRIMARY KEY(AnnotID), 
 FOREIGN KEY (IDsequence) REFERENCES Sequence(IDsequence),
-FOREIGN KEY (Email_Annot) REFERENCES Users(Email);
+FOREIGN KEY (Email_Annot) REFERENCES Users(Email));
 --#UNIQUE = pour pas que la même annotation soit faite par deux personnes différentes 
 
 
