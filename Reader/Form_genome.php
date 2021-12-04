@@ -7,7 +7,7 @@ connect_db();
   <head>
 
   <meta charset="utf-8" />
-        <title> Formulaire de recherche </title>
+        <title> Searach Form   </title>
 	 <link rel="stylesheet" type="text/css" href="signin.css">
 
   </head>
@@ -32,7 +32,7 @@ connect_db();
 		<input type="text" placeholder="seq_length" name="seq_length"> <br><br>
 
 		Genome sequence : <br>
-    	<textarea id="txtArea" rows="10" cols="60" name="seq_nt" placeholder = "Genome sequence"></textarea><br><br>
+    	<textarea id="textarea" rows="10" cols="60" name="seq_nt" placeholder = "Genome sequence" minlength="4"></textarea><br><br>
 
 		<input type="submit" value="search"/></button><br>
 		</form>

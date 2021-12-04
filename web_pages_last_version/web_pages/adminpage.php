@@ -90,7 +90,7 @@
                 {
                     $n++;
                     echo "<tr>";
-                    echo "<td>" . $row['family_name'] . "</td>";
+                    echo "<td>" . $row['surname'] . "</td>";
                     echo "<td>" . $row['name'] . "</td>";
                     echo "<td>" . $row['role'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";

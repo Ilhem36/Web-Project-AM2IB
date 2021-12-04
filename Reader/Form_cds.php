@@ -8,7 +8,7 @@ connect_db();
 
     <meta charset="utf-8" />
     <title> Search cds and peptides </title>
-    <link rel="stylesheet" type="text/css" href="signin.css">
+    <link rel="stylesheet" type="text/css" href="signin.css">w_gene
 
 </head>
 <body>
@@ -17,7 +17,7 @@ connect_db();
 <!-- Formulaire pour CDS et peptides -->
 <!-- Tables sequence + annotation-->
 <div id ="searchSeqGenome2">
-    <form action="Search_cds.php" method="get">
+    <form action="Search_cds.php" method="post">
         <h3> Form cds & pep </h3>
 
         <!--TODO: rajouter des options à choisir avec menus déroulants-->
@@ -41,13 +41,13 @@ connect_db();
         <input type="text" placeholder="strand" name="strand"><br><br>
 
         CDS_seq : <br>
-        <textarea id="txtArea" rows="3" cols="60" name="cds_seq" placeholder = "cds_seq"></textarea> <br><br>
+        <textarea id="txtArea" rows="3" cols="60" name="cds_seq" placeholder = "cds_seq" minlength="9" maxlength="27000"></textarea> <br><br>
 
         CDS_size :
         <input type="text" placeholder="cds_size" name="cds_size"><br><br>
 
         Pep_seq: <br>
-        <textarea id="txtArea" rows="3" cols="60" name="pep_seq" placeholder = "pep_seq"></textarea><br><br>
+        <textarea id="txtArea" rows="3" cols="60" name="pep_seq" placeholder = "pep_seq" minlength="3" maxlength="9000"></textarea><br><br>
 
         Pep_size :
         <input type="text" placeholder="pep_size" name="pep_size">

@@ -24,7 +24,7 @@ connect_db();
         <h1> Results  </h1>
         <?php
 
-        $res = pg_query($db_conn,"SELECT * FROM w_gene.sequence, w_gene.annotation WHERE sequence.idsequence = annotation.idsequence AND idsequence='".$id."';");
+        $res = pg_query($db_conn,"SELECT * FROM w_gene.sequence, w_gene.annotation WHERE sequence.idsequence = annotation.idsequence AND sequence.idsequence='".$id."';");
 
         if (!$res) {
             echo "Une erreur s'est produite.\n";
@@ -40,7 +40,14 @@ connect_db();
 		<tr><th> CDS_end </th><td>".$row['cds_end']."</td></tr>
 		<tr><th> Strand </th><td>".$row['strand']."</td></tr>
 		<tr><th> CDS_size </th><td>".$row['cds_size']."</td></tr>
-	    <tr><th> Pep_size </th><td>".$row['pep_size']."</td></tr>";
+	    <tr><th> Pep_size </th><td>".$row['pep_size']."</td></tr>
+	    <tr><th> Gene_Id </th><td>".$row['geneid']."</td></tr>
+	    <tr><th> Gene_Biotype</th><td>".$row['genebiotype']."</td></tr>
+	    <tr><th> Transcript_Biotype </th><td>".$row['transcriptbiotype']."</td></tr>
+	    <tr><th> Gene_Symbol </th><td>".$row['genesymbol']."</td></tr>
+	    <tr><th> Fonction </th><td>".$row['description']."</td></tr>";
+
+
             //$seqnuc=$row['seqnt'];
             //$seqaa = $row['seqprot'];
             //$transcrit=$row['nomgene'];
