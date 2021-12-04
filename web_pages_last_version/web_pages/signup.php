@@ -35,7 +35,7 @@
                 if (pg_num_rows($result) != 0) {
                     header('Location:signup.php?error=1');
                 } else {
-                    $sqlQuery = "INSERT INTO w_gene.users(name, surname, email,phone, password,role) VALUES ('" . $name . "','" . $surname . "', '" . $email . "', '" . $phone . "', '" . $password . "','" . $role . "')";
+                    $sqlQuery = "INSERT INTO w_gene.users(name, family_name, email,phone, password,role) VALUES ('" . $name . "','" . $surname . "', '" . $email . "', '" . $phone . "', '" . $password . "','" . $role . "')";
                     $result= pg_query($db_conn, $sqlQuery) or die(pg_last_error());
                     echo "Your registration has been successfully registred. Please wait for confirmation";
                 }

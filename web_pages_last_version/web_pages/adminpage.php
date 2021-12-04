@@ -90,7 +90,7 @@
                 {
                     $n++;
                     echo "<tr>";
-                    echo "<td>" . $row['surname'] . "</td>";
+                    echo "<td>" . $row['family_name'] . "</td>";
                     echo "<td>" . $row['name'] . "</td>";
                     echo "<td>" . $row['role'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";
@@ -98,6 +98,7 @@
                     echo "<td>" . $row['date'] . "</td>";
                     echo"<td>","<input type='checkbox' name= 'delete_$n'>","</td>";
                     echo"<td>","<select name='role_$n'>",
+                        "<option value= 'empty'> Choose role </option>",
                         "<option value= 'reader'>Reader</option>",
                         "<option value= 'annotator'>Annotator</option>",
                         "<option value= 'validator'>Validator</option>",

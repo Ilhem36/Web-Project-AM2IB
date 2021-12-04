@@ -15,7 +15,7 @@ connect_db();
                 }
             }
             #si rôle différent de role bd
-            if(isset($_POST['role_'.$i]))
+            if($_POST['role_'.$i]!='empty')
             {
                 $role = $_POST['role_'.$i];
                 $res2= pg_query ($db_conn,"UPDATE w_gene.users SET role = '".$role."' WHERE email = '".$PK[$i]."'") or die( pg_last_error);
@@ -27,7 +27,7 @@ connect_db();
             
         }
     }
-        
+header("Location: adminpage.php");
 disconnect_db();
 ?>
 
