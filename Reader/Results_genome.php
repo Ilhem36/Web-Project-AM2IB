@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php require_once 'db_utils.php';
+# connexion à la base : affiche "connection failed" si pas de connection
 connect_db();
 ?>
 <html>
@@ -24,26 +25,58 @@ connect_db();
 	?>
 	<?php
 
-    $result = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='".$accessionnb."';");
-	if (!$result) {
+	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='55';");
+	if (!$res1) {
  		echo "Une erreur s'est produite.\n";
   	exit;
 	}
 	echo " <td colspan='2'> Informations générales </td>";
-	while ($row = pg_fetch_assoc($result) ){
+	while ($row1 = pg_fetch_assoc($res1) ){
 	echo "<div style='font-size:110%'> 
-	<tr><th> Accession Number </th><td>".$row['accessionnb']."</td></tr><br>
-	<tr><th> Species </th><td>".$row['species']."</td></tr><br>
-	<tr><th> Strain </th><td>".$row['strain']."</td></tr><br>
-	<tr><th> Sequence length </th><td>".$row['seq_length']."</td></tr><br>
+	<tr><th> Accession Number </th><td>".$row1['accessionnb']."</td></tr><br>
+	<tr><th> Species </th><td>".$row1['species']."</td></tr><br>
+	<tr><th> Strain </th><td>".$row1['strain']."</td></tr><br>
+	<tr><th> Sequence length </th><td>".$row1['seq_length']."</td></tr><br>
         </div>";
-	$seq = $row['seq_nt'];
+	$genome = $row1['seq_nt'];
+	
 	}
+
+	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='55';");
+	if (!$res2) {
+ 		echo "Une erreur s'est produite.\n";
+  	exit;
+	}
+	$res2table= pg_fetch_all($res2);
+	array_multisort( $debutsequence = array_column($res2table, 'cds_start'), SORT_ASC, $res2table);
+	$sequence = array_column($res2table, 'cds_seq');
+	$debutsequence = array_column($res2table, 'cds_start');
+	$longsequence = array_column($res2table, 'cds_size');
+	$idsequence = array_column($res2table, 'idsequence');
+	
 ?>
 </table>
         <h4>Séquence : </h4>
-        <textarea name="txt" cols="65" rows="20" id="txt1">
-    <?php echo $seq; ?>
+		<div class="card-container">
+            <div class="card">
+                <div class="chain-container">
+                <?php
+				for($i=0;$i<count($sequence);$i++)
+				{
+					// echo "<input type='button' value='".$idsequence[$i]."' />";
+					$input = "<input type='button' class='button-id' value='".$idsequence[$i]."' />";
+					// $input_length = strlen($input)
+					$open_bk = "<div class='container-red'>";
+					$close_bk = "</div>";
+					$total_length = strlen($input) + 1 + strlen($open_bk) + 1 + strlen($close_bk) + 1;
+					$genome = substr_replace($genome,"$open_bk $input $sequence[$i] $close_bk", $debutsequence[$i]+$total_length*$i,$longsequence[$i]);
+				}
+				echo $genome; 
+				?>	
+                 <!--Afficher sequence gene en couleu, en cliquant sur un gène, redirige vers la page gène associée -->
+                </div>
+             </div>
+        </div>
 	</textarea>
 
     </div>
