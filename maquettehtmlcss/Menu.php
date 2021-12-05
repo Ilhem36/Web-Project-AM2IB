@@ -26,8 +26,8 @@
 
 </html>
 
-</ul>
-</div>
+        </ul>
+    </div>
 </nav>
 <section class="home"></section>
 

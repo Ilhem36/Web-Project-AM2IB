@@ -16,16 +16,21 @@ if (isset($_POST['submit'])) {
         $_SESSION["statut"]=$row['role'];
         if ($_SESSION["statut"]=='annotator'){
         header("Location:annot_menu.php");
+        die;
         }else if ($_SESSION["statut"]=='validator'){
             header("Location:Valid_Menu.php");
+            die;
 
         }else if ($_SESSION["statut"]=='reader'){
-            header("Location:reader_Menu.php");
+            header("Location:Menu.php");
+            die;
 
         }else if($_SESSION["statut"]=='admin') {
             header("Location:Admin_Menu.php");
+            die;
         }else {
             header("Location:signup.php");
+            die;
         }
     }
 
@@ -34,52 +39,28 @@ if (isset($_POST['submit'])) {
 disconnect_db();
 ?>
 
-
 <!DOCTYPE html>
-
 <!-- set the language and the direction of the text-->
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>
-        Sign In
-    </title>
+    <title> Sign In </title>
     <!--link for css file -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-
-</head>
+    <link rel="stylesheet" type="text/css" href="seconnecter.css">
 <body>
-<div class="full-page">
-    <!--navigation bar-->
-    <div class="navbar">
-        <div>
-            <a href="website.html">Genome Annotation</a>
-        </div>
-        <nav>
-            <ul id='MenuItems'>
-                <li><a href="signup.php">Sign Up</a></li>
-                <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto">Sign In </button>
-                </li>
-            </ul>
-        </nav>
-    </div>
     <div id='login-form' class="loginbox">
         <img src="login.jpg" class="avatar">
-        <h1>Login Here </h1> </br>
-        <form method="post" action=" ">
-            <p>Username</p>
-            <input type="email" name="email" placeholder="Enter Username">
+        <h1> Login Here </h1> </br>
+        <form method="post" action="">
+            <p>Email</p>
+            <input type="text" name="email" placeholder="Enter Email">
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password">
-            <input type="submit" name="submit"  href="pageform.html"></br>
+            <input type="submit" name="submit" value="Sign In"></br>
             <a href="signup.php " target="_blank">Don't have an account?</a> </br>
         </form>
 
-
     </div>
-
-</div>
-
 </body>
+</head>
 </html>

@@ -46,7 +46,7 @@
         <form action="signup.php" method="post">
             <div class="user-details">
                 <div class = "input-box">
-                    <span class="details">Name</span>
+                    <span class="details"> Name </span>
                     <input type="text" name = "name" placeholder="Enter your name" required>
                 </div>
                 <div class = "input-box">

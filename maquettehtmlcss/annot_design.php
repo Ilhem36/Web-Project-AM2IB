@@ -46,22 +46,22 @@
   <form method="post" class="form-group"  action="<?php echo $_SERVER['PHP_SELF'] . '?'.http_build_query($_GET);?>">
     <input type="hidden" class="form-control" name = "idsequence" value="<?php echo strip_tags($_GET['id'])?>" disabled>
     <div class="form-group">
-      <label for="gene_id">gene_id:</label>
+      <label for="gene_id">Gene_id:</label>
       <input type="text" class="form-control" id="gene_id" placeholder="Enter the gene_id of the sequence " name="gene_id" required>
     </div>
 
     <div class="form-group">
-      <label for="gene_biotype">gene_biotype:</label>
+      <label for="gene_biotype">Gene_biotype:</label>
       <input type="text" class="form-control" id="gene_biotype" placeholder="Enter gene_biotype" name="gene_biotype" required>
     </div>
 
     <div class="form-group">
-      <label for="transcript biotype">transcript_biotype:</label>
+      <label for="transcript biotype">Transcript_biotype:</label>
       <input type="text" class="form-control" id="transcript_biotype" placeholder="Enter transcript biotype" name="transcript_biotype" required>
     </div>
 
     <div class="form-group">
-      <label for="gene_symbol">gene_symbol</label>
+      <label for="gene_symbol">Gene_symbol</label>
       <input type="text" class="form-control" id="gene_symbol" placeholder="Enter gene symbol" name="gene_symbol" required>
     </div>
     <div class="form-group">

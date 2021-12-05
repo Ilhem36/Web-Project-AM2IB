@@ -85,8 +85,8 @@ echo "<table>";
 echo "<thead><th><th colspan='2'> Assign sequence to annotator </th></thead>";
 echo "<tbody>";
 echo "<tr>
-            <td>Id Sequence</td>
-            <td>Annotator email</td>
+            <td>Id Sequence  </td>
+            <td>Annotator email  </td>
             <td>Confirm assignment</td></tr>";
 foreach ($non_annotated_results as $sequence) {
     if (isset($_POST["submit_".$sequence])) {

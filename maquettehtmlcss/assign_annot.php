@@ -7,7 +7,7 @@
         Genote
     </title>
     <!--link for css file -->
-    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
 
 </head>
@@ -16,7 +16,7 @@
     <!--navigation bar-->
     <div class="navbar">
         <div>
-            <a href="website.html">Genome Annotation</a>
+            <a href="website.html">Genote</a>
         </div>
         <nav>
             <ul id='MenuItems'>
@@ -28,12 +28,13 @@
             </ul>
         </nav>
     </div>
-    <div align="center">
+    <div class="container" >
+    <div  align="center">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <?php require_once 'affect_valid.php'; ?>
         </form>
     </div>
-
+    </div>
 </div>
 
 </body>
