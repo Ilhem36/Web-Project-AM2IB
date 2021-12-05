@@ -25,7 +25,7 @@ connect_db();
 	?>
 	<?php
 
-	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='55';");
+	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='".$accessionnb."';");
 	if (!$res1) {
  		echo "Une erreur s'est produite.\n";
   	exit;
@@ -42,7 +42,7 @@ connect_db();
 	
 	}
 
-	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='55';");
+	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='".$accessionnb."';");
 	if (!$res2) {
  		echo "Une erreur s'est produite.\n";
   	exit;
