@@ -1,3 +1,13 @@
+
+<!DOCTYPE html>
+<!-- set the language and the direction of the text-->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <!--link for css file -->
+    <link rel="stylesheet"  href="assign.css">
+</head>
+<body>
 <?php
 // php code for assign_annot page
 require_once 'db_utils.php';
@@ -81,13 +91,12 @@ if (count($tmp) > 1) {
 }
 
 //affichage tableau des sequences a annoter
-echo "<table>";
-echo "<thead><th><th colspan='2'> Assign sequence to annotator </th></thead>";
-echo "<tbody>";
+echo "<table class='lignesEspacees'>";
+echo "<tbody><br>";
 echo "<tr>
-            <td>Id Sequence  </td>
-            <td>Annotator email  </td>
-            <td>Confirm assignment</td></tr>";
+            <td> Sequence Id </td>
+            <td> Email choice </td>
+           <td> Confirm assignment</td></tr>";
 foreach ($non_annotated_results as $sequence) {
     if (isset($_POST["submit_".$sequence])) {
         $annotator_assigned = $_POST["annotator_" . $sequence];
@@ -101,7 +110,7 @@ foreach ($non_annotated_results as $sequence) {
             echo "<option value='" . $annotator . "'>" . $annotator . "</option>";
         }
         echo "</select></td>
-            <td><button name='submit_" . $sequence . "' type='submit'>Assign</button></td>";
+            <td><button class='btn btn--assign' name='submit_" . $sequence . "' type='submit'> Assign </button></td>";
     }
 
 }
@@ -109,3 +118,5 @@ echo "</tbody></table>";
 
 disconnect_db();
 ?>
+</body>
+</html>

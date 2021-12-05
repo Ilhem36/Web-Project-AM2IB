@@ -4,7 +4,6 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title> Sticky Navigation Bar | CodingLab </title>
     <link rel="stylesheet" href="home_page.css">
 </head>
 
@@ -23,15 +22,9 @@
             <li><a href="#">Annotator</a></li>
             <li><a href="#">Reader</a></li>
             <li><a href="signIn.php">Logout</a>
-
-</html>
-
-</ul>
+        </ul>
 </div>
 </nav>
 <section class="home"></section>
-
-
-
 </body>
 </html>

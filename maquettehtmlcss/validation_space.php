@@ -2,14 +2,31 @@
 <!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
 <head>
     <title>Annotator space </title>
+    <link rel="stylesheet" href="annot_seq.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <h4>Validation space</h4>
+    <nav>
+        <div class="nav-content">
+            <div class=logo">
+                <a href="#">GenAnnot.</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Home_page.php">Home</a></li>
+                <li><a href="#">Form</a></li>
+                <li><a href="#">Admin</a></li>
+                <li><a href="#">Validator</a></li>
+                <li><a href="#">Annotator</a></li>
+                <li><a href="#">Reader</a></li>
+                <li><a href="signIn.php">Logout</a>
+            </ul>
+        </div>
+
+    </nav>
     <hr>
+
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
-        <table class="table table-bordered">
+        <table class="table">
             <thead>
             <tr>
                 <th>Annotation</th>
@@ -20,7 +37,7 @@
                 <th>Validation</th>
                 <th>Comment</th>
 
-<!--                commentaire + statut de validation-->
+                <!--                commentaire + statut de validation-->
             </tr>
             </thead>
             <tbody>

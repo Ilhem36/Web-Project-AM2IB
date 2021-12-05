@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<!-- set the language and the direction of the text-->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <!--link for css file -->
+    <link rel="stylesheet"  href="annot_seq.css">
+</head>
+<body>
+
+
 <?php
 // Validator page with Just php code
 require_once 'db_utils.php';
@@ -23,11 +34,13 @@ while ($validation=pg_fetch_assoc($to_validate)){
                  Transcript: " . $validation['transcriptbiotype'] . "</td>
                 <td>" . $validation['genesymbol'] . "</td>
                 <td>" . $validation['description'] . "</td>
-                <td><input type='submit' name='Validate_" . $validation['idsequence'] . "' class='btn btn-success' value='Validate'><br><br>
-                    <input type='submit' name='Reject_" . $validation['idsequence'] . "' class='btn btn-success' value='Reject'></td>
+                <td><input type='submit' name='Validate_" . $validation['idsequence'] . "' class='btn btn--assign' value='Validate'><br><br>
+                    <input type='submit' name='Reject_" . $validation['idsequence'] . "' class='btn btn--assign' value='Reject'></td>
                 <td><textarea  name='Comment_" . $validation['idsequence'] . "' class='form-control' placeholder='Write your comment here...'></textarea></td>
             </tr>";
     }
 }
 disconnect_db();
 ?>
+</body>
+</html>

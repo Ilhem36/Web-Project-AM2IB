@@ -11,15 +11,15 @@ $number_to_annotate=pg_num_rows($to_annotate_results);
 if($number_to_annotate == 0){
     echo "Unfortunately there is no sequence to annotate";
 } else { /*y a des annotations*/
-echo "<table class='table-bordered'><tr>
-        <td>Id Sequence</td>
-        <td>Genome accession number</td>
-        <td>Peptidic sequence</td></tr>";
+echo "<table class='table'><thead><tr>
+        <th>Id Sequence</th>
+        <th>Genome accession number</th>
+        <th>Peptidic sequence</th></thead></tr>";
 while($annotation=pg_fetch_assoc($to_annotate_results)){
-    echo "<tr><td><button value ='". $annotation['idsequence'] ."' onclick='window.location.href=\"annot_design.php?id=".$annotation['idsequence']."\"'>". $annotation['idsequence'] ."</button></td>
-            <td>".$annotation['accessionnb']."</td>
-            <td> <p class='sequence' style='overflow-wrap: break-word; width: 300px;'>".$annotation['pep_seq']."</p></td>
-        </tr>";
+    echo "<tbody><tr><td data_label='Id Sequence'><button value ='". $annotation['idsequence'] ."' onclick='window.location.href=\"annot_design.php?id=".$annotation['idsequence']."\"'>". $annotation['idsequence'] ."</button></td>
+            <td data_label='Genome accession number'>".$annotation['accessionnb']."</td>
+            <td data_label='Peptidic sequence'> <p class='sequence' style='overflow-wrap: break-word; width: 800px;'>".$annotation['pep_seq']."</p></td>
+        </tr></tbody>";
     }
 echo "</table>";
 }
