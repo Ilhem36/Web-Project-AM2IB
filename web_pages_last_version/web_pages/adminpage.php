@@ -1,72 +1,29 @@
 <!DOCTYPE html>
-<style type="text/css">
-    *{
-        margin:0;
-        padding:0;
-        box-sizing: border-box;
-    }
-    body{
-        background-color:darkmagenta;
-        font-family: sans-serif;
-    }
-    .table-container{
-        padding: 0 10%;
-        margin: 40px auto 0;
-    }
-    .heading{
-        font: size 40px;
-        text-align: center;
-        color:white;
-        margin-bottom: 40px;
-    }
-    .table{
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .table thead {
-            background-color: white;
-    }
-    .table thead tr th {
-        font-size: 14px;
-        font-weight: medium;
-        letter-spacing: 0.35px;
-        color: black;
-        opacity: 1;
-        padding: 12px;
-        vertical-align: top;
-        border: 1px solid black;
-    }
-    .table tbody tr td{
-        font-size: 14px;
-        letter-spacing: 0.35;
-        font-weight: normal;
-        color:black;
-        background-color:white;
-        padding: 8px;
-        text-align: center;
-        border: 1px solid black; 
-
-    }
-    .table .text_open{
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 0.35px;
-        color: cornflowerblue;
-    }
-    .table .tbody tr td .btn{
-        width: 130px;
-        text-decoration: none;
-        line-height: 35px;
-        display: block;
-        background-color: #FF1046 ;
-    }
-</style>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <div class="table-container">
-        <h1 class="heading">User list </h1>
+<!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
+<head>
+    <title>Annotator space </title>
+    <link rel="stylesheet" href="annot_seq.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+    <div class="nav-content">
+        <div class=logo">
+            <a href="#">GenAnnot.</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Home_page.php">Home</a></li>
+            <li><a href="#">Form</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="#">Validator</a></li>
+            <li><a href="#">Annotator</a></li>
+            <li><a href="#">Reader</a></li>
+            <li><a href="signIn.php">Logout</a>
+        </ul>
+    </div>
+
+</nav>
         <?php require_once 'db_utils.php';
         connect_db();
 
@@ -113,7 +70,7 @@
         ?>
     </div>
 
-    <a href="ind.php" class ="button">logout</a>
+
 
         </div>
 </html>
