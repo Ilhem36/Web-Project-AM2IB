@@ -35,7 +35,7 @@
         //récupère les valeurs dans les champs définis, et les insère dans la base de données sql
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
-            $family_name = $_POST['Family_Name'];
+            $family_name = $_POST['family_name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $password = $_POST['password'];
