@@ -1,9 +1,10 @@
 <?php
 require_once 'db_utils.php';
 connect_db();
-
-$annotator="annotateur@psud.fr";//ici il faut modifier pour récupérer l'email annot quand il se logue donc il faut mettre juste post et ne pas changer la ligne suivanta.
-$to_annotate_query = "SELECT idSequence, AccessionNb, pep_seq FROM w_gene.sequence WHERE annot=2 and email_annot=$1";
+session_start();
+$annotator='fleur@gmail.com';//ici il faut modifier pour récupérer l'email annot quand il se logue donc il faut mettre juste post et ne pas changer la ligne suivanta.
+$to_annotate_query = "SELECT idSequence, AccessionNb, pep_seq FROM w_gene.sequence WHERE annot<>0 and email_annot=$1
+                        except SELECT annotation.idSequence, AccessionNb, pep_seq FROM w_gene.sequence,w_gene.annotation WHERE annotation.idsequence = sequence.idsequence and status in (0,1)";
 $to_annotate_results=pg_query_params($db_conn, $to_annotate_query,array($annotator)) or die(pg_last_error());
 
 $number_to_annotate=pg_num_rows($to_annotate_results);

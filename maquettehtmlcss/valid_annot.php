@@ -23,7 +23,7 @@ while ($validation=pg_fetch_assoc($to_validate)){
     if(isset($_POST['Validate_'.$validation['idsequence']])){
         $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],1,$validation['idsequence']));
         echo "The sequence ".$validation['idsequence']." was validated";
-    } elseif (isset($_POST['Reject'.$validation['idsequence']])){
+    } elseif (isset($_POST['Reject_'.$validation['idsequence']])){
         $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],2,$validation['idsequence']));
         echo "The sequence ".$validation['idsequence']." was rejected";
     } else {

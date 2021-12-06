@@ -31,7 +31,7 @@
 </nav>
 <section class="home"></section>
 
-
+<?php echo 'welcome' ?>
 
 </body>
 </html>

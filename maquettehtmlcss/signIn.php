@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
         $_SESSION["session_login"]=$row['email'];
         $_SESSION["statut"]=$row['role'];
         if ($_SESSION["statut"]=='annotator'){
-        header("Location:annot_menu.php");
+        header("Location:Valid_Menu.php");
         die;
         }else if ($_SESSION["statut"]=='validator'){
             header("Location:Valid_Menu.php");

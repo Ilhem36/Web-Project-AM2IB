@@ -14,7 +14,7 @@
   <h2>Annotation </h2>
     <?php require_once 'db_utils.php';
     connect_db();
-    $email_annot = "annotateur@psud.fr"; /*$1*/
+    $email_annot = "fleur@gmail.com"; /*$1*/
     $insert_annotation_query = "INSERT INTO w_gene.annotation(email_annot, date_annot, geneid, idsequence, genebiotype, transcriptbiotype, genesymbol, description, status) VALUES ($1,'now',$2,$3,$4,$5,$6,$7,0)";
     $update_sequence_query = "UPDATE w_gene.sequence SET annot=1 WHERE idsequence=$1";
     //ID sequence to display
@@ -31,7 +31,6 @@
         $transcript_biotype = $_POST["transcript_biotype"];
         $gene_symbol = $_POST["gene_symbol"];
         $description = $_POST["Description"];
-        print_r($_POST);
 //        $id = $_POST["idsequence"];
         if (empty($gene_symbol)){
             $insert_annotation = pg_query_params($db_conn,$insert_annotation_query,array($email_annot,$gene_id,$id,$gene_biotype,$transcript_biotype,null,$description)) or die(pg_last_error());
@@ -45,6 +44,7 @@
     ?>
   <form method="post" class="form-group"  action="<?php echo $_SERVER['PHP_SELF'] . '?'.http_build_query($_GET);?>">
     <input type="hidden" class="form-control" name = "idsequence" value="<?php echo strip_tags($_GET['id'])?>" disabled>
+      <a href="historique.php?id=<?php echo $id?>">Historique</a><br>
     <div class="form-group">
       <label for="gene_id">Gene_id:</label>
       <input type="text" class="form-control" id="gene_id" placeholder="Enter the gene_id of the sequence " name="gene_id" required>

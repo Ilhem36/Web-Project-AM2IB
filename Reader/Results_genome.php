@@ -25,7 +25,7 @@ connect_db();
 	?>
 	<?php
 
-	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='55';");
+	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM744v1';");
 	if (!$res1) {
  		echo "Une erreur s'est produite.\n";
   	exit;
@@ -42,7 +42,7 @@ connect_db();
 	
 	}
 
-	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='55';");
+	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='ASM744v1';");
 	if (!$res2) {
  		echo "Une erreur s'est produite.\n";
   	exit;
@@ -71,7 +71,8 @@ connect_db();
 					$total_length = strlen($input) + 1 + strlen($open_bk) + 1 + strlen($close_bk) + 1;
 					$genome = substr_replace($genome,"$open_bk $input $sequence[$i] $close_bk", $debutsequence[$i]+$total_length*$i,$longsequence[$i]);
 				}
-				echo $genome; 
+				echo $genome;
+                disconnect_db();
 				?>	
                  <!--Afficher sequence gene en couleu, en cliquant sur un gène, redirige vers la page gène associée -->
                 </div>

@@ -31,7 +31,9 @@
 </nav>
 <section class="home"></section>
 
-
+<?php
+session_start();
+echo 'welcome ' .$_SESSION["session_login"];?>
 
 </body>
 </html>

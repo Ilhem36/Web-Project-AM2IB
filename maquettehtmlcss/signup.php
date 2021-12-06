@@ -63,11 +63,11 @@
                 </div>
                 <div class = "input-box">
                     <span class="details">Password</span>
-                    <input type="text" name = "password" placeholder="Enter your password" required>
+                    <input type="password" name = "password" placeholder="Enter your password" required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Confirm your password</span>
-                    <input type="text" name = "confirm_password" placeholder="Enter your password" required>
+                    <input type="password" name = "confirm_password" placeholder="Enter your password" required>
                 </div>
             </div>
             <div class= "input-box">
