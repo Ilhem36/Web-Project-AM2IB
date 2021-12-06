@@ -24,7 +24,7 @@ PRIMARY KEY (Email));
 -- #Création de la relation Génome
 CREATE TABLE Genome (
 AccessionNb VARCHAR(20),
-Species VARCHAR(100) NOT NULL,
+Species VARCHAR(100),
 Strain VARCHAR(100),
 Seq_length INTEGER NOT NULL, 
 Seq_nt TEXT NOT NULL, 
@@ -51,8 +51,8 @@ FOREIGN KEY (AccessionNb) REFERENCES Genome(AccessionNb));
 -- #Création de la relation Gènes/Protéines
 CREATE TABLE Annotation (
 AnnotID SERIAL,
-Email_Annot VARCHAR(320) NOT NULL, 
-Date_Annot TIMESTAMPTZ  NOT NULL,
+Email_Annot VARCHAR(320), 
+Date_Annot TIMESTAMPTZ,
 GeneID VARCHAR(20)  NOT NULL,
 IDsequence VARCHAR(20)  NOT NULL,
 GeneBiotype VARCHAR(100)  NOT NULL,
