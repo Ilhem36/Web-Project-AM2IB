@@ -79,6 +79,9 @@ connect_db();
 
     //Link to other databank =
 
+    //NCBI (protein database) with the id sequence of the cds/pep
+    $url_ncbi = "https://www.ncbi.nlm.nih.gov/protein/$id_databank";
+
     //Ensembl Bacteria
     $url_ensembl = "http://bacteria.ensembl.org/Multi/Search/Results?species=all;idx=;q={$id_databank};";
     $contents = file_get_contents($url_ensembl);
@@ -97,7 +100,6 @@ connect_db();
     <strong>CDS Sequence : </strong>
     <textarea name="text" cols="55" rows="10" id="text">
         <?php echo $cds_seq; ?>
-
     </textarea>
     <br>
     <br>
@@ -109,12 +111,12 @@ connect_db();
     <br><br>
     <!--faire des boutons mieux placés et plus jolis, liste déroulante ? -->
     <strong>Need more information ? Links to other databank : </strong><br>
+    <button id="ncbi" onclick = "location.href = '<?php echo $url_ncbi;?>'"><br> NCBI </button> <br>
     <button id="ensembl" onclick = "location.href = '<?php echo $url_ensembl;?>'"><br> Ensembl </button> <br>
     <button id="uniprot" onclick = "location.href = '<?php echo $url_uniprot;?>'"><br> Uniprot </button> <br>
     <br>
 
     <!-- Blastn and Blastp alignments -->
-
         <strong>Blastn (genes) :</strong><br>
         <form action="blast_cds.php" method="get">
             <input type="hidden" name="gene_seq" value=<?php echo preg_replace('/\s+/','',$cds_seq);?>> <!--delete the whitespaces-->
