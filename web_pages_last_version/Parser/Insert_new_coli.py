@@ -8,8 +8,8 @@ import csv
 import os
 import psycopg2
 from parse_newcoli import * 
-cds='Write the path of cds files in your computer '
-pep='Write the path of cds files in your computer '
+cds='C:/xampp\htdocs\WP\Web-Project-AM2IB-1\web_pages_last_version\data\cds_aannoté'
+pep='C:/xampp\htdocs\WP\Web-Project-AM2IB-1\web_pages_last_version\data\pep_nonannoté'
 
 """Parse CDS files"""
 
@@ -52,7 +52,7 @@ for obj in cds_pep:
     
 all(pepdict[gene]["sequence"] == cds_pep[gene]["seq_pep"] for gene in cds_pep)
     #Connection to the database 
-mydb = psycopg2.connect(dbname='web_gene', user='postgres', host='localhost', password='Think13', port='5432')
+mydb = psycopg2.connect(dbname='web_lastdb', user='postgres', host='localhost', password='Think13', port='5432')
 mycursor = mydb.cursor()
 mydb.commit()
 
@@ -75,7 +75,7 @@ for gene in cds_pep:
 
 print(mycursor.rowcount, "record inserted.")
 
-#### Here we  don't need to insert anything in annotation table for the new_coli files:
+#### Here we  don't need to insert anything in annotation table for the new_coli files because we will use just sequence table 
     
     
 #Insert cds information in annotation table 

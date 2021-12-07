@@ -6,7 +6,7 @@ Created on Sat Nov  6 14:04:58 2021
 """
 import os 
 import psycopg2
-genome= "Write the path of genome files in your computer "
+genome= "C:/xampp\htdocs\WP\Web-Project-AM2IB-1\web_pages_last_version\data\completegenome"
 
 from parse_gc import *
 
@@ -22,14 +22,14 @@ for file in os.listdir(genome):
 
 #Connection to the database: 
     
-mydb = psycopg2.connect(dbname='web_gene', user='postgres', host='localhost', password='Think13', port='5432')
+mydb = psycopg2.connect(dbname='web_lastdb', user='postgres', host='localhost', password='Think13', port='5432')
 mycursor = mydb.cursor()
 mydb.commit ()
 
 #Insert genome in genome table
 
 for gc  in l_genome:
-    sql = """ INSERT INTO web_gene.genome (AccessionNb, Species, Strain, Seq_length, Seq_nt) VALUES (%s, %s, %s, %s, %s) """
+    sql = """ INSERT INTO w_gene.genome (AccessionNb, Species, Strain, Seq_length, Seq_nt) VALUES (%s, %s, %s, %s, %s) """
     val=[gc['annot']['numacc_gc'],None,None,gc['annot']['taille'],gc['seq']]
     mycursor.execute(sql, val)
     mydb.commit()

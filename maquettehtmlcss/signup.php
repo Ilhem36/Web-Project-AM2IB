@@ -21,7 +21,7 @@
         //récupère les valeurs dans les champs définis, et les insère dans la base de données sql
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
-            $surname = $_POST['surname'];
+            $surname = $_POST['family_'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $password = $_POST['password'];
@@ -51,7 +51,7 @@
                 </div>
                 <div class = "input-box">
                     <span class="details">Family name</span>
-                    <input type="text" name = "surname" placeholder="Enter your Family name " required>
+                    <input type="text" name = "" placeholder="Enter your Family name " required>
                 </div>
                 <div class = "input-box">
                     <span class="details">Email</span>

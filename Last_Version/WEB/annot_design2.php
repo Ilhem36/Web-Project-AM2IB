@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- page annoter pour l'annotateur -->
 <head>
   <title>Annotation form </title>
   <meta name="keywords" content="Annotation">
-  <link rel="stylesheet" href="../../css/reader.css">
+  <link rel="stylesheet" href="reader.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -18,7 +17,7 @@
             <a href="#">GenAnnot.</a>
         </div>
         <ul class="nav-links">
-            <li><a href="../../css/Home_page.php">Home</a></li>
+            <li><a href="Home_page.php">Home</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
             <li><a href="#">Annotator</a></li>
@@ -32,8 +31,7 @@
                     </ul>
                 </ul>
             </li>
-            <li><a href="#">Logout</a>
-                <!--signIn.php-->
+            <li><a href="signIn.php">Logout</a>
         </ul>
     </div>
 </nav>
@@ -103,7 +101,6 @@
           </div>
       </div>
   </form>
-</div>
 </div>
 </body>
 </html>

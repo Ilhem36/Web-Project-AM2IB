@@ -9,7 +9,7 @@
 }
 body{
     display: flex;
-    height: 200vh;
+    height: 250vh;
     justify-content: center;
     align-items: center; /* centrer body*/
     padding: 10px;

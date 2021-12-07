@@ -10,8 +10,8 @@ import csv
 import os
 import psycopg2
 from parse_cds_pep import * 
-cds = 'Write the path of cds files in your computer '
-pep=' Write the path of peptide files in your computer '
+cds = 'C:/xampp\htdocs\WP\Web-Project-AM2IB-1\web_pages_last_version\data\cdsfile'
+pep='C:/xampp\htdocs\WP\Web-Project-AM2IB-1\web_pages_last_version\data\peptidefile'
 
 """Parse CDS files"""
 
@@ -57,7 +57,7 @@ all(pepdict[gene]["sequence"] == cds_pep[gene]["seq_pep"] for gene in cds_pep)
 ################## Insertion data in data base ############# 
     
 #Connection to the database 
-mydb = psycopg2.connect(dbname='web_gene', user='postgres', host='localhost', password='Think13', port='5432')
+mydb = psycopg2.connect(dbname='web_lastdb', user='postgres', host='localhost', password='Think13', port='5432')
 mycursor = mydb.cursor()
 mydb.commit()
 

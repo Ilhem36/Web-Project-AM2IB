@@ -25,11 +25,7 @@ connect_db();
 	?>
 	<?php
 
-<<<<<<< HEAD
-	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM744v1';");
-=======
-	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='".$accessionnb."';");
->>>>>>> 216eebf99f64f28feb4028026945ef0986f5ddd9
+	$res1 = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM666v1';");
 	if (!$res1) {
  		echo "Une erreur s'est produite.\n";
   	exit;
@@ -43,14 +39,10 @@ connect_db();
 	<tr><th> Sequence length </th><td>".$row1['seq_length']."</td></tr><br>
         </div>";
 	$genome = $row1['seq_nt'];
-	
+
 	}
 
-<<<<<<< HEAD
-	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='ASM744v1';");
-=======
-	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='".$accessionnb."';");
->>>>>>> 216eebf99f64f28feb4028026945ef0986f5ddd9
+	$res2 = pg_query($db_conn,"SELECT * FROM w_gene.sequence WHERE accessionnb='ASM666v1';");
 	if (!$res2) {
  		echo "Une erreur s'est produite.\n";
   	exit;
