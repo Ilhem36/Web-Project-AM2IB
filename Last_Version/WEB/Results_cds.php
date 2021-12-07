@@ -2,7 +2,7 @@
 <?php require_once 'db_utils.php';
 connect_db();
 ?>
-<html>
+<html lang="en" dir="ltr">
     <head>
     <meta charset="utf-8" />
         <title> Results cds and peptides </title>
@@ -10,7 +10,7 @@ connect_db();
 </head>
 <body>
 
-<!-- Menu de navigation -->
+<!-- Navigation menu -->
 <nav>
     <div class="nav-content">
         <div class="logo">
@@ -37,13 +37,13 @@ connect_db();
     </div>
 </nav>
 
-<!--Résultats pour le formulaire CDS et peptides-->
+<!--CDS and peptides form results-->
 <div class ="container">
     <div class="title"> Gene & protein Results </div><br>
     <table>
         <?php $str=$_SERVER['REQUEST_URI'];
         $keywords = preg_split("/=/", $str);
-        $id = $keywords[1]; // Récupère l'id à partir du fichier search_cds grâce au lien
+        $id = $keywords[1]; // Get the ID from the file search_cds.php thanks to the link between those two files
         ?>
 
         <?php
@@ -66,17 +66,38 @@ connect_db();
 	              <tr><th> Gene Biotype : </th><td>".$row['genebiotype']."</td></tr>
 	              <tr><th> Transcript Biotype : </th><td>".$row['transcriptbiotype']."</td></tr>
 	              <tr><th> Gene Symbol : </th><td>".$row['genesymbol']."</td></tr>
-	              <tr><th> Description : </th><td>".$row['description']."</td></tr>";
+	              <tr><th> Description : </th><td>".$row['description']."</td></tr>
+	              ";
             $cds_seq=$row['cds_seq'];
             $pep_seq = $row['pep_seq'];
+            $id_databank = $row['idsequence']; //to search gene results in existing databank with the idsequence
         }
         ?>
     </table>
+
+    <?php
+
+    //Link to other databank =
+
+    //Ensembl Bacteria
+    $url_ensembl = "http://bacteria.ensembl.org/Multi/Search/Results?species=all;idx=;q={$id_databank};";
+    $contents = file_get_contents($url_ensembl);
+    $result = array();
+    $link = preg_match_all('#<a class="name" href="/(.+?)">#', $contents, $result);
+    $url_ensembl = "http://bacteria.ensembl.org/{$result[1][0]}";
+
+    //Uniprot
+    $contents2 = file_get_contents($url_ensembl);
+    $result2 = array();
+    $link2 = preg_match_all('#<a href="http://www.uniprot.org/uniprot/(.+?)"#', $contents2, $result2);
+    $url_uniprot = "http://www.uniprot.org/uniprot/{$result2[1][0]}";
+    ?>
 
     <br>
     <strong>CDS Sequence : </strong>
     <textarea name="text" cols="55" rows="10" id="text">
         <?php echo $cds_seq; ?>
+
     </textarea>
     <br>
     <br>
@@ -84,6 +105,21 @@ connect_db();
     <textarea name="text" cols="55" rows="10" id="text">
         <?php echo $pep_seq; ?>
     </textarea>
+
+    <br><br>
+    <!--faire des boutons mieux placés et plus jolis, liste déroulante ? -->
+    <strong>Need more information ? Links to other databank : </strong><br>
+    <button id="ensembl" onclick = "location.href = '<?php echo $url_ensembl;?>'"><br> Ensembl </button> <br>
+    <button id="uniprot" onclick = "location.href = '<?php echo $url_uniprot;?>'"><br> Uniprot </button> <br>
+    <br>
+
+    <!-- Blastn and Blastp alignments -->
+
+        <strong>Blastp (proteins) :</strong><br>
+        <form action="blastprot.php" method="get">
+            <input type="hidden" name="prot_seq" value=<?php echo preg_replace('/\s+/','',$pep_seq); ?>>
+            <input type="submit" value="BLASTp">
+        </form> <br>
 
     <!--TODO : fonctionnalités télécharger les résultats + css bouton qui n'est pas un form-->
     <div class="button">
