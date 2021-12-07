@@ -115,6 +115,12 @@ connect_db();
 
     <!-- Blastn and Blastp alignments -->
 
+        <strong>Blastn (genes) :</strong><br>
+        <form action="blast_cds.php" method="get">
+            <input type="hidden" name="gene_seq" value=<?php echo preg_replace('/\s+/','',$cds_seq);?>> <!--delete the whitespaces-->
+            <input type="submit" value="BLASTn">
+        </form> <br>
+
         <strong>Blastp (proteins) :</strong><br>
         <form action="blastprot.php" method="get">
             <input type="hidden" name="prot_seq" value=<?php echo preg_replace('/\s+/','',$pep_seq); ?>>
