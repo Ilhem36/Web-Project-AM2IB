@@ -3,82 +3,94 @@
 connect_db();
 ?>
 <html>
-  <head>
-  <meta charset="utf-8" />
-        <title> Results pages</title>
-	 <link rel="stylesheet" type="text/css" href="reader2.css">
-  </head>
 
- <body>
- <!-- Menu de navigation -->
- <nav>
-     <div class="nav-content">
-         <div class="logo">
-             <a href="#">GenAnnot.</a>
-         </div>
-         <ul class="nav-links">
-             <li><a href="Home_page.php">Home</a></li>
-             <li><a href="#">Admin</a></li>
-             <li><a href="#">Validator</a></li>
-             <li><a href="#">Annotator</a></li>
-             <li><a href="#">Reader</a>
-                 <ul class="sous-menu">
-                     <li class = "sous-menu1"><a href="#">Form</a></li>
-                     <ul class="sous-sous-menu">
-                         <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                         <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                         <!--TODO: sous menu apparait quand tu passes ta souris-->
-                     </ul>
-                 </ul>
-             </li>
-             <li><a href="#">Logout</a>
-                 <!--signIn.php-->
-         </ul>
-     </div>
- </nav>
+<head>
+	<meta charset="utf-8" />
+	<title> Results pages</title>
+	<link rel="stylesheet" type="text/css" href="reader2.css">
+</head>
 
- <div class ="container">
-     <div class="title"> Genome Results </div><br>
-        <table>
-        <form method="post" action= "Results_genome2.php">
+<body>
+	<!-- Menu de navigation -->
+	<nav>
+		<div class="nav-content">
+			<div class="logo">
+				<a href="#">GenAnnot.</a>
+			</div>
+			<ul class="nav-links">
+				<li><a href="Home_page.php">Home</a></li>
+				<li><a href="#">Admin</a></li>
+				<li><a href="#">Validator</a></li>
+				<li><a href="#">Annotator</a></li>
+				<li><a href="#">Reader</a>
+					<ul class="sous-menu">
+						<li class="sous-menu1"><a href="#">Form</a></li>
+						<ul class="sous-sous-menu">
+							<li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
+							<li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
+							<!--TODO: sous menu apparait quand tu passes ta souris-->
+						</ul>
+					</ul>
+				</li>
+				<li><a href="#">Logout</a>
+					<!--signIn.php-->
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="title"> Genome Results </div><br>
+		<table>
+			<form method="get" action="Results_genome2.php">
 				<div class="genelim">
 					<span class="details">Start</span>
-					<input type="text" name="Start" placeholder="Start" required>
+					<input type="text" name="start" value="0" placeholder="Start" required>
 				</div>
 				<div class="genelim">
 					<span class="details">End</span>
-					<input type="text" name="End" placeholder="End" required>
+					<input type="text" name="end" value="5000" placeholder="End" required>
 				</div>
 				<div class="button">
 					<input type="submit" name="submit" value="submit">
 				</div>
-    	<?php
-	    $str=$_SERVER['REQUEST_URI'];
-	    $keywords = preg_split("/=/", $str);
-	    $accessionnb= $keywords[1];
 
-        if (isset($_POST['submit'])) {
-            $a = $_POST['Start'];
-            $b = $_POST['End'];
-			header('Results_genome2.php');
-        }
-	    
+				<?php
+				$a = 0;
+				$b = 5000;
+				$str = $_SERVER['REQUEST_URI'];
+				$keywords = preg_split("/=/", $str);
+				$accessionnb = $keywords[1];
 
-        $result = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM584v2';");
-	    if (!$result) {
- 		    echo "Une erreur s'est produite.\n";
-  	    exit;
-	    }
+				// $a = htmlspecialchars($_GET["start"]);
+				// $b = htmlspecialchars($_GET["end"]);
 
-        while ($row = pg_fetch_assoc($result)){
-	        echo "<tr><th> Accession Number : </th><td> ".$row['accessionnb']."</td></tr>
-	              <tr><th> Species : </th><td> ".$row['species']."</td></tr>
-	              <tr><th> Strain : </th><td> ".$row['strain']."</td></tr>
-	              <tr><th> Sequence length : </th><td> ".$row['seq_length']."</td></tr>";
-                  $genome = $row['seq_nt'];
-	    }
-        #stockage variables sequence
-				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='ASM584v2' AND cds_end >= " . $a . " AND cds_start <= " . ($b) . ";";
+				if(isset($_GET["start"])){
+					$a = htmlspecialchars($_GET["start"]);
+				}
+				if(isset($_GET["end"])){
+					$b = htmlspecialchars($_GET["end"]);
+				}
+				// if (isset($_POST['submit'])) {
+				// 	$a = $_POST['Start'];
+				// 	$b = $_POST['End'];
+				// }
+
+
+				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='".$accessionnb."';");
+				if (!$result) {
+					echo "Une erreur s'est produite.\n";
+					exit;
+				}
+
+				while ($row = pg_fetch_assoc($result)) {
+					echo "<tr><th> Accession Number : </th><td> " . $row['accessionnb'] . "</td></tr>
+	              <tr><th> Species : </th><td> " . $row['species'] . "</td></tr>
+	              <tr><th> Strain : </th><td> " . $row['strain'] . "</td></tr>
+	              <tr><th> Sequence length : </th><td> " . $row['seq_length'] . "</td></tr>";
+					$genome = $row['seq_nt'];
+				}
+				#stockage variables sequence
+				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='".$accessionnb."' AND cds_end >= '".$a."' AND cds_start <= '". $b ."';";
 				$res2 = pg_query($db_conn, $query);
 				if (!$res2) {
 					echo "Une erreur s'est produite.\n";
@@ -91,28 +103,26 @@ connect_db();
 				$finsequence = array_column($res2table, 'cds_end');
 				$longsequence = array_column($res2table, 'cds_size');
 				$idsequence = array_column($res2table, 'idsequence');
-        ?>
-        </table>
+				?>
+		</table>
 
-        <br><br>
+		<br><br>
 
-        <strong>Genome Sequence : </strong>
-        <div class="card-container">
+		<strong>Genome Sequence : </strong>
+		<div class="card-container">
 			<div class="card">
 				<div class="genome">
 					<?php
-					$partial_genome = substr($genome, $a, $b-$a);
+					$partial_genome = substr($genome, $a, $b - $a);
 					echo $partial_genome;
 					echo $accessionnb;
 					?>
 
 					<?php
-					$result = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM584v2';");
-					$row = pg_fetch_assoc($result);
 					$char_width = 10;
 					$space = 34;
 					for ($k = $a; $k <= $b; $k = $k + 10) {
-						$style = 'style="left:' . $k-$a . 'ch "';
+						$style = 'style="left:' . $k - $a . 'ch "';
 						echo '<div class="labely"  ' . $style . '><div class="labeltext">';
 						echo $k;
 						echo '</div></div>';
@@ -127,10 +137,10 @@ connect_db();
 							$j++;
 						endwhile;
 						$Niv[$j] = $finsequence[$i];
-						echo "<a href='Results_cds.php?id=".$row['idsequence']."'>".$row['idsequence'];
-						echo '<input type="button" value="'.$idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-						// echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
-						echo '</input>';
+
+						// href='Results_cds.php?id=".$row['idsequence']."'
+						echo '<a href="Results_cds.php?id='.$idsequence[$i].'" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+						echo $idsequence[$i];// echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
 						echo '</a>';
 					};
 					?>
@@ -141,17 +151,16 @@ connect_db();
 			</div>
 		</div>
 
-     <!--TODO : fonctionnalités télécharger les résultats + css bouton qui n'est pas un form-->
-     <div class="button">
-         <input type="submit" name="ddl_results" value="Download results"><br>
-     </div>
+		<!--TODO : fonctionnalités télécharger les résultats + css bouton qui n'est pas un form-->
+		<div class="button">
+			<input type="submit" name="ddl_results" value="Download results"><br>
+		</div>
 
-</div>
- </body>
+	</div>
+</body>
+
 </html>
 
 <?php
 disconnect_db();
 ?>
-
-
