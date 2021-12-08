@@ -43,7 +43,7 @@ connect_db();
         <form method="post" action= "Results_genome2.php">
 				<div class="genelim">
 					<span class="details">Start</span>
-					<input type="text"  name="Start" placeholder="Start" required>
+					<input type="text" name="Start" placeholder="Start" required>
 				</div>
 				<div class="genelim">
 					<span class="details">End</span>
@@ -51,13 +51,11 @@ connect_db();
 				</div>
 				<div class="button">
 					<input type="submit" name="submit" value="submit">
-                </div>
-
-            <?php
+				</div>
+    	<?php
 	    $str=$_SERVER['REQUEST_URI'];
 	    $keywords = preg_split("/=/", $str);
 	    $accessionnb= $keywords[1];
-
 
         if (isset($_POST['submit'])) {
             $a = $_POST['Start'];
@@ -109,6 +107,8 @@ connect_db();
 					?>
 
 					<?php
+					$result = pg_query($db_conn,"SELECT * FROM w_gene.genome WHERE accessionnb='ASM584v2';");
+					$row = pg_fetch_assoc($result);
 					$char_width = 10;
 					$space = 34;
 					for ($k = $a; $k <= $b; $k = $k + 10) {
@@ -127,9 +127,11 @@ connect_db();
 							$j++;
 						endwhile;
 						$Niv[$j] = $finsequence[$i];
-						echo '<input type="button" value="' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+						echo "<a href='Results_cds.php?id=".$row['idsequence']."'>".$row['idsequence'];
+						echo '<input type="button" value="'.$idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
 						// echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
 						echo '</input>';
+						echo '</a>';
 					};
 					?>
 
