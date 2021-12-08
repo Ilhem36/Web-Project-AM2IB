@@ -4,9 +4,6 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>
-        Genote
-    </title>
     <!--link for css file -->
     <link rel="stylesheet" type="text/css" href="annot_seq.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -17,8 +14,8 @@
 <nav>
     <div class="nav-content">
         <!--navigation bar-->
-        <div class=logo">
-            <a href="#">GenAnnot.</a>
+        <div class="logo">
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>

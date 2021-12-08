@@ -43,7 +43,7 @@ connect_db();
         <form method="post" action= "Results_genome2.php">
 				<div class="genelim">
 					<span class="details">Start</span>
-					<input type="text" name="Start" placeholder="Start" required>
+					<input type="text"  name="Start" placeholder="Start" required>
 				</div>
 				<div class="genelim">
 					<span class="details">End</span>
@@ -51,12 +51,13 @@ connect_db();
 				</div>
 				<div class="button">
 					<input type="submit" name="submit" value="submit">
-				</div>
-    	<?php
+                </div>
+
+            <?php
 	    $str=$_SERVER['REQUEST_URI'];
 	    $keywords = preg_split("/=/", $str);
 	    $accessionnb= $keywords[1];
-		echo $a;
+
 
         if (isset($_POST['submit'])) {
             $a = $_POST['Start'];
@@ -80,7 +81,6 @@ connect_db();
 	    }
         #stockage variables sequence
 				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='ASM584v2' AND cds_end >= " . $a . " AND cds_start <= " . ($b) . ";";
-				print_r($query);
 				$res2 = pg_query($db_conn, $query);
 				if (!$res2) {
 					echo "Une erreur s'est produite.\n";

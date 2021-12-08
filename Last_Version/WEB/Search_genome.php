@@ -87,7 +87,7 @@ connect_db();
 
                     while ($row = pg_fetch_assoc($result) ){
                         echo "<tr>
-                                   <td><a href='Results_genome.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
+                                   <td><a href='Results_genome2.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
                                    <td>".$row['species']."</td>
 	    	                       <td>".$row['strain']."</td>
                                    <td>".$row['seq_length']."</td>

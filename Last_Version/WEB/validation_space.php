@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
 <head>
     <title>Annotator space </title>
     <link rel="stylesheet" href="annot_seq.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
 </head>
 <body>
     <nav>
         <div class="nav-content">
-            <div class=logo">
+            <div class="logo">
                 <a href="#">GenAnnot.</a>
             </div>
             <ul class="nav-links">
                 <li><a href="Home_page.php">Home</a></li>
-                <li><a href="#">Form</a></li>
+                <li><a href="annot_in_progress.php">Annotations</a></li>
                 <li><a href="#">Admin</a></li>
-                <li><a href="#">Validator</a></li>
-                <li><a href="#">Annotator</a></li>
-                <li><a href="#">Reader</a></li>
+                <li><a href="Validator_Menu.php">Validator</a></li>
+                <li><a href="Annot_Menu.php">Annotator</a></li>
+                <li><a href="reader_Menu.php">Reader</a></li>
                 <li><a href="signIn.php">Logout</a>
+
             </ul>
         </div>
 
     </nav>
-    <div class ="container">
-        <div class="title"> Validate annotation </div><br>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
         <table class="table">
             <thead>
             <tr>
@@ -38,7 +38,7 @@
                 <th>Validation</th>
                 <th>Comment</th>
 
-                <!--                commentaire + statut de validation-->
+                <!--    commentaire + statut de validation-->
             </tr>
             </thead>
             <tbody>

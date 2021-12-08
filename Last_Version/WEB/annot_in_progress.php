@@ -10,11 +10,17 @@
 <nav>
     <div class="nav-content">
         <div class=logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
+            <?php
+            if( ($_SESSION["statut"]=='annotator') or ($_SESSION["statut"]=='validator') or ($_SESSION["statut"]=='reader') or ($_SESSION["statut"]=='admin')){
+            header("Location:annot_in_progress.php");
+            die;
+            }  ?>
+
             <li><a href="Home_page.php">Home</a></li>
-            <li><a href="#">Form</a></li>
+            <li><a href="#">Annotation</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
             <li><a href="#">Annotator</a></li>

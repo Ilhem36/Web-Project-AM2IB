@@ -23,7 +23,7 @@
   </nav>
   <section class="home"></section>
   <div class="text">
-    <p><h2>Welcome to GenAnnot ! </h2>
+    <p><h2> Welcome to GenAnnot ! </h2>
     <p>This web application was  created by four students in Computational Biology. GenAnnot is full of  information about bacterial genes. As a user you have the right to choose your role as a reader, validator or annotator.If you sign up as a reader, you can only search and read information about bacterial genome&gene. However, if you sign up as an annotator or validator, you will be able to  perform annotation and functional analysis on bacterial genome. Otherwise, if you choose a validator role you have the permission to validate or reject annotations. You are totally  free to choose the role you want.   </p>
     <br><p></p>
   </div>
