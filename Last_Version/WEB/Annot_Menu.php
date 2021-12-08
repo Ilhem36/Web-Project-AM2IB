@@ -15,13 +15,12 @@
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
-            <li><a href="#">Admin</a></li>
-            <li><a href="#">Validator</a></li>
-            <li><a href="#">Annotator</a></li>
+            <li><a href="adminpage2.php">Admin</a></li>
+            <li><a href="Validator_Menu.php">Validator</a></li>
+            <li><a href="Annot_Menu.php">Annotator</a></li>
             <li><a href="reader_Menu.php">Reader</a>
             </li>
-            <li><a href="#">Logout</a>
-                <!--signIn.php-->
+            <li><a href="signIn.php">Logout</a>
         </ul>
     </div>
 </nav>

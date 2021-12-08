@@ -11,19 +11,30 @@
 <nav>
     <div class="nav-content">
     <!--navigation bar-->
-        <div class=logo">
+        <div class="logo">
             <a href="#">GenAnnot.</a>
         </div>
+
             <ul class="nav-links">
                 <li><a href="Home_page.php">Home</a></li>
-                <li><a href="#">Form</a></li>
+                <li><a href="#">Annotations</a></li>
                 <li><a href="#">Admin</a></li>
                 <li><a href="#">Validator</a></li>
                 <li><a href="#">Annotator</a></li>
                 <li><a href="#">Reader</a></li>
-                <li><a href="signIn.php">Logout</a>
+                <li><a href="signIn.php">Logout</a><br><br>
+
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                        connect_db();
+                        session_start();
+                        echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
+
             </ul>
     </div>
+
 
 </nav>
 

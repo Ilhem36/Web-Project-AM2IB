@@ -15,30 +15,6 @@ body{
     padding: 10px;
     background: url(DNA.jpg) ; /* mettre la photo en background */
 }
-.container{
-    max-width: 700px;
-    width:100%;
-    background: #fff; /* la couleur du fond de border*/
-    padding: 25px 30px; /* la taille du carrée */
-    border-radius: 5px; /* arrondir les bords  du carré */
-}
-.container .title{ /* class title */
-    font-size: 25px;
-    font-weight: 500;
-    /* Agrandir la taille du  titre */
-    position: relative;
-}
-/* Mettre le petit trait en dessous de Sign up(Title)*/
-.container .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;/*Mettre en dessous du titre*/
-    height: 3px;
-    width: 30px;
-    background: linear-gradient(135deg, #71b7e6,#71b7e6);/*Colorer le trait en bleu*/
-}
-
 /* CSS pour reader_menu */
 nav{
     position: fixed;
@@ -95,6 +71,46 @@ nav.sticky .nav-links li a:hover{
     color: #0E2431;
 }
 
+.container{
+    max-width: 700px;
+    width:100%;
+    background: #fff; /* la couleur du fond de border*/
+    padding: 25px 30px; /* la taille du carrée */
+    border-radius: 5px; /* arrondir les bords  du carré */
+}
+.container .title{ /* class title */
+    font-size: 25px;
+    font-weight: 500;
+    /* Agrandir la taille du  titre */
+    position: relative;
+}
+/* Mettre le petit trait en dessous de Sign up(Title)*/
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;/*Mettre en dessous du titre*/
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #71b7e6,#71b7e6);/*Colorer le trait en bleu*/
+}
+
+.container .btn{
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 60;
+    width: 150px; /* largeur des bouton */
+    background: dodgerblue;
+    color: white;
+}
+.container .btn--assign{
+    background: dodgerblue;
+    color: white;
+}
+.container .btn--assign:hover{
+    background: rgb(8,123,238);
+}
+
 h2{
     font-size: 30px;
     margin-bottom: 6px;
@@ -106,3 +122,4 @@ h2{
     padding: 40px 80px;
     box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
 }
+
