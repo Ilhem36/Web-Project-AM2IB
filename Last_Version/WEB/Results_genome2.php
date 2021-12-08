@@ -6,7 +6,7 @@ connect_db();
   <head>
   <meta charset="utf-8" />
         <title> Results pages</title>
-	 <link rel="stylesheet" type="text/css" href="reader.css">
+	 <link rel="stylesheet" type="text/css" href="reader2.css">
   </head>
 
  <body>
@@ -40,7 +40,7 @@ connect_db();
  <div class ="container">
      <div class="title"> Genome Results </div><br>
         <table>
-        <form method="post" action= "Results_genome.php">
+        <form method="post" action= "Results_genome2.php">
 				<div class="genelim">
 					<span class="details">Start</span>
 					<input type="text" name="Start" placeholder="Start" required>
@@ -61,7 +61,7 @@ connect_db();
         if (isset($_POST['submit'])) {
             $a = $_POST['Start'];
             $b = $_POST['End'];
-			header('Results_genome.php');
+			header('Results_genome2.php');
         }
 	    
 
