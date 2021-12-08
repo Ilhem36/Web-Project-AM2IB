@@ -41,47 +41,52 @@ connect_db();
 	<div class="container">
 		<div class="title"> Genome Results </div><br>
 		<table>
+			<?php
+			
+			$a = 0;
+			$b = 5000;
+			// $str = $_SERVER['REQUEST_URI'];
+			// $keywords = preg_split("/=/", $str);
+			$accessionnb = htmlspecialchars($_GET["id"]);
+
+			// $a = htmlspecialchars($_GET["start"]);
+			// $b = htmlspecialchars($_GET["end"]);
+
+			if (isset($_GET["start"])) {
+				$a = htmlspecialchars($_GET["start"]);
+			}
+			if (isset($_GET["end"])) {
+				$b = htmlspecialchars($_GET["end"]);
+			}
+			
+			?>
 			<form method="get" action="Results_genome2.php">
 				<div class="genelim">
 					<span class="details">Start</span>
-					<input type="text" name="start" value="0" placeholder="Start" required>
+					<input type="text" name="start" value="<?php echo $a; ?>" placeholder="Start" required>
 				</div>
 				<div class="genelim">
 					<span class="details">End</span>
-					<input type="text" name="end" value="5000" placeholder="End" required>
+					<input type="text" name="end" value="<?php echo $b; ?>" placeholder="End" required>
+					<input type="text" name="id" style="display: none" required value="<?php echo htmlspecialchars($_GET["id"]); ?>"/>
 				</div>
 				<div class="button">
 					<input type="submit" name="submit" value="submit">
 				</div>
-
 				<?php
-				$a = 0;
-				$b = 5000;
-				$str = $_SERVER['REQUEST_URI'];
-				$keywords = preg_split("/=/", $str);
-				$accessionnb = $keywords[1];
-
-				// $a = htmlspecialchars($_GET["start"]);
-				// $b = htmlspecialchars($_GET["end"]);
-
-				if(isset($_GET["start"])){
-					$a = htmlspecialchars($_GET["start"]);
-				}
-				if(isset($_GET["end"])){
-					$b = htmlspecialchars($_GET["end"]);
-				}
 				// if (isset($_POST['submit'])) {
 				// 	$a = $_POST['Start'];
 				// 	$b = $_POST['End'];
 				// }
 
 
-				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='".$accessionnb."';");
+				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='" . $accessionnb . "';");
+				// echo $accessionnb;
 				if (!$result) {
 					echo "Une erreur s'est produite.\n";
 					exit;
 				}
-
+				$genome = 'tamere';
 				while ($row = pg_fetch_assoc($result)) {
 					echo "<tr><th> Accession Number : </th><td> " . $row['accessionnb'] . "</td></tr>
 	              <tr><th> Species : </th><td> " . $row['species'] . "</td></tr>
@@ -90,7 +95,7 @@ connect_db();
 					$genome = $row['seq_nt'];
 				}
 				#stockage variables sequence
-				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='".$accessionnb."' AND cds_end >= '".$a."' AND cds_start <= '". $b ."';";
+				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='" . $accessionnb . "' AND cds_end >= '" . $a . "' AND cds_start <= '" . $b . "';";
 				$res2 = pg_query($db_conn, $query);
 				if (!$res2) {
 					echo "Une erreur s'est produite.\n";
@@ -139,8 +144,8 @@ connect_db();
 						$Niv[$j] = $finsequence[$i];
 
 						// href='Results_cds.php?id=".$row['idsequence']."'
-						echo '<a href="Results_cds.php?id='.$idsequence[$i].'" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-						echo $idsequence[$i];// echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
+						echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+						echo $idsequence[$i]; // echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
 						echo '</a>';
 					};
 					?>
