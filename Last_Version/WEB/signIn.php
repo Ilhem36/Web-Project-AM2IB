@@ -53,7 +53,7 @@ disconnect_db();
 <nav>
     <div class="nav-content">
         <div class="logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>

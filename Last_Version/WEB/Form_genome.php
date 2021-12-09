@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php require_once 'db_utils.php';
-connect_db();
+connect_db(); //connexion to the database
 ?>
-<html>
+<html lang="en" dir="ltr">
   <head>
   <meta charset="utf-8" />
         <title> Genomes Search Form </title>
@@ -10,37 +10,35 @@ connect_db();
   </head>
 
  <body>
- <!-- Menu de navigation -->
  <nav>
      <div class="nav-content">
          <div class="logo">
-             <a href="#">GenAnnot.</a>
+             <a href="Home_page.php">GenAnnot.</a>
          </div>
          <ul class="nav-links">
              <li><a href="Home_page.php">Home</a></li>
+             <li><a href="annot_in_progress.php">Annotations</a></li>
              <li><a href="#">Admin</a></li>
              <li><a href="#">Validator</a></li>
              <li><a href="#">Annotator</a></li>
-             <li><a href="#">Reader</a>
-                 <ul class="sous-menu">
-                     <li class = "sous-menu1"><a href="#">Form</a></li>
-                     <ul class="sous-sous-menu">
-                         <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                         <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                         <!--TODO: sous menu apparait quand tu passes ta souris-->
-                     </ul>
-                 </ul>
-             </li>
-             <li><a href="#">Logout</a>
-                 <!--signIn.php-->
+             <li><a href="reader_Menu.php">Reader</a>
+             <li><a href="signIn.php">Logout</a><br><br>
+                 <div class = "hello">
+                     <?php require_once 'db_utils.php';
+                     connect_db();
+                     session_start();
+                     echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                     ?>
+                 </div>
          </ul>
      </div>
  </nav>
 
-	<!-- Formulaire de recherches sur la table génome -->
+    <!-- The user can search information by filling information in the fields in this form-->
+	<!-- The form refers to Search_genome.php, where we prepare the SQL queries on the SQL table Genome from w_gene Database -->
  	<div class ="container">
         <div class="title"> Search information about Genomes </div><br>
-		<form action="Search_genome.php" method="get">
+		<form action="Search_genome.php" method="get"><!--A form method GET is used to get the values entered in the form fields-->
             <div class="form-details">
                 <div class = "input-box">
 
@@ -69,7 +67,7 @@ connect_db();
 </html>
 
 <?php
-disconnect_db();
+disconnect_db(); //deconnexion from the database
 ?>
 
 

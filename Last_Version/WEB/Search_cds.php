@@ -2,45 +2,39 @@
 <?php require_once 'db_utils.php';
 connect_db();
 ?>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <title> Search cds & peptides </title>
-    <link rel="stylesheet" type="text/css" href="search_form.css">
+    <link rel="stylesheet" type="text/css" href="search_cds.css">
 </head>
 
 <body>
-<!-- Menu de navigation -->
 <nav>
     <div class="nav-content">
         <div class="logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
             <li><a href="#">Annotator</a></li>
-            <li><a href="#">Reader</a>
-                <ul class="sous-menu">
-                    <li class = "sous-menu1"><a href="#">Form</a></li>
-                    <ul class="sous-sous-menu">
-                        <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                        <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                        <!--TODO: sous menu apparait quand tu passes ta souris-->
-                    </ul>
-                </ul>
-            </li>
-            <li><a href="#">Logout</a>
-                <!--signIn.php-->
+            <li><a href="reader_Menu.php">Reader</a>
+            <li><a href="signIn.php">Logout</a><br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 </nav>
 
-<div class ="container">
-    <div class="title"> CDS & Peptides Results List </div><br>
-        <table border = 1>
+         <!-- Gene and Protein Results List-->
         <?php
             $query_sql = "";
             $field_form = ["idsequence","accessionnb","dna_type","cds_start","cds_end","strand","cds_seq", "cds_size", "pep_seq", "pep_size", "geneid", "genebiotype", "transcriptbiotype", "genesymbol", "description"];
@@ -84,24 +78,29 @@ connect_db();
                 }
 
             else if (pg_num_rows($res) != 0) {
-                echo "<td><strong>Sequence ID</strong></td>
-                           <td><strong>Accession Number (Genome)</strong></td>
-                           <td><strong>DNA type</strong></td>
-                           <td><strong>CDS start position</strong></td>
-                           <td><strong>CDS end position</strong></td>
-                           <td><strong>Strand</strong></td>
-                           <td><strong>CDS length</strong></td>
-                           <td><strong>Peptide size</strong></td>
-                           <td><strong>Gene ID</strong></td>
-                           <td><strong>Gene biotype</strong></td>
-                           <td><strong>Transcript biotype</strong></td>
-                           <td><strong>Gene Symbol</strong></td>
-                           <td><strong>Description</strong></td>";
+                echo "<table class='table'>
+                      <thead>
+                      <tr>  
+                        <th>Sequence ID</th>
+                        <th>Accession Number (Genome)</th>
+                        <th>DNA type</th>
+                        <th>CDS start position</th>
+                        <th>CDS end position</th>
+                        <th>Strand</th>
+                        <th>CDS length</th>
+                        <th>Peptide size</th>
+                        <th>Gene ID</th>
+                        <th>Gene biotype</th>
+                        <th>Transcript biotype</th>
+                        <th>Gene Symbol</th>
+                        <th>Description</th>
+                      </tr>
+                      </thead>";
 
             while ($row = pg_fetch_assoc($res) ){
                 echo "<tr>
                       <td><a href='Results_cds.php?id=".$row['idsequence']."'>".$row['idsequence']."</a></td>  
-                      <td><a href='Results_genome.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
+                      <td><a href='Results_genome2.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
                       <td>".$row['dna_type']."</td>
                       <td>".$row['cds_start']."</td>
                       <td>".$row['cds_end']."</td>
@@ -116,10 +115,9 @@ connect_db();
                       </tr>";
             }
         }
+        echo "</table>";
     }
     disconnect_db();
-        ?>
-</table>
-</div>
+    ?>
 </body>
 </html>

@@ -268,3 +268,36 @@ form .button input:hover{
     overflow-x: scroll;
     position: relative;
   }
+
+.btn{
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 60;
+    width: 150px; /* largeur des bouton */
+    background: dodgerblue;
+    color: white;
+}
+.btn--assign{
+    background: dodgerblue;
+    color: white;
+}
+.btn--assign:hover{
+    background: rgb(8,123,238);
+}
+
+/*download button*/
+.button .btn{
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 60;
+    width: 150px; /* largeur des bouton */
+    background: dodgerblue;
+    color: white;
+}
+.button  .btn--assign{
+    background: dodgerblue;
+    color: white;
+}
+.button .btn--assign:hover{
+    background: rgb(8,123,238);
+}

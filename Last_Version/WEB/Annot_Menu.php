@@ -3,32 +3,40 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Reader page</title>
+    <title>Annotator page</title>
     <link rel="stylesheet" type="text/css" href="reader_menu.css">
 </head>
 
 <body>
-<nav>
+<nav><!--Navigation menu-->
     <div class="nav-content">
         <div class="logo">
             <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
-            <li><a href="adminpage2.php">Admin</a></li>
-            <li><a href="Validator_Menu.php">Validator</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="#">Validator</a></li>
             <li><a href="Annot_Menu.php">Annotator</a></li>
             <li><a href="reader_Menu.php">Reader</a>
-            </li>
-            <li><a href="signIn.php">Logout</a>
+            <li><a href="signIn.php">Logout</a><br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 </nav>
 
 <div class ="container">
-    <p><h2> This is the Reader page ! </h2><br>
-    <p>Click on the <strong>Genomes Form</strong> to access to the genomes search form and on the <strong>Genes/Prot</strong> to access to the Genes/Prot search form</p><br>
-    <p> You can search and read information about bacterial genomes, genes and peptides from the database. If needed, you can also download your search results pages.</p>
+    <p><h2> This is the Annotator page ! </h2><br>
+    <p>Click on <strong>Choose a sequence to annotate</strong> to annotate a sequence. After a sequence is choosen, it leads to the Annotation form. You can check your annotations history by clicking on <strong>Annotation history</strong>.</p><br>
+    <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "annot_seq.php";?>'">Choose a sequence to annotate</button>
+    <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "historique.php";?>'">Annotation <br>history</button>
 </div>
 
 </body>

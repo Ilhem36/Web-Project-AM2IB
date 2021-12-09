@@ -2,45 +2,39 @@
 <?php require_once 'db_utils.php';
 connect_db();
 ?>
-<html lang="en">
-
+<html lang="en" dir="ltr">
   <head>
   	<meta charset="utf-8" />
   	<title>Search page Genome</title>
-		<link rel="stylesheet" type="text/css" href="search_form.css">
+		<link rel="stylesheet" type="text/css" href="search.css">
   </head>
 
   <body>
-  <!-- Menu de navigation -->
   <nav>
       <div class="nav-content">
           <div class="logo">
-              <a href="#">GenAnnot.</a>
+              <a href="Home_page.php">GenAnnot.</a>
           </div>
           <ul class="nav-links">
               <li><a href="Home_page.php">Home</a></li>
+              <li><a href="annot_in_progress.php">Annotations</a></li>
               <li><a href="#">Admin</a></li>
               <li><a href="#">Validator</a></li>
               <li><a href="#">Annotator</a></li>
-              <li><a href="#">Reader</a>
-                  <ul class="sous-menu">
-                      <li class = "sous-menu1"><a href="#">Form</a></li>
-                      <ul class="sous-sous-menu">
-                          <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                          <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                          <!--TODO: sous menu apparait quand tu passes ta souris-->
-                      </ul>
-                  </ul>
-              </li>
-              <li><a href="#">Logout</a>
-                  <!--signIn.php-->
+              <li><a href="reader_Menu.php">Reader</a>
+              <li><a href="signIn.php">Logout</a><br><br>
+                  <div class = "hello">
+                      <?php require_once 'db_utils.php';
+                      connect_db();
+                      session_start();
+                      echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                      ?>
+                  </div>
           </ul>
       </div>
   </nav>
 
-      <div class ="container">
-          <div class="title"> Genomes Results List </div><br>
-          <table border = 1>
+          <!-- Genomes Results List-->
           <?php
 	        $query_sql = "";
 	        $field_form = ["accessionnb","species","strain","seq_length", "seq_nt"];
@@ -78,26 +72,28 @@ connect_db();
                     echo "There is no result for your request. <br>";
                 }
 
-                //TODO : faire un joli grand tableau avec le CSS
                 else if(pg_num_rows($result) != 0) { //Results
-                    echo " <td><strong>Accession Number</strong></td>
-                           <td><strong>Species</strong></td>
-                           <td><strong>Strain</strong></td>
-                           <td><strong>Sequence length</strong></td>";
-
+                    echo "<table class='table'>
+                          <thead>
+                          <tr>
+                            <th>Accession Number</th>
+                            <th>Species</th>
+                            <th>Strain</th>
+                            <th>Sequence length</th>
+                          </tr>
+                          </thead>";
                     while ($row = pg_fetch_assoc($result) ){
                         echo "<tr>
                                    <td><a href='Results_genome2.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
                                    <td>".$row['species']."</td>
 	    	                       <td>".$row['strain']."</td>
                                    <td>".$row['seq_length']."</td>
-                                   </tr>";
+                              </tr>";
                         }
                     }
+                    echo "</table>";
             }
             disconnect_db();
             ?>
-          </table>
-      </div>
 </body>
 </html>

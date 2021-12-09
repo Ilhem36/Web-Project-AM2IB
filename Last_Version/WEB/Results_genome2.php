@@ -2,47 +2,43 @@
 <?php require_once 'db_utils.php';
 connect_db();
 ?>
-<html>
 
+<html lang="en" dir="ltr">
 <head>
 	<meta charset="utf-8" />
-	<title> Results pages</title>
+	<title> Results Genome </title>
 	<link rel="stylesheet" type="text/css" href="reader2.css">
 </head>
 
 <body>
-	<!-- Menu de navigation -->
-	<nav>
-		<div class="nav-content">
-			<div class="logo">
-				<a href="#">GenAnnot.</a>
-			</div>
-			<ul class="nav-links">
-				<li><a href="Home_page.php">Home</a></li>
-				<li><a href="#">Admin</a></li>
-				<li><a href="#">Validator</a></li>
-				<li><a href="#">Annotator</a></li>
-				<li><a href="#">Reader</a>
-					<ul class="sous-menu">
-						<li class="sous-menu1"><a href="#">Form</a></li>
-						<ul class="sous-sous-menu">
-							<li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-							<li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-							<!--TODO: sous menu apparait quand tu passes ta souris-->
-						</ul>
-					</ul>
-				</li>
-				<li><a href="#">Logout</a>
-					<!--signIn.php-->
-			</ul>
-		</div>
-	</nav>
+<nav>
+    <div class="nav-content">
+        <div class="logo">
+            <a href="Home_page.php">GenAnnot.</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Home_page.php">Home</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="#">Validator</a></li>
+            <li><a href="#">Annotator</a></li>
+            <li><a href="reader_Menu.php">Reader</a>
+            <li><a href="signIn.php">Logout</a><br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
+        </ul>
+    </div>
+</nav>
 
 	<div class="container">
 		<div class="title"> Genome Results </div><br>
 		<table>
 			<?php
-			
 			$a = 0;
 			$b = 5000;
 			// $str = $_SERVER['REQUEST_URI'];
@@ -60,19 +56,7 @@ connect_db();
 			}
 			
 			?>
-			<form method="get" action="Results_genome2.php">
-				<div class="genelim">
-					<span class="details">Start</span>
-					<input type="text" name="start" value="<?php echo $a; ?>" placeholder="Start" required>
-				</div>
-				<div class="genelim">
-					<span class="details">End</span>
-					<input type="text" name="end" value="<?php echo $b; ?>" placeholder="End" required>
-					<input type="text" name="id" style="display: none" required value="<?php echo htmlspecialchars($_GET["id"]); ?>"/>
-				</div>
-				<div class="button">
-					<input type="submit" name="submit" value="submit">
-				</div>
+
 				<?php
 				// if (isset($_POST['submit'])) {
 				// 	$a = $_POST['Start'];
@@ -83,10 +67,9 @@ connect_db();
 				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='" . $accessionnb . "';");
 				// echo $accessionnb;
 				if (!$result) {
-					echo "Une erreur s'est produite.\n";
+					echo "An error has occurred.\n";
 					exit;
 				}
-				$genome = 'tamere';
 				while ($row = pg_fetch_assoc($result)) {
 					echo "<tr><th> Accession Number : </th><td> " . $row['accessionnb'] . "</td></tr>
 	              <tr><th> Species : </th><td> " . $row['species'] . "</td></tr>
@@ -98,7 +81,7 @@ connect_db();
 				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='" . $accessionnb . "' AND cds_end >= '" . $a . "' AND cds_start <= '" . $b . "';";
 				$res2 = pg_query($db_conn, $query);
 				if (!$res2) {
-					echo "Une erreur s'est produite.\n";
+					echo "An error has occurred.\n";
 					exit;
 				}
 				$res2table = pg_fetch_all($res2);
@@ -111,9 +94,27 @@ connect_db();
 				?>
 		</table>
 
-		<br><br>
+		<br>
+        <strong>Genome Sequence visualisation : </strong><br>
+        Please put the start position and the end position of the sequence you want to visualise
+        <br><br>
 
-		<strong>Genome Sequence : </strong>
+        <form method="get" action="Results_genome2.php">
+            <div class="genelim">
+                <span class="details"><strong>Start</strong></span>
+                <input type="text" name="start" value="<?php echo $a; ?>" placeholder="Start" required>
+            </div>
+            <div class="genelim">
+                <span class="details"><strong>End </strong></span>
+                <input type="text" name="end" value="<?php echo $b; ?>" placeholder="End" required>
+                <input type="text" name="id" style="display: none" required value="<?php echo htmlspecialchars($_GET["id"]); ?>"/>
+            </div>
+            <div class="button-visualisation">
+                <input type="submit" name="submit" value="Submit">
+            </div>
+        </form>
+        <br>
+
 		<div class="card-container">
 			<div class="card">
 				<div class="genome">
@@ -152,15 +153,13 @@ connect_db();
 
 
 				</div>
-				<!--Afficher sequence gene en couleu, en cliquant sur un gène, redirige vers la page gène associée -->
+				<!--Afficher sequence gene en couleur, en cliquant sur un gène, redirige vers la page gène associée -->
 			</div>
 		</div>
 
-		<!--TODO : fonctionnalités télécharger les résultats + css bouton qui n'est pas un form-->
-		<div class="button">
-			<input type="submit" name="ddl_results" value="Download results"><br>
-		</div>
-
+        <br>
+		<!--TODO : fonctionnalités télécharger les résultats -->
+        <button class='btn btn--assign' type="submit" name="ddl_results"> Download results</button><br>
 	</div>
 </body>
 

@@ -19,18 +19,25 @@
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
-            <li><a href="#">Form</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
-            <li><a href="#">Annotator</a></li>
-            <li><a href="#">Reader</a></li>
+            <li><a href="Annot_Menu.php">Annotator</a></li>
+            <li><a href="reader_Menu.php">Reader</a></li>
             <li><a href="signIn.php">Logout</a>
+                <br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 
 </nav>
-<div class="container"  >
-
+<div class="container">
     <div class="title"> Choose your sequence(s) </div><br>
     <div  align="center">
         <?php require_once 'anno_fun.php';?>

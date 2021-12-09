@@ -8,31 +8,28 @@ connect_db();
         <title> Results cds and peptides </title>
     <link rel="stylesheet" type="text/css" href="reader.css">
 </head>
-<body>
 
-<!-- Navigation menu -->
+<body>
 <nav>
     <div class="nav-content">
         <div class="logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
             <li><a href="#">Annotator</a></li>
-            <li><a href="#">Reader</a>
-                <ul class="sous-menu">
-                    <li class = "sous-menu1"><a href="#">Form</a></li>
-                    <ul class="sous-sous-menu">
-                        <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                        <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                        <!--TODO: sous menu apparait quand tu passes ta souris-->
-                    </ul>
-                </ul>
-            </li>
-            <li><a href="#">Logout</a>
-                <!--signIn.php-->
+            <li><a href="reader_Menu.php">Reader</a>
+            <li><a href="signIn.php">Logout</a><br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 </nav>
@@ -49,13 +46,13 @@ connect_db();
         <?php
         $res = pg_query($db_conn,"SELECT * FROM w_gene.sequence, w_gene.annotation WHERE sequence.idsequence = annotation.idsequence AND sequence.idsequence='".$id."';");
         if (!$res) {
-                echo "Une erreur s'est produite.\n";
+                echo "An error has occurred.\n";
             exit;
         }
 
         while ($row = pg_fetch_assoc($res) ){
             echo "<tr><th> Sequence ID : </th><td>".$row['idsequence']."</td></tr>
-		          <tr><th> Accession Number (Genome) : </th><td><a href='Results_genome.php?id=".$row['accessionnb']."'> ".$row['accessionnb']."</a></td></tr>
+		          <tr><th> Accession Number (Genome) : </th><td><a href='Results_genome2.php?id=".$row['accessionnb']."'> ".$row['accessionnb']."</a></td></tr>
 	              <tr><th> DNA type : </th><td>".$row['dna_type']."</td></tr>
 		          <tr><th> CDS start position : </th><td>".$row['cds_start']."</td></tr>
 		          <tr><th> CDS end position : </th><td>".$row['cds_end']."</td></tr>
@@ -78,7 +75,6 @@ connect_db();
     <?php
 
     //Link to other databank =
-
     //NCBI (protein database) with the id sequence of the cds/pep
     $url_ncbi = "https://www.ncbi.nlm.nih.gov/protein/$id_databank";
 
@@ -109,30 +105,28 @@ connect_db();
     </textarea>
 
     <br><br>
-    <!--faire des boutons mieux placés et plus jolis, liste déroulante ? -->
+
     <strong>Need more information ? Links to other databank : </strong><br>
-    <button id="ncbi" onclick = "location.href = '<?php echo $url_ncbi;?>'"><br> NCBI </button> <br>
-    <button id="ensembl" onclick = "location.href = '<?php echo $url_ensembl;?>'"><br> Ensembl </button> <br>
-    <button id="uniprot" onclick = "location.href = '<?php echo $url_uniprot;?>'"><br> Uniprot </button> <br>
+    <button class='btn btn--assign' onclick = "location.href = '<?php echo $url_ncbi;?>'"><br> NCBI </button> <br>
+    <button class='btn btn--assign' onclick = "location.href = '<?php echo $url_ensembl;?>'"><br> Ensembl </button> <br>
+    <button class='btn btn--assign' onclick = "location.href = '<?php echo $url_uniprot;?>'"><br> Uniprot </button> <br>
     <br>
 
     <!-- Blastn and Blastp alignments -->
         <strong>Blastn (genes) :</strong><br>
         <form action="blast_cds.php" method="get">
             <input type="hidden" name="gene_seq" value=<?php echo preg_replace('/\s+/','',$cds_seq);?>> <!--delete the whitespaces-->
-            <input type="submit" value="BLASTn">
+            <input type="submit" class='btn btn--assign' value="BLASTn">
         </form> <br>
 
         <strong>Blastp (proteins) :</strong><br>
         <form action="blastprot.php" method="get">
             <input type="hidden" name="prot_seq" value=<?php echo preg_replace('/\s+/','',$pep_seq); ?>>
-            <input type="submit" value="BLASTp">
+            <input type="submit" class='btn btn--assign' value="BLASTp">
         </form> <br>
 
     <!--TODO : fonctionnalités télécharger les résultats + css bouton qui n'est pas un form-->
-    <div class="button">
-        <input type="submit" name="ddl_results" value="Download results"><br>
-    </div>
+    <button class='btn btn--assign' type="submit" name="ddl_results"> Download results</button><br>
 </div>
 
 </body>

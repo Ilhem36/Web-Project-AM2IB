@@ -11,24 +11,24 @@
 <nav>
     <div class="nav-content">
         <div class="logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
             <li><a href="adminpage2.php">Admin</a></li>
-            <li><a href="assign_annot.php">Validator</a></li>
-            <li><a href="annot_seq.php">Annotator</a></li>
-            <li><a href="reader_Menu.php">Reader</a>
-                <ul class="sous-menu">
-                    <li class = "sous-menu1"><a href="#">Form</a></li>
-                    <ul class="sous-sous-menu">
-                        <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                        <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                        <!--TODO: sous menu apparait quand tu passes ta souris-->
-                    </ul>
-                </ul>
-            </li>
+            <li><a href="Validator_Menu.php">Validator</a></li>
+            <li><a href="Annot_Menu.php">Annotator</a></li>
+            <li><a href="reader_Menu.php">Reader</a></li>
             <li><a href="signIn.php">Logout</a>
+                <br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 </nav>

@@ -62,6 +62,7 @@ nav.sticky .logo a{
     font-weight: 500;
     padding: 10px 4px;
 }
+
 .nav-links li a:hover{
     color: #4070f4;
 }
@@ -131,11 +132,13 @@ nav.sticky .nav-links li a:hover{
         display: none;
 
     }
-    .table, .table td {
+    .table, .table th td {
         display: block;
         width: 100%;
     }
+
 }
+
 
 /* pour le bouton  assign */
 .btn{

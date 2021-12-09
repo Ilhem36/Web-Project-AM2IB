@@ -2,7 +2,7 @@
 <?php require_once 'db_utils.php';
 connect_db();
 ?>
-<html>
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
         <title> CDS and Peptides Search Form </title>
@@ -14,39 +14,36 @@ connect_db();
 <nav>
     <div class="nav-content">
         <div class="logo">
-            <a href="#">GenAnnot.</a>
+            <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
             <li><a href="Home_page.php">Home</a></li>
+            <li><a href="annot_in_progress.php">Annotations</a></li>
             <li><a href="#">Admin</a></li>
             <li><a href="#">Validator</a></li>
             <li><a href="#">Annotator</a></li>
-            <li><a href="#">Reader</a>
-                <ul class="sous-menu">
-                    <li class = "sous-menu1"><a href="#">Form</a></li>
-                    <ul class="sous-sous-menu">
-                        <li class="sous-menu2"><a href="Form_genome.php">Genomes Form</a></li>
-                        <li class="sous-menu2"><a href="Form_cds.php">Genes/Prot Form</a></li>
-                        <!--TODO: sous menu apparait quand tu passes ta souris-->
-                    </ul>
-                </ul>
-            </li>
-            <li><a href="#">Logout</a>
-                <!--signIn.php-->
+            <li><a href="reader_Menu.php">Reader</a>
+            <li><a href="signIn.php">Logout</a><br><br>
+                <div class = "hello">
+                    <?php require_once 'db_utils.php';
+                    connect_db();
+                    session_start();
+                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    ?>
+                </div>
         </ul>
     </div>
 </nav>
 
-<!-- Formulaire pour CDS et peptides -->
-<!-- Tables sequence + annotation-->
-
+<!-- The user can search information by filling information in the fields in this form-->
+<!-- This form refers to Search_cds.php, where we prepare the SQL queries on the SQL tables Annotation and sequence from w_gene Database -->
 <div class ="container">
     <div class="title"> Search information about Genes & Peptides </div><br>
-    <form action="Search_cds.php" method="post">
+    <form action="Search_cds.php" method="post"><!--method post-->
         <div class="form-details">
             <div class = "input-box">
 
-        <!--Info provenant de la table sequence-->
+                <!--Table sequence-->
                 <strong>Sequence ID :</strong>
                 <input type="text" placeholder="Enter the sequence ID" name="idsequence"><br><br>
 
@@ -77,7 +74,7 @@ connect_db();
                 <strong>Peptide size :</strong>
                 <input type="text" placeholder="Enter the pep. size" name="pep_size"><br><br>
 
-                <!--Info provenant de la table annotation-->
+                <!--Annotation Table-->
                 <strong>Gene ID :</strong>
                 <input type="text" placeholder="Enter the gene ID" name="geneid"><br><br>
 
