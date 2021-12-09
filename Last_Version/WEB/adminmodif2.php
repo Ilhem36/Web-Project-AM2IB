@@ -15,7 +15,7 @@ connect_db();
     {
         for($i=1;$i<=$n;$i++)
         {
-            #si checkbox cochée
+            //if the box is checked, delete the user
             if(isset($_POST['delete_'.$i]))
             {
                $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error());
@@ -25,7 +25,7 @@ connect_db();
                     echo "Succesfully done";
                 }
             }
-            #si rôle différent de role bd
+            //if a new role is indicated for an user, modify it in the database
             if($_POST['role_'.$i]!='empty')
             {
                 $role = $_POST['role_'.$i];

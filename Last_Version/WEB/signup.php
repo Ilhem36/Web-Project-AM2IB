@@ -12,7 +12,7 @@
     </head>
 
     <body>
-    <!-- pour la barre de navigation (home) -->
+    <!-- Menu Visualization -->
     <nav>
         <div class="nav-content">
             <div class="logo">
@@ -30,35 +30,36 @@
         <?php
         require_once 'db_utils.php';
         connect_db();
-        #conditions vides, majuscules debut+correction sql, tej ligne egal
-        //Quand on clique sur submit
-        //récupère les valeurs dans les champs définis, et les insère dans la base de données sql
+        //Insert the new user informations in the database
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $family_name = $_POST['family_name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $password = $_POST['password'];
-            $confirm_password= $_POST['confirm_password'];
+            $confirm_password = $_POST['confirm_password'];
             $role = $_POST['role'];
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 echo "Invalid email format";
-            }else if ($password != $confirm_password) {
-                header('Location:signup.php?Error=1');
-            } else {
-                $sql_Query = "SELECT * FROM w_gene.users WHERE email='" .$_POST["email"]. "'";
-                $result = pg_query($db_conn, $sql_Query);
-                if (pg_num_rows($result) != 0) {
-                    echo " You are already a user! ";
+            } else if ($password != $confirm_password) {
+                //Check password confirmationb
+                    header('Location:signup.php?Error=1');
                 } else {
-                    $sqlQuery = "INSERT INTO w_gene.users(email, name, family_name, phone, role, password) VALUES ('" . $email . "','" . $name . "', '" . $family_name . "', '" . $phone . "', '" . $role . "','" . $password . "')";
-                    $result= pg_query($db_conn, $sqlQuery) or die(pg_last_error());
-                    echo "Your registration has been successfully registred.";
+                    $sql_Query = "SELECT * FROM w_gene.users WHERE email='" . $_POST["email"] . "'";
+                    $result = pg_query($db_conn, $sql_Query);
+                    if (pg_num_rows($result) != 0) {
+                        echo " You are already a user! ";
+                    } else {
+                        $sqlQuery = "INSERT INTO w_gene.users(email, name, family_name, phone, role, password) VALUES ('" . $email . "','" . $name . "', '" . $family_name . "', '" . $phone . "', '" . $role . "','" . $password . "')";
+                        $result = pg_query($db_conn, $sqlQuery) or die(pg_last_error());
+                        echo "Your registration has been successfully registred.";
+                    }
                 }
             }
-        }
+
         disconnect_db();
         ?>
+        //Show fields to fill in
         <form action="signup.php" method="post">
             <div class="user-details">
                 <div class = "input-box">

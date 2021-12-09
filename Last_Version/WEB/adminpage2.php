@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    
+<!-- Menu Visualization   -->
 <nav>
     <div class="nav-content">
         <div class="logo">
@@ -37,7 +39,8 @@
 <div class="title"> Admin page </div><br>
         <?php require_once 'db_utils.php';
         connect_db();
-
+        
+        // Show the user table and create a form to delete or change roles        
         $result = pg_query($db_conn,"SELECT * FROM w_gene.users");
         echo "<form action='adminmodif2.php' method='post'>";
             echo "<table class='table'>
