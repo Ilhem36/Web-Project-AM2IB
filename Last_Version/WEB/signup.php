@@ -12,7 +12,7 @@
     </head>
 
     <body>
-    <!-- pour la barre de navigation (home) -->
+    <!-- Menu Visualization -->
     <nav>
         <div class="nav-content">
             <div class="logo">
@@ -30,9 +30,7 @@
         <?php
         require_once 'db_utils.php';
         connect_db();
-        #conditions vides, majuscules debut+correction sql, tej ligne egal
-        //Quand on clique sur submit
-        //récupère les valeurs dans les champs définis, et les insère dans la base de données sql
+        //Insert the new user informations in the database
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
             $family_name = $_POST['family_name'];
@@ -41,6 +39,7 @@
             $password = $_POST['password'];
             $confirm_password= $_POST['confirm_password'];
             $role = $_POST['role'];
+            //Check password confirmationb
             if ($password != $confirm_password) {
                 header('Location:signup.php?Error=1');
             } else {
@@ -57,6 +56,7 @@
         }
         disconnect_db();
         ?>
+        //Show fields to fill in
         <form action="signup.php" method="post">
             <div class="user-details">
                 <div class = "input-box">
