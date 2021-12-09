@@ -14,19 +14,19 @@
 require_once 'db_utils.php';
 connect_db();
 session_start();
-
 $validator =$_SESSION["session_login"];
-$to_validate_query = "SELECT email_annot, geneid, idsequence, genebiotype, transcriptbiotype, genesymbol, description FROM w_gene.annotation where status=0";
+$to_validate_query = "SELECT annotid,  email_annot, geneid, idsequence, genebiotype, transcriptbiotype, genesymbol, description FROM w_gene.annotation where status=0";
 $to_validate = pg_query($db_conn,$to_validate_query);
 
-$update_annotation = "UPDATE w_gene.annotation SET comments=$1, status=$2 WHERE idsequence=$3";
+$update_annotation = "UPDATE w_gene.annotation SET comments=$1, status=$2 WHERE annotid=$3";
 
 while ($validation=pg_fetch_assoc($to_validate)){
     if(isset($_POST['Validate_'.$validation['idsequence']])){
-        $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],1,$validation['idsequence']));
+        $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],1,$validation['annotid']));
+        //il faut changer ça en annot id
         echo "The sequence ".$validation['idsequence']." was validated";
     } elseif (isset($_POST['Reject_'.$validation['idsequence']])){
-        $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],2,$validation['idsequence']));
+        $update = pg_query_params($db_conn,$update_annotation,array($_POST['Comment_'.$validation['idsequence']],2,$validation['annotid']));
         echo "The sequence ".$validation['idsequence']." was rejected";
     } else {
         echo "<tr>

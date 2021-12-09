@@ -34,9 +34,6 @@
 <div class="container">
     <div class="title"> Annotations in the process of validation</div><br>
         <?php
-        require_once 'db_utils.php';
-        connect_db();
-        session_start();
         $validator =$_SESSION["session_login"];
         $consult_annot_query='SELECT  idsequence, date_annot, geneid, genebiotype,transcriptbiotype,genesymbol,description,status,comments FROM w_gene.annotation where status=0';
         $execute_query=pg_query($db_conn,$consult_annot_query)or die(pg_last_error());

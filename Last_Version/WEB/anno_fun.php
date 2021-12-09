@@ -1,8 +1,6 @@
 <?php
 require_once 'db_utils.php';
 connect_db();
-
-session_start();
 $annotator=$_SESSION["session_login"];
 $to_annotate_query = "SELECT idSequence, AccessionNb, pep_seq FROM w_gene.sequence WHERE annot=2 and email_annot=$1";
 $to_annotate_results=pg_query_params($db_conn, $to_annotate_query,array($annotator)) or die(pg_last_error());

@@ -1,44 +1,3 @@
-<?php
-require_once 'db_utils.php';
-session_start();
-connect_db();
-if (isset($_POST['submit'])) {
-    $email= $_POST['email'];
-    $password=$_POST['password'];
-    $sql="SELECT * FROM w_gene.users WHERE email='{$email}' and password='{$password}'";
-    $results=pg_query($db_conn,$sql);
-    $time_con = time();
-    $date_con = date("m-d-Y H:i:s",$time_con );
-    $update_connex=pg_query($db_conn,"UPDATE w_gene.users SET date='{$date_con}' WHERE email='{$email}' ");
-    if ($results){// if result = TRUE ( we  find email and password in DB)
-        $row=pg_fetch_assoc($results);
-        $_SESSION["session_login"]=$row['email'];
-        $_SESSION["statut"]=$row['role'];
-        if ($_SESSION["statut"]=='annotator'){
-        header("Location:Annot_Menu.php");
-        die;
-        }else if ($_SESSION["statut"]=='validator'){
-            header("Location:Validator_Menu.php");
-            die;
-
-        }else if ($_SESSION["statut"]=='reader'){
-            header("Location:reader_Menu.php");
-            die;
-
-        }else if($_SESSION["statut"]=='admin') {
-            header("Location:adminpage2.php");
-            die;
-        }else {
-            header("Location:signup.php");
-            die;
-        }
-    }
-
-
-}
-disconnect_db();
-?>
-
 <!DOCTYPE html>
 <!-- set the language and the direction of the text-->
 <html lang="en" dir="ltr">
@@ -73,6 +32,46 @@ disconnect_db();
             <p>Password</p>
             <input type="password" name="password" placeholder="Enter Password">
             <input type="submit" name="submit" value="Sign In"></br>
+            <?php
+            require_once 'db_utils.php';
+            session_start();
+            connect_db();
+            if (isset($_POST['submit'])) {
+                $email= $_POST['email'];
+                $password=$_POST['password'];
+                $sql="SELECT * FROM w_gene.users WHERE email='{$email}' and password='{$password}'";
+                $results=pg_query($db_conn,$sql);
+                $time_con = time();
+                $date_con = date("m-d-Y H:i:s",$time_con );
+                $update_connex=pg_query($db_conn,"UPDATE w_gene.users SET date='{$date_con}' WHERE email='{$email}' ");
+                if (pg_num_rows($results)!=0){// if result = TRUE ( we  find email and password in DB)
+                    $row=pg_fetch_assoc($results);
+                    $_SESSION["session_login"]=$row['email'];
+                    $_SESSION["statut"]=$row['role'];
+                    if ($_SESSION["statut"]=='annotator'){
+                        header("Location:Annot_Menu.php");
+                        die;
+                    }else if ($_SESSION["statut"]=='validator'){
+                        header("Location:Validator_Menu.php");
+                        die;
+
+                    }else if ($_SESSION["statut"]=='reader'){
+                        header("Location:reader_Menu.php");
+                        die;
+
+                    }else if($_SESSION["statut"]=='admin') {
+                        header("Location:adminpage2.php");
+                        die;
+                    }
+                }else {
+                    echo "<p>Username/password is incorrect.</p><br/>";
+
+                }
+
+
+            }
+            disconnect_db();
+            ?>
             <a href="signup.php " target="_blank">Don't have an account?</a> </br>
         </form>
 

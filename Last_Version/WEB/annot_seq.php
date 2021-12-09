@@ -31,6 +31,7 @@
                     connect_db();
                     session_start();
                     echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                    disconnect_db();
                     ?>
                 </div>
         </ul>

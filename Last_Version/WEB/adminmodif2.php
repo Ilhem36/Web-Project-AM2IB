@@ -18,7 +18,7 @@ connect_db();
             #si checkbox cochée
             if(isset($_POST['delete_'.$i]))
             {
-               $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error);
+               $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error());
                 if($res1)
                 {
                     echo "<div class='done' style='color:red' > </span>";
@@ -29,7 +29,7 @@ connect_db();
             if($_POST['role_'.$i]!='empty')
             {
                 $role = $_POST['role_'.$i];
-                $res2= pg_query ($db_conn,"UPDATE w_gene.users SET role = '".$role."' WHERE email = '".$PK[$i]."'") or die(pg_last_error);
+                $res2= pg_query ($db_conn,"UPDATE w_gene.users SET role = '".$role."' WHERE email = '".$PK[$i]."'") or die(pg_last_error());
                 if($res2)
                 {
                     echo "<div class='done' style='color:red' > </span>";
@@ -39,7 +39,7 @@ connect_db();
             
         }
     }
-header("Location: adminpage2.php");
+
 disconnect_db();
 ?>
 </div>

@@ -41,13 +41,15 @@
             $password = $_POST['password'];
             $confirm_password= $_POST['confirm_password'];
             $role = $_POST['role'];
-            if ($password != $confirm_password) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "Invalid email format";
+            }else if ($password != $confirm_password) {
                 header('Location:signup.php?Error=1');
             } else {
                 $sql_Query = "SELECT * FROM w_gene.users WHERE email='" .$_POST["email"]. "'";
                 $result = pg_query($db_conn, $sql_Query);
                 if (pg_num_rows($result) != 0) {
-                    header('Location:signup.php?error=1');
+                    echo " You are already a user! ";
                 } else {
                     $sqlQuery = "INSERT INTO w_gene.users(email, name, family_name, phone, role, password) VALUES ('" . $email . "','" . $name . "', '" . $family_name . "', '" . $phone . "', '" . $role . "','" . $password . "')";
                     $result= pg_query($db_conn, $sqlQuery) or die(pg_last_error());
