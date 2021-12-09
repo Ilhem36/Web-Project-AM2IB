@@ -9,15 +9,15 @@
 
 body{
     display: flex;
-    height: 500vh; /* Descendre le container */
+    height: 60vh; /* Descendre le container */
     justify-content: center;
     align-items: center; /* centrer body*/
-    padding-top: 91800px;
+    padding-top: 1px;
     background: url(DNA.jpg) ; /* mettre la photo en background */
 }
 
 .container{
-    max-width: 200px;
+    max-width: 100px;
     background: #fff; /* la couleur du fond de border*/
     padding: 0 10%; /* la taille du carrée */
     margin: 40px auto 0;
@@ -40,7 +40,7 @@ body{
     background: linear-gradient(135deg, #71b7e6,#71b7e6);/*Colorer le trait en bleu*/
 }
 .table{
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
 }
 .table thead {
@@ -74,7 +74,7 @@ body{
     }
     .table .table tbody, .table td {
         display: block;
-        width: 100%;
+        width: 50%;
     }
 
 }

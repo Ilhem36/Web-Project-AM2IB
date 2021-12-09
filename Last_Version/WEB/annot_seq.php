@@ -1,3 +1,7 @@
+<?php
+require_once 'db_utils.php';
+connect_db();
+session_start(); ?>
 <!DOCTYPE html>
 <!-- set the language and the direction of the text-->
 <!-- html of annot_fun php page  -->
@@ -18,22 +22,15 @@
             <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
-            <li><a href="Home_page.php">Home</a></li>
-            <li><a href="annot_in_progress.php">Annotations</a></li>
-            <li><a href="#">Admin</a></li>
-            <li><a href="#">Validator</a></li>
-            <li><a href="Annot_Menu.php">Annotator</a></li>
-            <li><a href="reader_Menu.php">Reader</a></li>
-            <li><a href="signIn.php">Logout</a>
-                <br>
-                <div class = "hello">
-                    <?php require_once 'db_utils.php';
-                    connect_db();
-                    session_start();
-                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
-                    disconnect_db();
-                    ?>
-                </div>
+            <?php require_once 'Menu.php' ; ?>
+
+            <br><br>
+            <div class = "hello">
+                <?php
+                echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                ?>
+            </div>
+
         </ul>
     </div>
 

@@ -13,7 +13,6 @@
 // Validator page with Just php code
 require_once 'db_utils.php';
 connect_db();
-session_start();
 $validator =$_SESSION["session_login"];
 $to_validate_query = "SELECT annotid,  email_annot, geneid, idsequence, genebiotype, transcriptbiotype, genesymbol, description FROM w_gene.annotation where status=0";
 $to_validate = pg_query($db_conn,$to_validate_query);

@@ -1,3 +1,7 @@
+<?php
+require_once 'db_utils.php';
+connect_db();
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -14,18 +18,11 @@
             <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
-            <li><a href="Home_page.php">Home</a></li>
-            <li><a href="annot_in_progress.php">Annotations</a></li>
-            <li><a href="#">Admin</a></li>
-            <li><a href="Validator_Menu.php">Validator</a></li>
-            <li><a href="Annot_Menu.php">Annotator</a></li>
-            <li><a href="reader_Menu.php">Reader</a>
-            <li><a href="signIn.php">Logout</a>
+            <?php require_once 'Menu.php' ; ?>
+
                 <br><br>
                 <div class = "hello">
-                    <?php require_once 'db_utils.php';
-                    connect_db();
-                    session_start();
+                    <?php
                     echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
                     ?>
                 </div>

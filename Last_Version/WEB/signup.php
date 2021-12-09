@@ -59,7 +59,6 @@
 
         disconnect_db();
         ?>
-        //Show fields to fill in
         <form action="signup.php" method="post">
             <div class="user-details">
                 <div class = "input-box">

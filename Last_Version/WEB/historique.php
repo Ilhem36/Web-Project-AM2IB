@@ -1,3 +1,7 @@
+<?php
+require_once 'db_utils.php';
+connect_db();
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
@@ -15,21 +19,14 @@
             <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
-            <li><a href="Home_page.php">Home</a></li>
-            <li><a href="annot_in_progress.php">Annotations</a></li>
-            <li><a href="#">Admin</a></li>
-            <li><a href="#">Validator</a></li>
-            <li><a href="Annot_Menu.php">Annotator</a></li>
-            <li><a href="reader_Menu.php">Reader</a></li>
-            <li><a href="signIn.php">Logout</a>
-                <br>
-                <div class = "hello">
-                    <?php require_once 'db_utils.php';
-                    connect_db();
-                    session_start();
-                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
-                    ?>
-                </div>
+            <?php require_once 'Menu.php' ; ?>
+
+            <br><br>
+            <div class = "hello">
+                <?php
+                echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                ?>
+            </div>
         </ul>
     </div>
 </nav>
@@ -38,7 +35,6 @@
         <?php
         require_once 'db_utils.php';
         connect_db();
-
         $consult_annot_query='SELECT  idsequence, date_annot, geneid, genebiotype,transcriptbiotype,genesymbol,description,status,comments FROM w_gene.annotation where idsequence=$1';
         $id = $_GET['id'];
         $execute_query=pg_query_params($db_conn,$consult_annot_query,array($id))or die(pg_last_error());

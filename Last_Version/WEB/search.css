@@ -8,18 +8,16 @@
 }
 
 body{
-    display: flex;
     height: 160vh; /* Descendre le container */
     justify-content: center;
     align-items: center; /* centrer body*/
-    padding: 10px;
+    padding-top: 50px;
     background: url(DNA.jpg) ; /* mettre la photo en background */
 }
 
 .container{
-    max-width: 200px;
-    background: #fff; /* la couleur du fond de border*/
-    padding: 0 10%; /* la taille du carrée */
+    width: 70%;
+    padding-left: 400px;
     margin: 40px auto 0;
     border-radius: 5px; /* arrondir les bords  du carré */
 }
@@ -40,8 +38,9 @@ body{
     background: linear-gradient(135deg, #71b7e6,#71b7e6);/*Colorer le trait en bleu*/
 }
 .table{
-    width: 100%;
+    width: 1%;
     border-collapse: collapse;
+    column-width: auto;
 }
 .table thead {
     background-color: #00BFFF;
@@ -68,14 +67,14 @@ body{
 
 }
 @media (max-width) {
-    .table thead{
-        display: none;
+   .table thead{
+   display: none;
 
-    }
-    .table .table tbody, .table td {
-        display: block;
-        width: 100%;
-    }
+  }
+  .table .table tbody, .table td {
+     display: block;
+      width: 1%;
+  }
 
 }
 

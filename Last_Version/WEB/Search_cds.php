@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<?php require_once 'db_utils.php';
+<?php
+require_once 'db_utils.php';
 connect_db();
-?>
+session_start(); ?>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <title> Search cds & peptides </title>
-    <link rel="stylesheet" type="text/css" href="search_cds.css">
+    <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 
 <body>
@@ -16,20 +17,14 @@ connect_db();
             <a href="Home_page.php">GenAnnot.</a>
         </div>
         <ul class="nav-links">
-            <li><a href="Home_page.php">Home</a></li>
-            <li><a href="annot_in_progress.php">Annotations</a></li>
-            <li><a href="#">Admin</a></li>
-            <li><a href="#">Validator</a></li>
-            <li><a href="#">Annotator</a></li>
-            <li><a href="reader_Menu.php">Reader</a>
-            <li><a href="signIn.php">Logout</a><br><br>
-                <div class = "hello">
-                    <?php require_once 'db_utils.php';
-                    connect_db();
-                    session_start();
-                    echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
-                    ?>
-                </div>
+            <?php require_once 'Menu.php' ; ?>
+
+            <br><br>
+            <div class = "hello">
+                <?php
+                echo "Welcome <strong>".$_SESSION["session_login"]."</strong>";
+                ?>
+            </div>
         </ul>
     </div>
 </nav>
@@ -78,22 +73,12 @@ connect_db();
                 }
 
             else if (pg_num_rows($res) != 0) {
-                echo "<table class='table'>
+                echo "<div class ='container'>
+                      <table class='table'>
                       <thead>
                       <tr>  
                         <th>Sequence ID</th>
                         <th>Accession Number (Genome)</th>
-                        <th>DNA type</th>
-                        <th>CDS start position</th>
-                        <th>CDS end position</th>
-                        <th>Strand</th>
-                        <th>CDS length</th>
-                        <th>Peptide size</th>
-                        <th>Gene ID</th>
-                        <th>Gene biotype</th>
-                        <th>Transcript biotype</th>
-                        <th>Gene Symbol</th>
-                        <th>Description</th>
                       </tr>
                       </thead>";
 
@@ -101,21 +86,11 @@ connect_db();
                 echo "<tr>
                       <td><a href='Results_cds.php?id=".$row['idsequence']."'>".$row['idsequence']."</a></td>  
                       <td><a href='Results_genome2.php?id=".$row['accessionnb']."'>".$row['accessionnb']."</a></td>  
-                      <td>".$row['dna_type']."</td>
-                      <td>".$row['cds_start']."</td>
-                      <td>".$row['cds_end']."</td>
-                      <td>".$row['strand']."</td>
-                      <td>".$row['cds_size']."</td>
-                      <td>".$row['pep_size']."</td>
-                      <td>".$row['geneid']."</td>
-                      <td>".$row['genebiotype']."</td>
-                      <td>".$row['transcriptbiotype']."</td>
-                      <td>".$row['genesymbol']."</td>
-                      <td>".$row['description']."</td>
                       </tr>";
             }
         }
         echo "</table>";
+        echo "</div>";
     }
     disconnect_db();
     ?>
