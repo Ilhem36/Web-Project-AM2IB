@@ -11,6 +11,7 @@ connect_db();
 </head>
 
 <body>
+<!-- Navigation Menu -->
 <nav>
     <div class="nav-content">
         <div class="logo">
@@ -39,15 +40,13 @@ connect_db();
 		<div class="title"> Genome Results </div><br>
 		<table>
 			<?php
+            //Initialization of $a & $b 
 			$a = 0;
 			$b = 5000;
-			// $str = $_SERVER['REQUEST_URI'];
-			// $keywords = preg_split("/=/", $str);
+			//Get the result for the right accession number
 			$accessionnb = htmlspecialchars($_GET["id"]);
 
-			// $a = htmlspecialchars($_GET["start"]);
-			// $b = htmlspecialchars($_GET["end"]);
-
+			//Set the values for $a and $b from the form
 			if (isset($_GET["start"])) {
 				$a = htmlspecialchars($_GET["start"]);
 			}
@@ -58,12 +57,8 @@ connect_db();
 			?>
 
 				<?php
-				// if (isset($_POST['submit'])) {
-				// 	$a = $_POST['Start'];
-				// 	$b = $_POST['End'];
-				// }
 
-
+                // Get and show the genome information from the accession number
 				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='" . $accessionnb . "';");
 				// echo $accessionnb;
 				if (!$result) {
@@ -77,7 +72,7 @@ connect_db();
 	              <tr><th> Sequence length : </th><td> " . $row['seq_length'] . "</td></tr>";
 					$genome = $row['seq_nt'];
 				}
-				#stockage variables sequence
+			    //get the information for each cds sequence
 				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='" . $accessionnb . "' AND cds_end >= '" . $a . "' AND cds_start <= '" . $b . "';";
 				$res2 = pg_query($db_conn, $query);
 				if (!$res2) {
@@ -99,6 +94,7 @@ connect_db();
         Please put the start position and the end position of the sequence you want to visualise
         <br><br>
 
+        <!-- form for $a & $b -->
         <form method="get" action="Results_genome2.php">
             <div class="genelim">
                 <span class="details"><strong>Start</strong></span>
@@ -119,14 +115,15 @@ connect_db();
 			<div class="card">
 				<div class="genome">
 					<?php
+                    //Represent the genome
 					$partial_genome = substr($genome, $a, $b - $a);
 					echo $partial_genome;
-					echo $accessionnb;
 					?>
 
 					<?php
 					$char_width = 10;
 					$space = 34;
+                    //Represent an indicator of the nucleotide position
 					for ($k = $a; $k <= $b; $k = $k + 10) {
 						$style = 'style="left:' . $k - $a . 'ch "';
 						echo '<div class="labely"  ' . $style . '><div class="labeltext">';
@@ -136,29 +133,32 @@ connect_db();
 					}
 					$Niv = array_fill(0, 99, 0);
 
+
+                    //for each cds, the position is shown above the genome
+					//because of the overlap, we represent the cds at different distances of the genome
+					//This is done by assigning a "level" of distance to each cds : 
+					//for each cds, if there is no cds already plotted at a specific nucleotidic position, it is plot just above the genome.
+					//if a cds is already plotted, we then look at the next distace level, and so on
 					for ($i = 0; $i < count($sequence); $i++) {
 						$j = 0;
 						while ($debutsequence[$i] < $Niv[$j]) :
-							// TODO incrémenter .append niv si $j > len($niv)
 							$j++;
 						endwhile;
 						$Niv[$j] = $finsequence[$i];
 
-						// href='Results_cds.php?id=".$row['idsequence']."'
+						//a link to the cds result page is created
 						echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-						echo $idsequence[$i]; // echo "<input type='button' class='button-seq' value='".$idsequence[$i]."' />";
+						echo $idsequence[$i]; 
 						echo '</a>';
 					};
 					?>
 
 
 				</div>
-				<!--Afficher sequence gene en couleur, en cliquant sur un gène, redirige vers la page gène associée -->
 			</div>
 		</div>
 
         <br>
-		<!--TODO : fonctionnalités télécharger les résultats -->
         <button class='btn btn--assign' type="submit" name="ddl_results"> Download results</button><br>
 	</div>
 </body>
