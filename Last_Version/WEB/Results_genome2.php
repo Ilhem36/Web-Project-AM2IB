@@ -79,6 +79,7 @@ session_start(); ?>
 				$finsequence = array_column($res2table, 'cds_end');
 				$longsequence = array_column($res2table, 'cds_size');
 				$idsequence = array_column($res2table, 'idsequence');
+				$annot =array_column($res2table, 'annot');
 				?>
 		</table>
 
@@ -143,18 +144,16 @@ session_start(); ?>
                             $Niv[$j] = $finsequence[$i];
 							
                             //If a cds is annotated, a link to its result page is created
-							// $query2 = "SELECT status FROM w_gene.annotation WHERE idsequence='" . $idsequence[$i] . "'";
-							// $res3 = pg_query($db_conn, $query2);
-							// if(){
-							// 	echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-							// 	echo $idsequence[$i]; 
-							// 	echo '</a>';
-							// }
-							// //If a cds is not annotated, only its ID is shown
-							// else{
-							// 	echo '<input type="button" value="' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-							// 	echo '</input>';
-							// }
+							if($annot!=0){
+								echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+								echo $idsequence[$i]; 
+								echo '</a>';
+							}
+							//If a cds is not annotated, only its ID is shown
+							else{
+								echo '<input type="button" value="' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+								echo '</input>';
+							}
 						};
                     }
 					?>
