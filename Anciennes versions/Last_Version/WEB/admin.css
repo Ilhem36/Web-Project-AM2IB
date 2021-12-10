@@ -1,0 +1,165 @@
+/* Google Font Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    display: flex;
+    height: 120vh;
+    justify-content: center;
+    align-items: center; /* centrer body*/
+    padding: 10px;
+    background: url(DNA.jpg) ; /* mettre la photo en background */
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    /*transition: all 0.4s ease;*/
+}
+nav.sticky{
+    padding: 15px 20px;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+    height: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .logo a{
+    font-weight: 500;
+    font-size: 35px;
+    color: #4070f4;
+}
+nav.sticky .logo a{
+    color: #fff;
+}
+.nav-content .nav-links{
+    display: flex;
+}
+.nav-content .nav-links li{
+    list-style: none;
+    margin: 0 8px;
+}
+/* Les titre dans le menu de navigation */
+.nav-links li a{
+    text-decoration: none;
+    color: #0E2431;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 4px;
+}
+
+.nav-links li a:hover{
+    color: #4070f4;
+}
+nav.sticky .nav-links li a{
+    color:  #0E2431;
+    transition: all 0.4s ease;
+}
+nav.sticky .nav-links li a:hover{
+    color: #0E2431;
+}
+
+.container{
+    max-width: 1000px;
+    width:100%;
+    background: #fff; /* la couleur du fond de border*/
+    padding: 25px 30px; /* la taille du carrée */
+    border-radius: 5px; /* arrondir les bords  du carré */
+}
+.container .title{ /* class title */
+    font-size: 25px;
+    font-weight: 500;
+    /* Agrandir la taille du  titre */
+    position: relative;
+}
+/* Mettre le petit trait en dessous de Sign up(Title)*/
+.container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;/*Mettre en dessous du titre*/
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #71b7e6,#71b7e6);/*Colorer le trait en bleu*/
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+.table thead {
+    background-color: #00BFFF;
+}
+.table thead tr th{
+    font-size: 14px;
+    font-weight:600;
+    letter-spacing: 0.35px;
+    color: white;
+    opacity: 1;
+    padding: 12px;
+    vertical-align: top;
+    border:1px solid #00BFFF;
+}
+/* pour l'écriture dans le tableau*/
+.table tbody tr td{
+    font-size: 14px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color:black;
+    background-color:white;
+    padding: 8px;
+    border: 1px solid  black;
+
+}
+@media (max-width) {
+    .table thead{
+        display: none;
+
+    }
+    .table, .table th td {
+        display: block;
+        width: 100%;
+    }
+
+}
+
+
+/* pour le bouton  assign */
+.btn{
+    margin: 0 auto;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 60;
+    width: 400px; /* largeur des bouton */
+    background: white;
+    color: #00BFFF;
+    height: 25px;
+    text-align: center;
+}
+.btn--assign{
+    background: white;
+    color: black;
+}
+.btn--assign:hover{
+    background: #00BFFF;
+}
+.lignesEspacees{
+    border-collapse : separate;
+    border-spacing : 10px;
+}
