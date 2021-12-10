@@ -41,7 +41,14 @@ Il est ensuite possible de se connecter avec la base de donnée en renseignant d
 
 ## Pages Php
 
+
 Nous avons au total 8 pages web organisées dans l'ordre, de la manière suivante :
+
+```
+0- fichier “db_info.ini” appelé à l’aide de “db_utils.php”
+   db_utils.php contient les fonctions de la connexion à la base de données
+   db_info.ini contient les paramètres de connexion de la base
+```
 
 ```
 1-  Home_page.php est la page d'accueil , elle comprend le fichier contenant 
@@ -76,6 +83,8 @@ Nous avons au total 8 pages web organisées dans l'ordre, de la manière suivant
     - Results_genome2.php, reader2.css et Results_cds.php, reader.css
       et extraction.php + reader_menu.css sont utilisés pour l’extraction des données de la base 
     - annot_in_progress.php + annot_seq.css, pour voir les annotations en cours de validation
+    
+    NB: Il est recommandé de ne pas dépasser une longueur de 5000 pour garantir un résultat optimal.
 
  ```    
 
