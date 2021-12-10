@@ -1,6 +1,7 @@
 <?php
+//This page is the Form for genes and proteins
 require_once 'db_utils.php';
-connect_db();
+connect_db(); //connexion to the database
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -11,7 +12,7 @@ session_start(); ?>
 </head>
 <body>
 
-<!-- Menu de navigation -->
+<!-- Navigation menu -->
 <nav>
     <div class="nav-content">
         <div class="logo">
@@ -86,7 +87,7 @@ session_start(); ?>
                 <input type="text" placeholder="Enter the description" name="description">
 
                 <div class="button">
-                    <input type="submit" value="Search"/><br>
+                    <input type="submit" value="Search"/><br> <!--submit the research-->
                 </div>
             </div>
         </div>
