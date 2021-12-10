@@ -10,8 +10,8 @@ INSERT INTO w_gene.users (Email, Name, Family_Name, Phone, Role, Date, Password)
 INSERT INTO w_gene.users (Email, Name, Family_Name, Phone, Role, Date, Password) VALUES ('lorraine@psud.fr','Lorraine', 'Weng', 58745784, 'reader', current_timestamp, 123788),
 ('Benjamin@psud.fr','Benjamin', 'Teixeira', 242537, 'reader', current_timestamp, 228858);
 
-INSERT INTO w_gene.users (Email, Name, Family_Name, Phone, Role, Date, Password) VALUES ('sana@psud.fr', 'Sana', 'Cherifi', 52369874, 'admin', current_timestamp, 256378),
-('GenA@psud.fr', 'Gen', 'Annot', 185121, 'admin', current_timestamp, 677349);
+INSERT INTO w_gene.users (Email, Name, Family_Name, Phone, Role, Date, Password) VALUES ('sana@psud.fr', 'Sana', 'Cherifi', 52369874, 'admin', current_timestamp, 256378);
+
 
 ------Update genome table to insert species and strain-------
 
