@@ -51,7 +51,6 @@ session_start(); ?>
 			?>
 
 				<?php
-
                 // Get and show the genome information from the accession number
 				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='" . $accessionnb . "';");
 				// echo $accessionnb;
@@ -111,40 +110,53 @@ session_start(); ?>
 					<?php
                     //Represent the genome
 					$partial_genome = substr($genome, $a, $b - $a);
-					echo $partial_genome;
-					?>
+					//We check that the input values are correct
+					if($a < 0 or $a >= $b or $b > strlen($genome)){
+						echo 'Invalid values';
+                    }
+                    else
+                    {
+                        echo $partial_genome;
+						$char_width = 10;
+                        $space = 34;
+                        //Represent an indicator of the nucleotide position
+                        for ($k = $a; $k <= $b; $k = $k + 10) {
+                            $style = 'style="left:' . $k - $a . 'ch "';
+                            echo '<div class="labely"  ' . $style . '><div class="labeltext">';
+                            echo $k;
+                            echo '</div></div>';
+                            echo '<div class="label-bar" ' . $style . '></div>';
+                        }
+                        $Niv = array_fill(0, 99, 0);
 
-					<?php
-					$char_width = 10;
-					$space = 34;
-                    //Represent an indicator of the nucleotide position
-					for ($k = $a; $k <= $b; $k = $k + 10) {
-						$style = 'style="left:' . $k - $a . 'ch "';
-						echo '<div class="labely"  ' . $style . '><div class="labeltext">';
-						echo $k;
-						echo '</div></div>';
-						echo '<div class="label-bar" ' . $style . '></div>';
-					}
-					$Niv = array_fill(0, 99, 0);
 
-
-                    //for each cds, the position is shown above the genome
-					//because of the overlap, we represent the cds at different distances of the genome
-					//This is done by assigning a "level" of distance to each cds : 
-					//for each cds, if there is no cds already plotted at a specific nucleotidic position, it is plot just above the genome.
-					//if a cds is already plotted, we then look at the next distace level, and so on
-					for ($i = 0; $i < count($sequence); $i++) {
-						$j = 0;
-						while ($debutsequence[$i] < $Niv[$j]) :
-							$j++;
-						endwhile;
-						$Niv[$j] = $finsequence[$i];
-
-						//a link to the cds result page is created
-						echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
-						echo $idsequence[$i]; 
-						echo '</a>';
-					};
+                        //for each cds, the position is shown above the genome
+                        //because of the overlap, we represent the cds at different distances of the genome
+                        //This is done by assigning a "level" of distance to each cds : 
+                        //for each cds, if there is no cds already plotted at a specific nucleotidic position, it is plot just above the genome.
+                        //if a cds is already plotted, we then look at the next distace level, and so on
+                        for ($i = 0; $i < count($sequence); $i++) {
+                            $j = 0;
+                            while ($debutsequence[$i] < $Niv[$j]) :
+                                $j++;
+                            endwhile;
+                            $Niv[$j] = $finsequence[$i];
+							
+                            //If a cds is annotated, a link to its result page is created
+							// $query2 = "SELECT status FROM w_gene.annotation WHERE idsequence='" . $idsequence[$i] . "'";
+							// $res3 = pg_query($db_conn, $query2);
+							// if(){
+							// 	echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+							// 	echo $idsequence[$i]; 
+							// 	echo '</a>';
+							// }
+							// //If a cds is not annotated, only its ID is shown
+							// else{
+							// 	echo '<input type="button" value="' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i]-$a . 'ch; width: ' . $longsequence[$i] . 'ch">';
+							// 	echo '</input>';
+							// }
+						};
+                    }
 					?>
 
 

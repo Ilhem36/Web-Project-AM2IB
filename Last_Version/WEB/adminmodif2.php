@@ -18,11 +18,19 @@ connect_db();
             //if the box is checked, delete the user
             if(isset($_POST['delete_'.$i]))
             {
-               $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error());
-                if($res1)
-                {
-                    echo "<div class='done' style='color:red' > </span>";
-                    echo "Succesfully done";
+                //If an user already annotated a sequence, he can't be suppressed
+                $res0= pg_query ($db_conn,"SELECT COUNT(*) FROM w_gene.annotation WHERE email_annot = '".$PK[$i]."'") or die( pg_last_error());
+                if($res0>0){
+                    echo "If an user already annotated a sequence, he can't be suppressed";
+                    print_r($res0);
+                }
+                else{
+                    $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error());
+                    if($res1)
+                    {
+                        echo "<div class='done' style='color:red' > </span>";
+                        echo "Succesfully done";
+                    }
                 }
             }
             //if a new role is indicated for an user, modify it in the database
