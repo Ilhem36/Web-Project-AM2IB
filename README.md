@@ -13,14 +13,14 @@ Pour mener à bien ce projet, il sera nécessaire de télécharger postgresql, p
 
    Ordre d’éxécution des scripts : 
    
-   1- Créer le schéma avec le script the_last_DB.sql via la commande : 
+   1 - Créer le schéma avec le script the_last_DB.sql via la commande : 
      
        psql
        \i the_last_DB.sql
        
-2- Parser  les fichiers fasta  avec le script parser_files.py 
+2 - Parser  les fichiers fasta  avec le script parser_files.py 
 
-3- Insérer les données génomiques  avec le script Insert_data.py
+3 - Insérer les données génomiques  avec le script Insert_data.py
 
 4- Insérer les utilisateurs et mettre à jour la table genome avec le script Insertion_users.sql  via la commande 
 \i the_last_DB.sql  
@@ -45,13 +45,13 @@ Il est ensuite possible de se connecter avec la base de donnée en renseignant d
 Nous avons au total 8 pages web organisées dans l'ordre, de la manière suivante :
 
 ```
-0- fichier “db_info.ini” appelé à l’aide de “db_utils.php”
+0 - fichier “db_info.ini” appelé à l’aide de “db_utils.php”
    db_utils.php contient les fonctions de la connexion à la base de données
    db_info.ini contient les paramètres de connexion de la base
 ```
 
 ```
-1-  Home_page.php est la page d'accueil , elle comprend le fichier contenant 
+1 -  Home_page.php est la page d'accueil , elle comprend le fichier contenant 
     le code en php/HTML et "home_page.css" qui réalise le design en CSS
 
 ```
