@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+<!--This is the blastp function page, it prepare the multiple alignment query with the protein sequence in input. We access to this page from results_cds page by clicking on the button blastp
    <head>
       <meta charset="utf-8" />
       <title>Blastp alignment (proteins) </title>
