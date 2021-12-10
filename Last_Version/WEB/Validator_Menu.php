@@ -1,10 +1,11 @@
 <?php
 require_once 'db_utils.php';
-connect_db();
+connect_db(); //connexion to the database
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+<!--This is the validator home page-->
+    
 <head>
     <meta charset="utf-8" />
     <title>Validator page</title>
@@ -40,3 +41,6 @@ session_start(); ?>
 
 </body>
 </html>
+<?php
+disconnect_db(); //deconnexion from the database
+?>
