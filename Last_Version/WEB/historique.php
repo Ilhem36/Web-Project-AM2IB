@@ -4,7 +4,7 @@ connect_db();
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
+<!-- This page is dedicated for annotators to view  their current annotation history-->
 <head>
     <title>Your annotations history </title>
     <link rel="stylesheet" href="annot_seq.css">

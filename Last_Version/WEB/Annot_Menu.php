@@ -1,4 +1,6 @@
 <?php
+//This page is  the annotator home page
+//Connexion to database
 require_once 'db_utils.php';
 connect_db();
 session_start(); ?>

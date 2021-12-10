@@ -1,10 +1,12 @@
 <?php
+//This page requires the page annot_fun.php(which contains the php code) . It is dedicated for the annotator to choose the sequences to annotate.
+// Connexion to database
 require_once 'db_utils.php';
 connect_db();
 session_start(); ?>
 <!DOCTYPE html>
 <!-- set the language and the direction of the text-->
-<!-- html of annot_fun php page  -->
+
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +25,7 @@ session_start(); ?>
         </div>
         <ul class="nav-links">
             <?php require_once 'Menu.php' ; ?>
-
+            <!--Display the navigation bar for annotators-->
             <br><br>
             <div class = "hello">
                 <?php

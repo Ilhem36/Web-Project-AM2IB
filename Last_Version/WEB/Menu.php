@@ -1,4 +1,5 @@
 <?php
+//This page is dedicated to manage the navigation bar of each page according to the role of the user
 if ($_SESSION['statut'] == 'admin') {
     echo '<li><a href="adminpage2.php">Admin</a></li>
                 <li><a href="Validator_Menu.php">Validator</a></li>

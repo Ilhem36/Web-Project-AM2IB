@@ -19,6 +19,7 @@ session_start(); ?>
         </div>
 
         <ul class="nav-links">
+            <!-- This part is to display navigation bar according to the role of user -->
             <?php require_once 'Menu.php' ; ?>
 
             <br><br>

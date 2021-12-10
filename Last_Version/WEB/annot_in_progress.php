@@ -1,10 +1,11 @@
 <?php
+//Connect to database.
 require_once 'db_utils.php';
 connect_db();
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
+<!-- This page is dedicated to display annotations being validated -->
 <head>
     <title>Annotation history </title>
     <link rel="stylesheet" href="annot_seq.css">
@@ -30,9 +31,12 @@ session_start(); ?>
 <div class="container">
     <div class="title"> Annotations in the process of validation</div><br>
         <?php
-        $validator =$_SESSION["session_login"];
+        //Recover email from the login
+        $user=$_SESSION["session_login"];
+        //Select interested information about sequences being validated
         $consult_annot_query='SELECT  idsequence, date_annot, geneid, genebiotype,transcriptbiotype,genesymbol,description,status,comments FROM w_gene.annotation where status=0';
         $execute_query=pg_query($db_conn,$consult_annot_query)or die(pg_last_error());
+        //Create table columns  which will contains the interested  informations
         echo"<table class ='table'>
                <thead>
                   <tr>
@@ -47,6 +51,7 @@ session_start(); ?>
                   <th> Comments </th>
                   </tr>
                </thead>";
+        // Store the interested  information in the table:
 
         while ($annot=pg_fetch_assoc($execute_query)){
             echo"<tr>
@@ -59,6 +64,7 @@ session_start(); ?>
                 <td>" . $annot['description'] . "</td>
                 
                 <td>";
+            // Specifiy the status of annotation and extract the comment:
             if ($annot['status']==2) {
                 echo "<p>Rejected</p></td>";
             }else if($annot['status']==1) {
@@ -73,6 +79,5 @@ session_start(); ?>
         echo "</table>";
         ?>
 </div>
-
 </body>
 </html>

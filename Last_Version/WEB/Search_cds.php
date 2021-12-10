@@ -69,7 +69,7 @@ session_start(); ?>
                 }
 
                 else if(pg_num_rows($res) == 0) {
-                    echo "There is no result for your request.<br>";
+                    echo "<div class ='container message' > There is no result for your request.<br></div>";
                 }
 
             else if (pg_num_rows($res) != 0) {

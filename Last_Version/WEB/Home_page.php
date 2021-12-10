@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<!-- This page is the home page of the website-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="home_page.css">
    </head>
 <body>
-<!-- pour la barre de navigation (home) -->
+<!--For tha navigation bar -->
   <nav>
     <div class="nav-content">
       <div class="logo">

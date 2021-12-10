@@ -1,10 +1,11 @@
 <?php
+//This page in linked to valid_annot.php. It is dedicated for validators to manage annotations(Reject/Accept)
+//Connection to database
 require_once 'db_utils.php';
 connect_db();
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<!-- HTML PAGE FOR VALIDATOR PAGE(valid_annot)-->
 <head>
     <title>Annotator space </title>
     <link rel="stylesheet" href="annot_seq.css">
@@ -18,6 +19,7 @@ session_start(); ?>
                 <a href="#">GenAnnot.</a>
             </div>
             <ul class="nav-links">
+                <!-- display the bar navigation -->
                 <?php require_once 'Menu.php' ; ?>
 
                 <br><br>
@@ -42,8 +44,6 @@ session_start(); ?>
                 <th>Description</th>
                 <th>Validation</th>
                 <th>Comment</th>
-
-                <!--    commentaire + statut de validation-->
             </tr>
             </thead>
             <tbody>

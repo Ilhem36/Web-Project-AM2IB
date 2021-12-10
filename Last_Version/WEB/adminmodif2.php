@@ -1,3 +1,4 @@
+<!-- This page is dedicated for admin to manage users -->
 <!DOCTYPE html>
 <!-- set the language and the direction of the text-->
 <html lang="en" dir="ltr">
@@ -8,7 +9,8 @@
 </head>
 <body>
 <div class ="container">
-<?php require_once 'db_utils.php';
+<?php
+require_once 'db_utils.php';
 require_once 'adminpage2.php';
 connect_db();
     if(isset($_POST['submit']))

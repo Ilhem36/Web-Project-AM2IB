@@ -16,6 +16,7 @@ body{
     background: url(DNA.jpg) ; /* mettre la photo en background */
 }
 
+
 .container{
     max-width: 100px;
     background: #fff; /* la couleur du fond de border*/

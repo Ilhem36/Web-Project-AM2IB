@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+<!-- This page id dedicated to assign sequences to annotators by the validator-->
 <!-- set the language and the direction of the text-->
 <html lang="en" dir="ltr">
 <head>
@@ -9,10 +9,10 @@
 </head>
 <body>
 <?php
-// php code for assign_annot page
+// Connexion to database
 require_once 'db_utils.php';
 connect_db();
-/*pagination avec https://www.the-art-of-web.com/php/pagination/*/
+/* Pagination source code https://www.the-art-of-web.com/php/pagination/*/
 //Page
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int)strip_tags($_GET['page']);
@@ -22,26 +22,26 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 $perpage = 20; /*Number of results per page*/
 $precedent = ($currentPage - 1) * $perpage;
 
-//Liste annotateurs
+// Query to select annototors from database : Don't forget a validator or an admin are also annotators
 $annotator_query = "SELECT email FROM w_gene.Users WHERE role in ('annotator','validator','admin')";
 $annotator_results = pg_query($db_conn, $annotator_query) or die(pg_last_error());
-$annotator_results = pg_fetch_all_columns($annotator_results);/*une liste  des annotateurs */
+/* Annotators list */
+$annotator_results = pg_fetch_all_columns($annotator_results);
 
-//Liste sequence non annotees
+// Query to extract non annotated sequences:
 $non_annotated_query = "SELECT idsequence FROM w_gene.Sequence WHERE annot=0 LIMIT $1 OFFSET $2";
 $non_annotated_results = pg_query_params($db_conn, $non_annotated_query, array($perpage, $precedent)) or die(pg_last_error());
 $non_annotated_results = pg_fetch_all_columns($non_annotated_results);
-//Nombre de resultats pour pagination
+//Results number  for pagination:
 $nr_results_query = "SELECT idsequence FROM w_gene.sequence WHERE annot=0";
 $nr_results_result = pg_query($db_conn, $nr_results_query);
 $nr_results_result = pg_num_rows($nr_results_result);
 
-// Assignement sequence annotateur $1 annotateur selectionne et $2 sequence assignee
+// Query to update the annot from not assigned (0) to 2 (assigned but not yet annotated)
 $assign_query = "UPDATE w_gene.sequence SET annot=2, Email_annot=$1 WHERE idSequence=$2";
 
-
 //Pagination
-// build array containing links to all pages
+// Build array containing links to all pages
 $tmp = [];
 for ($p = 1, $i = 0; $i < $nr_results_result; $p++, $i += $perpage) {
     if ($currentPage == $p) {
@@ -52,14 +52,14 @@ for ($p = 1, $i = 0; $i < $nr_results_result; $p++, $i += $perpage) {
     }
 }
 
-// thin out the links
+// Thin out the links
 for ($i = count($tmp) - 3; $i > 1; $i--) {
     if (abs($currentPage - $i - 1) > 2) {
         unset($tmp[$i]);
     }
 }
 
-// display page navigation if data covers more than one page
+// Display navigation page if data covers more than one page
 if (count($tmp) > 1) {
     echo "<p>";
 
@@ -90,7 +90,7 @@ if (count($tmp) > 1) {
     echo "</p>\n\n";
 }
 
-//affichage tableau des sequences a annoter
+//Display table of non annotated sequences :
 echo "<table class='lignesEspacees'>";
 echo "<tbody><br>";
 echo "<tr>
