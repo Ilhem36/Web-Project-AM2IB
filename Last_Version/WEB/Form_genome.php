@@ -1,6 +1,7 @@
 <?php
+//This is the form for genomes
 require_once 'db_utils.php';
-connect_db();
+connect_db(); //connexion to the database
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -33,7 +34,7 @@ session_start(); ?>
 	<!-- The form refers to Search_genome.php, where we prepare the SQL queries on the SQL table Genome from w_gene Database -->
  	<div class ="container">
         <div class="title"> Search information about Genomes </div><br>
-		<form action="Search_genome.php" method="get"><!--A form method GET is used to get the values entered in the form fields-->
+		<form action="Search_genome.php" method="get"><!--A form method GET is used to get the values entered in the fields from the form-->
             <div class="form-details">
                 <div class = "input-box">
 
@@ -53,7 +54,7 @@ session_start(); ?>
     	        <textarea id="textarea" rows="10" cols="55" name="seq_nt" placeholder = "Enter the sequence" minlength="4"></textarea>
 
                     <div class="button">
-		            <input type="submit" value="Search"><br>
+		            <input type="submit" value="Search"><br> <!-- submit the research-->
                     </div>
             </div>
 		</form>
