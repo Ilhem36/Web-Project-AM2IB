@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+<!--This is the blastn function page, it prepare the multiple alignment query with the protein sequence in input. We access to this page from results_genome.php page by clicking on the button blastn
 <head>
     <meta charset="utf-8" />
     <title>Blastn alignment (genes) </title>
