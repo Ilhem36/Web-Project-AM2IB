@@ -1,7 +1,8 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+<!--This is the reader home page-->
+    
 <head>
     <meta charset="utf-8" />
     <title>Reader page</title>
@@ -43,3 +44,6 @@ session_start(); ?>
 
 </body>
 </html>
+<?php
+disconnect_db(); //deconnexion from the database
+?>
