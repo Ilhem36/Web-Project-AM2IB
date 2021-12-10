@@ -12,7 +12,7 @@
   if (!empty($_GET["prot_seq"])){
       $prot_seq = $_GET["prot_seq"];
       $prot_seq = $prot_seq.'';
-      $type = "prot"; //specify the type protein (aa = amino acid)
+      $type = "prot"; //specify the type protein (prot = protein)
   }
 ?>
 
