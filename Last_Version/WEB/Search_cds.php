@@ -1,6 +1,7 @@
 <?php
+//This is the page where we prepare the sql queries and display the results in a table with only the id sequence of the cds and the associated accession number (both clickable)
 require_once 'db_utils.php';
-connect_db();
+connect_db();//connexion to the database
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -31,25 +32,27 @@ session_start(); ?>
 
          <!-- Gene and Protein Results List-->
         <?php
-            $query_sql = "";
+            $query_sql = ""; //initialisation
+            //the values from the form Form_cds.php
             $field_form = ["idsequence","accessionnb","dna_type","cds_start","cds_end","strand","cds_seq", "cds_size", "pep_seq", "pep_size", "geneid", "genebiotype", "transcriptbiotype", "genesymbol", "description"];
+            //the attributs from the sql table sequence and annotation 
             $db_CDS_col = ["idsequence","accessionnb","dna_type","cds_start","cds_end","strand","cds_seq", "cds_size", "pep_seq", "pep_size", "geneid", "genebiotype", "transcriptbiotype", "genesymbol", "description"];
             for ($i = 0; $i <= 14; $i++) {
-                $ff = $field_form[$i];
+                $ff = $field_form[$i]; 
                 $field = $db_CDS_col[$i];
-                if ( $field=="idsequence"){
+                if ( $field=="idsequence"){ //specify "annotation.idsequence" in the query
                     $field= "annotation.".$field;
                 }
-                if (!empty($_POST[$ff])){
+                if (!empty($_POST[$ff])){ //if the fields from the form are not empty
                     if (strlen($query_sql) > 4){
-                        if(($ff != "cds_seq")&&($ff != "pep_seq")){
-                            $query_sql .= "AND ".$field."='".$_POST[$ff]."'";
+                        if(($ff != "cds_seq")&&($ff != "pep_seq")){ //if we don't request for cds or peptide sequence 
+                            $query_sql .= "AND ".$field."='".$_POST[$ff]."'"; //add to the sql query the values that the user put in the form fields   
                         }else{
-                            $query_sql .= "AND ".$field." LIKE '%".$_POST[$ff]."%' ";
+                            $query_sql .= "AND ".$field." LIKE '%".$_POST[$ff]."%' "; //if the equal does not function, we try with LIKE%xxx%
                         }
 
                     }else{
-                        if(($ff != "cds_seq")&&($ff != "pep_seq")){
+                        if(($ff != "cds_seq")&&($ff != "pep_seq")){ 
                             $query_sql .= "SELECT * FROM w_gene.sequence, w_gene.annotation WHERE  sequence.idsequence = annotation.idsequence AND ".$field." ='".$_POST[$ff]."'";
                         }else{
                             $query_sql .= "SELECT *  FROM w_gene.sequence, w_gene.annotation WHERE sequence.idsequence = annotation.idsequence AND ".$field." LIKE '%".$_POST[$ff]."%'";
@@ -59,20 +62,20 @@ session_start(); ?>
             }
 
             if(strlen($query_sql) > 4){
-                $query_sql .= "ORDER BY cds_start;"; //pour afficher les cds dans l'ordre d'apparition sur le génome
+                $query_sql .= "ORDER BY cds_start;"; //display the genome by ordered by cds start position
                 echo "<br>";
                 $res = pg_query($db_conn,$query_sql);
 
-                if (!$res) {
+                if (!$res) {//No results
                     echo "An error has occurred. Please, retry.\n";
                 exit;
                 }
 
-                else if(pg_num_rows($res) == 0) {
+                else if(pg_num_rows($res) == 0) {//no results
                     echo "<div class ='container message' > There is no result for your request.<br></div>";
                 }
 
-            else if (pg_num_rows($res) != 0) {
+            else if (pg_num_rows($res) != 0) {//display results in a table
                 echo "<div class ='container'>
                       <table class='table'>
                       <thead>
@@ -92,7 +95,7 @@ session_start(); ?>
         echo "</table>";
         echo "</div>";
     }
-    disconnect_db();
+    disconnect_db();//deconnexion from the database
     ?>
 </body>
 </html>
