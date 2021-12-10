@@ -95,7 +95,9 @@ session_start(); ?>
 </div>
 </body>
 </html>
-
+<?php
+disconnect_db(); //deconnexion from the database
+?>
 
 
 
