@@ -148,7 +148,7 @@ session_start();
                             $Niv[$j] = $finsequence[$i];
 							
                             //If a cds is annotated, a link to its result page is created
-					if($annot[$i]!=0){
+					if($annot[$i]==1){
 						echo '<a href="Results_cds.php?id=' . $idsequence[$i] . '" class="bouton-seq-container" style="top: ' . (($j) * $space + 20) . 'px; left: ' . $debutsequence[$i] - $a . 'ch; width: ' . $longsequence[$i] . 'ch">';
 						echo $idsequence[$i]; 
 						echo '</a>';

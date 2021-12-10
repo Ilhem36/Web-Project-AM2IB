@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!--This is the reader home page-->
@@ -35,11 +34,12 @@ session_start(); ?>
 <div class ="container">
     <p><h2> This is the Reader page ! </h2><br>
     <p>Click on the <strong>Genomes Form</strong> to access to the genomes search form and on the <strong>Genes/Prot Form</strong> to access to the genes and proteins search form.</p><br>
-    <p>You can also click on <strong>Annotations in the process of validation</strong> to see the annotations being validated. You can search and read information about bacterial genomes, genes and peptides from the database. If needed, you can also download your search results pages.</p>
+    <p>You can also click on <strong>Annotations in the process of validation</strong> to see the annotations being validated. You can search and read information about bacterial genomes, genes and peptides from the database. If needed, you can also download/extract all the data in this database by clicking on <strong>Download data</strong>.</p>
     <br>
     <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "Form_genome.php";?>'">Genome Search <br>Form</button>
     <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "Form_cds.php";?>'">Gene and Protein Search Form</button>
     <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "annot_in_progress.php";?>'">Annotations in the process of validation</button>
+    <button class='btn btn--assign' type='submit' onclick = "location.href = '<?php echo "extraction.php";?>'">Download <br>data</button>
 </div>
 
 </body>
