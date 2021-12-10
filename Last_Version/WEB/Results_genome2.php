@@ -1,7 +1,10 @@
 <?php
 require_once 'db_utils.php';
-connect_db();
-session_start(); ?>
+connect_db();//connexion to the database
+session_start(); 
+//When we click on an accession number from the page search_genome.php -> it leads to this page
+//This is the results page for each genome
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -34,8 +37,9 @@ session_start(); ?>
 		<div class="title"> Genome Results </div><br>
 		<table>
 			<?php
-            //Initialization of $a & $b 
-			$a = 0;
+	    //Preparation of the sequence visualisation
+            //Initialization of $a = start value of the sequence & $b = end value of the sequence we want to visualise
+			$a = 0; 
 			$b = 5000;
 			//Get the result for the right accession number
 			$accessionnb = htmlspecialchars($_GET["id"]);
@@ -54,21 +58,21 @@ session_start(); ?>
                 // Get and show the genome information from the accession number
 				$result = pg_query($db_conn, "SELECT * FROM w_gene.genome WHERE accessionnb='" . $accessionnb . "';");
 				// echo $accessionnb;
-				if (!$result) {
+				if (!$result) { //No result
 					echo "An error has occurred.\n";
 					exit;
 				}
-				while ($row = pg_fetch_assoc($result)) {
+				while ($row = pg_fetch_assoc($result)) { //display the genome results
 					echo "<tr><th> Accession Number : </th><td> " . $row['accessionnb'] . "</td></tr>
 	              <tr><th> Species : </th><td> " . $row['species'] . "</td></tr>
 	              <tr><th> Strain : </th><td> " . $row['strain'] . "</td></tr>
 	              <tr><th> Sequence length : </th><td> " . $row['seq_length'] . "</td></tr>";
 					$genome = $row['seq_nt'];
 				}
-			    //get the information for each cds sequence
+			    //get the cds start and end position for each cds sequence
 				$query = "SELECT * FROM w_gene.sequence WHERE accessionnb='" . $accessionnb . "' AND cds_end >= '" . $a . "' AND cds_start <= '" . $b . "';";
 				$res2 = pg_query($db_conn, $query);
-				if (!$res2) {
+				if (!$res2) {//no result
 					echo "An error has occurred.\n";
 					exit;
 				}
@@ -164,6 +168,7 @@ session_start(); ?>
 		</div>
 
         <br>
+	<!-- download button-->
         <button class='btn btn--assign' type="submit" name="ddl_results"> Download results</button><br>
 	</div>
 </body>
@@ -171,5 +176,5 @@ session_start(); ?>
 </html>
 
 <?php
-disconnect_db();
+disconnect_db();//deconnexion from the database
 ?>
