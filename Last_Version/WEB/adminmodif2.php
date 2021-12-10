@@ -24,7 +24,6 @@ connect_db();
                 $res0= pg_query ($db_conn,"SELECT COUNT(*) FROM w_gene.annotation WHERE email_annot = '".$PK[$i]."'") or die( pg_last_error());
                 if($res0>0){
                     echo "If an user already annotated a sequence, he can't be suppressed";
-                    print_r($res0);
                 }
                 else{
                     $res1= pg_query ($db_conn,"DELETE FROM w_gene.users WHERE email = '".$PK[$i]."'") or die( pg_last_error());
