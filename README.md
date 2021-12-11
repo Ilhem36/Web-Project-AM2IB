@@ -1,7 +1,7 @@
 # Read Me Projet Web M2 AMI2B
 ### RIAHI Ilhem, MAUPAS Arnaud, WENG Lorraine, CHERIFI Sanâ
 
-Pour mener à bien ce projet, il sera nécessaire de télécharger postgresql, python, php. Plusieurs langages de programmation sont ainsi utilisés : PHP, CSS2, Python, Hack, HTML et Javascript.
+Pour mener à bien ce projet, il sera nécessaire de télécharger postgresql, python, php. Plusieurs langages de programmation sont ainsi utilisés : PHP, CSS2, Python, HTML et Javascript.
 
 ## I- Implémentation et chargement des données :
 
